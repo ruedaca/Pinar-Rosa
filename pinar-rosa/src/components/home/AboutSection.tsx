@@ -1,0 +1,39 @@
+import Eyebrow from "@/components/ui/Eyebrow";
+import { about } from "@/lib/content";
+
+export default function AboutSection() {
+  return (
+    <section
+      id="estudio"
+      className="mx-auto max-w-7xl scroll-mt-6 px-4 pb-16 md:px-8 md:pb-20 lg:px-12"
+    >
+      <Eyebrow className="mb-8">{about.eyebrow}</Eyebrow>
+
+      <div className="grid gap-8 md:grid-cols-2 md:gap-16">
+        {/* Cada entrada de `title` es una línea: no debe reflowear */}
+        <h2 className="display display--section text-[clamp(1.6rem,4.5vw,2.75rem)] text-pr-black">
+          {about.title.map((line) => (
+            <span key={line} className="block whitespace-nowrap">
+              {line}
+            </span>
+          ))}
+        </h2>
+
+        <div className="max-w-[46ch] space-y-4">
+          {about.paragraphs.map((paragraph, index) => (
+            <p
+              key={paragraph.slice(0, 24)}
+              className={
+                index === 0
+                  ? "text-[15px] leading-[1.65] text-pr-black"
+                  : "text-[13px] leading-[1.7] text-pr-gray-700"
+              }
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
