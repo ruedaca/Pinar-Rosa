@@ -105,24 +105,47 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
         <label htmlFor="consulta" className={labelClasses}>
           ¿Por qué nos escribís?
         </label>
-        {/* Las opciones se pintan en negro: el desplegable nativo va sobre blanco */}
-        <select
-          id="consulta"
-          name="consulta"
-          value={consulta}
-          onChange={(event) => setConsulta(event.target.value)}
-          className={inputClasses}
-        >
-          {contacto.consultas.map((opcion) => (
-            <option
-              key={opcion.value}
-              value={opcion.value}
-              className="text-pr-black"
-            >
-              {opcion.label}
-            </option>
-          ))}
-        </select>
+        {/*
+          Flecha propia en vez de la nativa: la del navegador queda pegada al
+          borde del campo. Las opciones se pintan en negro porque el
+          desplegable nativo se dibuja sobre blanco.
+        */}
+        <div className="relative">
+          <select
+            id="consulta"
+            name="consulta"
+            value={consulta}
+            onChange={(event) => setConsulta(event.target.value)}
+            className={cn(inputClasses, "appearance-none pr-12")}
+          >
+            {contacto.consultas.map((opcion) => (
+              <option
+                key={opcion.value}
+                value={opcion.value}
+                className="text-pr-black"
+              >
+                {opcion.label}
+              </option>
+            ))}
+          </select>
+          <svg
+            aria-hidden
+            viewBox="0 0 16 16"
+            className={cn(
+              "pointer-events-none absolute top-1/2 right-4 size-3.5 -translate-y-1/2",
+              dark ? "text-white/50" : "text-pr-gray-400",
+            )}
+            fill="none"
+          >
+            <path
+              d="m4 6 4 4 4-4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </div>
 
       <div className="mt-5">

@@ -41,9 +41,9 @@ export const about = {
   eyebrow: "El estudio",
   title: ["Del proyecto", "a la llave"],
   paragraphs: [
-    "Pinar Rosa es estudio de arquitectura y desarrolladora. Proyectamos la casa, dirigimos la obra y la entregamos terminada: cocina a medida, placares y vestidores completos, piso radiante y climatización ya instalados.",
-    "Trabajamos sobre una idea fija —materia y estructura— y con dos materiales: hormigón armado y vidrio. El primero define los límites y libera la planta; el segundo se abre o se cierra según haga falta, hasta que el cerramiento lo termina poniendo el bosque.",
-    "Oficina en Bernal, obras en Pinamar. Las tres casas que ves acá son nuestras, pero el mismo equipo proyecta y construye encargos particulares.",
+    "Somos estudio de arquitectura y desarrolladora. Proyectamos, dirigimos la obra y entregamos la casa terminada: la cocina a medida, los placares y la climatización ya puestos.",
+    "Cada proyecto parte de dos materiales. El hormigón armado sostiene y libera la planta, sin muros que obliguen a nada. El vidrio se abre o se cierra según la hora y la estación; cuando se abre del todo, el cerramiento lo termina haciendo el bosque.",
+    "Con los encargos particulares trabajamos igual: del anteproyecto a la entrega, un solo equipo y un solo interlocutor.",
   ],
 };
 
@@ -180,7 +180,7 @@ export const contacto = {
   consultas: [
     ...projects.map((project) => ({
       value: project.name,
-      label: `Por el ${project.name}`,
+      label: project.name,
     })),
     { value: "Proyecto propio", label: "Quiero un proyecto propio" },
     { value: "Otra consulta", label: "Otra consulta" },
