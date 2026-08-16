@@ -24,10 +24,10 @@ function ServiceCard({
       notchClassName="w-[76%] md:w-[57%]"
       notch={
         <article>
-          <h3 className="text-[17px] font-semibold text-pr-black">
+          <h3 className="text-pr-black text-[17px] font-semibold">
             {service.title}
           </h3>
-          <p className="mt-1.5 text-[12px] leading-[1.55] text-pr-gray-700">
+          <p className="text-pr-gray-700 mt-1.5 text-[12px] leading-[1.55]">
             {service.description}
           </p>
         </article>

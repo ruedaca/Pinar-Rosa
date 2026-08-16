@@ -14,7 +14,7 @@ export default function Logo({ className, invert = false }: LogoProps) {
       href="/"
       aria-label="Pinar Rosa Group — Inicio"
       className={cn(
-        "inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pr-green-1",
+        "focus-visible:outline-pr-green-1 inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
       )}
     >

@@ -12,11 +12,13 @@
   --color-pr-gray-700: #3a3a3a;
 
   /* Cuerpo de texto */
-  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  --font-sans:
+    var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   /* Títulos y subtítulos */
-  --font-display: var(--font-montserrat), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  --font-display:
+    var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
   /* Radio de las piezas grandes (imágenes full-bleed) y de las tarjetas blancas */
   --radius-frame: var(--frame);
@@ -26,10 +28,12 @@
 :root {
   /* `@theme inline` no emite estas variables, así que se declaran también acá
      para poder usarlas desde CSS propio. */
-  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-display: var(--font-montserrat), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  --font-sans:
+    var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-display:
+    var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
   /* Margen lateral de página y aire sobre el hero: en el modelo el de arriba
      es ~1.5 veces el lateral, no iguales. */

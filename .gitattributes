@@ -1,0 +1,13 @@
+# Normaliza los finales de linea a LF en el repositorio.
+# Sin esto, Windows los convierte a CRLF al hacer checkout y Prettier
+# (endOfLine: "lf") marca todos los archivos como mal formateados.
+* text=auto eol=lf
+
+# Binarios: que Git no intente tocarlos
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.JPG binary
+*.ico binary
+*.woff binary
+*.woff2 binary

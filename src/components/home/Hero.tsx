@@ -10,7 +10,7 @@ export default function Hero() {
         className="min-h-[560px] md:min-h-[720px] lg:h-[calc(100vh-var(--page-top)-var(--page-gutter))] lg:min-h-[760px]"
         notchClassName="notch--roomy w-[82%] md:w-[40%] md:max-w-[440px]"
         notch={
-          <p className="text-[13px] leading-[1.6] text-pr-gray-700">
+          <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
             {hero.intro}
           </p>
         }

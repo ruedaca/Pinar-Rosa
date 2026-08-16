@@ -132,8 +132,7 @@ export const projects = [
 
 export const posts = [
   {
-    title:
-      "Casas inteligentes: cómo integrar tecnología sin romper el diseño",
+    title: "Casas inteligentes: cómo integrar tecnología sin romper el diseño",
     slug: "casas-inteligentes-diseno",
     image: {
       kind: "placeholder",

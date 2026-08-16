@@ -5,7 +5,7 @@ export default function SiteFooter() {
     <footer>
       {/* Cierre de la página: recorte blanco encastrado en la esquina */}
       <div className="notch notch--br notch--bar ml-auto flex w-fit flex-col items-center gap-4 sm:flex-row sm:gap-8">
-        <p className="text-[10px] tracking-[0.14em] text-pr-gray-400 uppercase">
+        <p className="text-pr-gray-400 text-[10px] tracking-[0.14em] uppercase">
           © {new Date().getFullYear()} Pinar Rosa Group · Pinamar, Argentina
         </p>
         <div className="flex items-center gap-2">
@@ -14,7 +14,7 @@ export default function SiteFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp de Pinar Rosa Group"
-            className="flex size-8 items-center justify-center rounded-full bg-pr-black text-white transition-colors hover:bg-pr-green-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pr-green-1"
+            className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 flex size-8 items-center justify-center rounded-full text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             <svg viewBox="0 0 24 24" className="size-4" fill="none" aria-hidden>
               <path
@@ -34,7 +34,7 @@ export default function SiteFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="Instagram de Pinar Rosa Group"
-            className="flex size-8 items-center justify-center rounded-full bg-pr-black text-white transition-colors hover:bg-pr-green-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pr-green-1"
+            className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 flex size-8 items-center justify-center rounded-full text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             <svg viewBox="0 0 24 24" className="size-4" fill="none" aria-hidden>
               <rect
@@ -59,7 +59,7 @@ export default function SiteFooter() {
           <a
             href={`mailto:${footer.email}`}
             aria-label={`Escribir a ${footer.email}`}
-            className="flex size-8 items-center justify-center rounded-full bg-pr-black text-white transition-colors hover:bg-pr-green-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pr-green-1"
+            className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 flex size-8 items-center justify-center rounded-full text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             <svg viewBox="0 0 24 24" className="size-4" fill="none" aria-hidden>
               <rect

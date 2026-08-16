@@ -11,7 +11,7 @@ export default function AboutSection() {
 
       <div className="grid gap-8 md:grid-cols-2 md:gap-16">
         {/* Cada entrada de `title` es una línea: no debe reflowear */}
-        <h2 className="display display--section text-[clamp(1.6rem,4.5vw,2.75rem)] text-pr-black">
+        <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4.5vw,2.75rem)]">
           {about.title.map((line) => (
             <span key={line} className="block whitespace-nowrap">
               {line}
@@ -25,8 +25,8 @@ export default function AboutSection() {
               key={paragraph.slice(0, 24)}
               className={
                 index === 0
-                  ? "text-[15px] leading-[1.65] text-pr-black"
-                  : "text-[13px] leading-[1.7] text-pr-gray-700"
+                  ? "text-pr-black text-[15px] leading-[1.65]"
+                  : "text-pr-gray-700 text-[13px] leading-[1.7]"
               }
             >
               {paragraph}

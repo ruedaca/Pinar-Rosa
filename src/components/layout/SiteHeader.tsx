@@ -54,8 +54,8 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
             className={cn(
               "flex size-8 shrink-0 items-center justify-center rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden",
               light
-                ? "bg-pr-black text-white hover:bg-pr-green-1 focus-visible:outline-pr-green-1"
-                : "bg-white/15 text-white hover:bg-pr-green-1 focus-visible:outline-pr-green-3",
+                ? "bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 text-white"
+                : "hover:bg-pr-green-1 focus-visible:outline-pr-green-3 bg-white/15 text-white",
             )}
           >
             <span aria-hidden className="flex w-3.5 flex-col gap-[3px]">
@@ -94,7 +94,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
                   "text-[10px] font-medium tracking-[0.16em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4",
                   light
                     ? "text-pr-gray-700 hover:text-pr-green-1 focus-visible:outline-pr-green-1"
-                    : "text-white/75 hover:text-pr-green-3 focus-visible:outline-pr-green-3",
+                    : "hover:text-pr-green-3 focus-visible:outline-pr-green-3 text-white/75",
                 )}
               >
                 {item.label}
@@ -122,7 +122,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
                     "block rounded-full px-4 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors",
                     light
                       ? "text-pr-gray-700 hover:bg-pr-gray-200 hover:text-pr-green-1"
-                      : "text-white/80 hover:bg-white/10 hover:text-pr-green-3",
+                      : "hover:text-pr-green-3 text-white/80 hover:bg-white/10",
                   )}
                 >
                   {item.label}

@@ -128,8 +128,8 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
         className={cn(
           "mt-8 w-full rounded-full px-8 py-4 text-[10px] font-medium tracking-[0.18em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4",
           dark
-            ? "bg-white text-pr-black hover:bg-pr-green-3 focus-visible:outline-pr-green-3"
-            : "bg-pr-black text-white hover:bg-pr-green-1 focus-visible:outline-pr-green-1",
+            ? "text-pr-black hover:bg-pr-green-3 focus-visible:outline-pr-green-3 bg-white"
+            : "bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 text-white",
         )}
       >
         Enviar mensaje

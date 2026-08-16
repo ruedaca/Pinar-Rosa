@@ -11,7 +11,7 @@ export default function PartnersStrip() {
         {partners.map((partner) => (
           <li
             key={partner}
-            className="text-center text-[11px] font-medium tracking-[0.14em] text-pr-gray-400 uppercase"
+            className="text-pr-gray-400 text-center text-[11px] font-medium tracking-[0.14em] uppercase"
           >
             {partner}
           </li>

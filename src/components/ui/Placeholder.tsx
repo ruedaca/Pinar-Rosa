@@ -48,7 +48,7 @@ export default function Placeholder({
             "rounded-full px-3 py-1.5 text-center font-mono text-[10px] tracking-[0.14em] uppercase",
             tone === "dark"
               ? "bg-white/10 text-white/70"
-              : "bg-white/70 text-pr-gray-700",
+              : "text-pr-gray-700 bg-white/70",
           )}
         >
           {slot}

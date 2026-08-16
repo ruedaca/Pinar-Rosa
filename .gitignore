@@ -44,4 +44,9 @@ next-env.d.ts
 # editor / tooling local
 .claude/
 .idea/
-.vscode/
+skills-lock.json
+
+# del editor se comparte solo la config del equipo
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

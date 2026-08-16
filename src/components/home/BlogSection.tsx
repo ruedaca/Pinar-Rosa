@@ -12,10 +12,10 @@ export default function BlogSection() {
     >
       <header className="mx-auto max-w-2xl px-4 pb-10 text-center md:pb-14">
         <Eyebrow className="mb-6 text-center">Blog</Eyebrow>
-        <h2 className="display display--section text-[clamp(1.9rem,5vw,3rem)] text-pr-black">
+        <h2 className="display display--section text-pr-black text-[clamp(1.9rem,5vw,3rem)]">
           Últimas novedades
         </h2>
-        <p className="mx-auto mt-5 max-w-[50ch] text-[13px] leading-[1.7] text-pr-gray-700">
+        <p className="text-pr-gray-700 mx-auto mt-5 max-w-[50ch] text-[13px] leading-[1.7]">
           Notas sobre arquitectura costera, tendencias de diseño sustentable y
           el mercado inmobiliario de Pinamar.
         </p>
@@ -29,7 +29,7 @@ export default function BlogSection() {
             notchClassName="w-[76%] md:w-[46%]"
             notch={
               <article>
-                <h3 className="max-w-[38ch] text-[13px] leading-[1.5] font-semibold text-pr-black">
+                <h3 className="text-pr-black max-w-[38ch] text-[13px] leading-[1.5] font-semibold">
                   {post.title}
                 </h3>
                 <ArrowLink href={`/blog/${post.slug}`} className="mt-4">

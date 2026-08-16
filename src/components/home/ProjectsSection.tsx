@@ -12,11 +12,11 @@ export default function ProjectsSection() {
     >
       <header className="mx-auto max-w-2xl px-4 pb-10 text-center md:pb-14">
         <Eyebrow className="mb-6 text-center">Obra seleccionada</Eyebrow>
-        <h2 className="display display--section text-[clamp(1.9rem,5vw,3rem)] text-pr-black">
+        <h2 className="display display--section text-pr-black text-[clamp(1.9rem,5vw,3rem)]">
           <span className="block">Casas que respiran</span>
           <span className="block">el bosque</span>
         </h2>
-        <p className="mx-auto mt-5 max-w-[52ch] text-[13px] leading-[1.7] text-pr-gray-700">
+        <p className="text-pr-gray-700 mx-auto mt-5 max-w-[52ch] text-[13px] leading-[1.7]">
           Una selección de los proyectos que mejor resumen nuestra manera de
           construir en Pinamar: materiales nobles, escala doméstica y una
           implantación que respeta cada pino existente.
@@ -32,7 +32,7 @@ export default function ProjectsSection() {
             notchClassName="w-[80%] md:w-[30%] md:max-w-[400px]"
             notch={
               <article>
-                <p className="text-[12px] leading-[1.65] text-pr-gray-700">
+                <p className="text-pr-gray-700 text-[12px] leading-[1.65]">
                   {project.summary}
                 </p>
                 <ArrowLink

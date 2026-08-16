@@ -17,7 +17,7 @@ export default function Home() {
         negro se mete detrás con un margen negativo y sólo asoma en esas dos
         esquinas, igual que el radio de los marcos de imagen.
       */}
-      <main className="relative z-10 rounded-b-[var(--radius-frame)] bg-pr-white">
+      <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
         <Hero />
         <PartnersStrip />
         <AboutSection />
@@ -25,7 +25,7 @@ export default function Home() {
         <ProjectsSection />
         <BlogSection />
       </main>
-      <div className="-mt-[var(--radius-frame)] bg-pr-black pt-[var(--radius-frame)]">
+      <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">
         <ContactSection />
         <SiteFooter />
       </div>

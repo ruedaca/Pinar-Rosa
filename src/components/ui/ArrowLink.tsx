@@ -9,21 +9,25 @@ type ArrowLinkProps = {
 };
 
 /** Texto en versalitas + círculo con flecha, como en las tarjetas de proyecto. */
-export default function ArrowLink({ href, children, className }: ArrowLinkProps) {
+export default function ArrowLink({
+  href,
+  children,
+  className,
+}: ArrowLinkProps) {
   return (
     <Link
       href={href}
       className={cn(
         "group inline-flex items-center gap-3 text-[10px] font-medium tracking-[0.18em] uppercase",
-        "text-pr-black transition-colors hover:text-pr-green-1",
-        "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pr-green-1",
+        "text-pr-black hover:text-pr-green-1 transition-colors",
+        "focus-visible:outline-pr-green-1 focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
       )}
     >
       {children}
       <span
         aria-hidden
-        className="flex size-7 items-center justify-center rounded-full bg-pr-black text-white transition-colors group-hover:bg-pr-green-1"
+        className="bg-pr-black group-hover:bg-pr-green-1 flex size-7 items-center justify-center rounded-full text-white transition-colors"
       >
         <svg viewBox="0 0 16 16" className="size-3" fill="none">
           <path
