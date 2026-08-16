@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
-import { footer, projects } from "@/lib/content";
+import { contacto, footer, PROYECTO_PROPIO } from "@/lib/content";
 import { cn } from "@/lib/utils";
+
+/** Evento con el que el botón de Estudio preselecciona el motivo de consulta. */
+export const EVENTO_CONSULTA = "pinar-rosa:consulta";
 
 type ContactFormProps = {
   /** "dark" es la versión que vive en el bloque negro del pie. */
@@ -16,7 +19,17 @@ type ContactFormProps = {
  */
 export default function ContactForm({ tone = "light" }: ContactFormProps) {
   const [enviado, setEnviado] = useState(false);
+  const [consulta, setConsulta] = useState(contacto.consultas[0].value);
   const dark = tone === "dark";
+
+  useEffect(() => {
+    const onConsulta = (evento: Event) => {
+      const detalle = (evento as CustomEvent<string>).detail;
+      if (detalle) setConsulta(detalle);
+    };
+    window.addEventListener(EVENTO_CONSULTA, onConsulta);
+    return () => window.removeEventListener(EVENTO_CONSULTA, onConsulta);
+  }, []);
 
   const inputClasses = cn(
     "w-full rounded-lg border px-4 py-3 text-[13px] transition-colors focus:outline-none",
@@ -33,20 +46,20 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
     event.preventDefault();
     const datos = new FormData(event.currentTarget);
     const nombre = String(datos.get("nombre") ?? "");
-    const lote = String(datos.get("lote") ?? "");
     const cuerpo = [
       `Nombre: ${nombre}`,
       `Email: ${datos.get("email") ?? ""}`,
-      lote ? `Consulta por: ${lote}` : null,
+      `Motivo: ${consulta}`,
       "",
       String(datos.get("mensaje") ?? ""),
-    ]
-      .filter((linea) => linea !== null)
-      .join("\n");
+    ].join("\n");
 
-    const asunto = lote
-      ? `Consulta por ${lote} — ${nombre}`
-      : `Consulta desde la web — ${nombre}`;
+    // El asunto lleva el motivo adelante para que se pueda clasificar
+    // la consulta desde la bandeja de entrada, sin abrir el mail.
+    const asunto =
+      consulta === PROYECTO_PROPIO
+        ? `Proyecto propio — ${nombre}`
+        : `${consulta} — ${nombre}`;
 
     window.location.href = `mailto:${footer.email}?subject=${encodeURIComponent(
       asunto,
@@ -89,21 +102,24 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
       </div>
 
       <div className="mt-5">
-        <label htmlFor="lote" className={labelClasses}>
-          Propiedad de interés
+        <label htmlFor="consulta" className={labelClasses}>
+          ¿Por qué nos escribís?
         </label>
         {/* Las opciones se pintan en negro: el desplegable nativo va sobre blanco */}
-        <select id="lote" name="lote" defaultValue="" className={inputClasses}>
-          <option value="" className="text-pr-black">
-            Consulta general
-          </option>
-          {projects.map((project) => (
+        <select
+          id="consulta"
+          name="consulta"
+          value={consulta}
+          onChange={(event) => setConsulta(event.target.value)}
+          className={inputClasses}
+        >
+          {contacto.consultas.map((opcion) => (
             <option
-              key={project.slug}
-              value={project.name}
+              key={opcion.value}
+              value={opcion.value}
               className="text-pr-black"
             >
-              {project.name}
+              {opcion.label}
             </option>
           ))}
         </select>

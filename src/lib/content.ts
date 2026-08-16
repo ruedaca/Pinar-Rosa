@@ -38,12 +38,12 @@ export const partners = [
 ];
 
 export const about = {
-  eyebrow: "Qué hacemos",
-  title: ["Arquitectura", "que da forma al futuro"],
+  eyebrow: "El estudio",
+  title: ["Del proyecto", "a la llave"],
   paragraphs: [
-    "En Pinar Rosa Group combinamos diseño y conciencia ambiental para repensar la vida moderna en la costa. Con una obsesión por el detalle, proyectamos espacios funcionales y sobrios que resisten el paso del tiempo mientras minimizan su huella sobre el médano.",
-    "Nuestro equipo de arquitectos, desarrolladores y directores de obra trabaja de forma integrada. Cada casa nace de un estudio del terreno, de la orientación del sol y de la vegetación existente: nada se tala si puede rodearse.",
-    "Tres casas, tres estudios, una misma manera de entender Pinamar. Sumate al recorrido y descubrí en qué se convierte una idea cuando se la construye con criterio.",
+    "Pinar Rosa es estudio de arquitectura y desarrolladora. Proyectamos la casa, dirigimos la obra y la entregamos terminada: cocina a medida, placares y vestidores completos, piso radiante y climatización ya instalados.",
+    "Trabajamos sobre una idea fija —materia y estructura— y con dos materiales: hormigón armado y vidrio. El primero define los límites y libera la planta; el segundo se abre o se cierra según haga falta, hasta que el cerramiento lo termina poniendo el bosque.",
+    "Oficina en Bernal, obras en Pinamar. Las tres casas que ves acá son nuestras, pero el mismo equipo proyecta y construye encargos particulares.",
   ],
 };
 
@@ -167,10 +167,27 @@ export const posts = [
   },
 ];
 
-/** Título del bloque de cierre, arriba del formulario de contacto. */
-export const cta = {
-  titleLines: ["Demos forma a", "tu próximo hogar"],
+/**
+ * Bloque de cierre de la home. El formulario atiende a los dos públicos —el
+ * que quiere comprar una de las casas y el que quiere un proyecto propio— así
+ * que la bifurcación la hace el primer campo, no el título.
+ */
+export const contacto = {
+  titleLines: ["Vení a ver", "el bosque"],
+  intro:
+    "Coordinamos un recorrido por Pinamar y recorremos las tres casas. Si lo tuyo es un proyecto propio, también empezamos por acá.",
+  /** `PROYECTO_PROPIO` es el valor que preselecciona el botón de Estudio. */
+  consultas: [
+    ...projects.map((project) => ({
+      value: project.name,
+      label: `Por el ${project.name}`,
+    })),
+    { value: "Proyecto propio", label: "Quiero un proyecto propio" },
+    { value: "Otra consulta", label: "Otra consulta" },
+  ],
 };
+
+export const PROYECTO_PROPIO = "Proyecto propio";
 
 export const footer = {
   email: "estudio.pinarrosa@gmail.com",

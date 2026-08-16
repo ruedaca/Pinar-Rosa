@@ -1,5 +1,5 @@
 import ContactForm from "@/components/shared/ContactForm";
-import { cta } from "@/lib/content";
+import { contacto } from "@/lib/content";
 
 /**
  * Cierre de la home: el llamado a la acción y el formulario son un solo bloque
@@ -11,8 +11,8 @@ export default function ContactSection() {
       id="contacto"
       className="mx-auto max-w-[640px] scroll-mt-6 px-[var(--page-gutter)] pt-24 pb-20 text-center md:pt-32 md:pb-24"
     >
-      <h2 className="display mx-auto max-w-[16ch] text-[clamp(2.25rem,7vw,4.75rem)] text-white">
-        {cta.titleLines.map((line) => (
+      <h2 className="display mx-auto max-w-[16ch] text-[clamp(2.25rem,7vw,4.75rem)] text-white uppercase">
+        {contacto.titleLines.map((line) => (
           <span key={line} className="block">
             {line}
           </span>
@@ -20,9 +20,7 @@ export default function ContactSection() {
       </h2>
 
       <p className="mx-auto mt-6 max-w-[46ch] text-[13px] leading-[1.7] text-white/60">
-        Contanos qué estás buscando y coordinamos una visita a Pinamar. Si ya
-        tenés un lote en mente, elegilo abajo y te respondemos con la ficha
-        completa.
+        {contacto.intro}
       </p>
 
       <ContactForm tone="dark" />

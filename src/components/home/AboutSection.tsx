@@ -1,3 +1,4 @@
+import ProyectoPropioButton from "@/components/shared/ProyectoPropioButton";
 import Eyebrow from "@/components/ui/Eyebrow";
 import { about } from "@/lib/content";
 
@@ -32,6 +33,8 @@ export default function AboutSection() {
               {paragraph}
             </p>
           ))}
+
+          <ProyectoPropioButton />
         </div>
       </div>
     </section>
