@@ -271,9 +271,11 @@ export const propiedades: Propiedad[] = [
         src: "/lotes/lote-6/obra/06.jpg",
         alt: "Vista del lote durante la obra",
       },
-      { src: "/lotes/lote-6/obra/07.jpg", alt: "Galería en construcción" },
-      { src: "/lotes/lote-6/obra/08.jpg", alt: "Planta alta en construcción" },
-      { src: "/lotes/lote-6/obra/09.jpg", alt: "Terreno y entorno de la obra" },
+      {
+        src: "/lotes/lote-6/obra/07.jpg",
+        alt: "La casa vista desde el deck, con la pileta ya revestida",
+      },
+      { src: "/lotes/lote-6/obra/08.jpg", alt: "Terreno y entorno de la obra" },
     ],
     planos: [
       { src: "/lotes/lote-6/plano-baja.png", titulo: "Planta baja" },
@@ -356,34 +358,26 @@ export const propiedades: Propiedad[] = [
         alt: "Dormitorio en master suite",
       },
       { src: "/lotes/lote-7/escritorio.jpg", alt: "Estudio" },
-      { src: "/lotes/lote-7/bano-suit.jpg", alt: "Baño de la master suite" },
+      {
+        src: "/lotes/lote-7/bano-suit-bachas.jpg",
+        alt: "Baño de la master suite, con doble bacha sobre mármol y ducha",
+      },
     ],
     obra: [
       {
         src: "/lotes/lote-7/obra/01.jpg",
         alt: "Frente del Lote 7 en construcción, con el hormigón a la vista",
       },
+      { src: "/lotes/lote-7/obra/02.jpg", alt: "Interior en construcción" },
+      { src: "/lotes/lote-7/obra/03.jpg", alt: "Detalle del encofrado" },
       {
-        src: "/lotes/lote-7/obra/02.jpg",
-        alt: "Volumen superior en voladizo durante la obra",
-      },
-      { src: "/lotes/lote-7/obra/03.jpg", alt: "Interior en construcción" },
-      { src: "/lotes/lote-7/obra/04.jpg", alt: "Detalle del encofrado" },
-      { src: "/lotes/lote-7/obra/05.jpg", alt: "Galería en construcción" },
-      { src: "/lotes/lote-7/obra/06.jpg", alt: "Planta alta en construcción" },
-      {
-        src: "/lotes/lote-7/obra/07.jpg",
+        src: "/lotes/lote-7/obra/04.jpg",
         alt: "Vista del terreno durante la obra",
       },
-      { src: "/lotes/lote-7/obra/08.jpg", alt: "Carpinterías colocadas" },
+      { src: "/lotes/lote-7/obra/05.jpg", alt: "Carpinterías colocadas" },
       {
-        src: "/lotes/lote-7/obra/09.jpg",
-        alt: "Avance de la obra entre los pinos",
-      },
-      { src: "/lotes/lote-7/obra/10.jpg", alt: "Contrafrente en construcción" },
-      {
-        src: "/lotes/lote-7/obra/11.jpg",
-        alt: "Entorno del lote durante la obra",
+        src: "/lotes/lote-7/obra/06.jpg",
+        alt: "Contrafrente en construcción",
       },
     ],
     planos: [

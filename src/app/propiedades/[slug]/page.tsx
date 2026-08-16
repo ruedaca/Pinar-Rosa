@@ -203,7 +203,9 @@ export default async function PropiedadPage({ params }: Params) {
           <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
             {propiedad.planos.map((plano) => (
               <figure key={plano.src}>
-                <div className="bg-pr-gray-100 relative aspect-[3/2] overflow-hidden rounded-[var(--radius-frame)]">
+                {/* Fondo blanco: con object-contain el sobrante del marco se ve,
+                    y sobre gris quedaba un borde alrededor del plano. */}
+                <div className="relative aspect-[3/2] overflow-hidden rounded-[var(--radius-frame)] bg-white">
                   <Image
                     src={plano.src}
                     alt={`${plano.titulo} del ${propiedad.name}`}
