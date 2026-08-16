@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Media from "@/components/ui/Media";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { hero } from "@/lib/content";
@@ -8,16 +10,25 @@ export default function Hero() {
       <NotchFrame
         corner="bottom-right"
         className="min-h-[560px] md:min-h-[720px] lg:h-[calc(100vh-var(--page-top)-var(--page-gutter))] lg:min-h-[760px]"
-        notchClassName="notch--roomy w-[82%] md:w-[40%] md:max-w-[440px]"
+        notchClassName="notch--roomy hero-in hero-in--delayed w-[82%] md:w-[40%] md:max-w-[440px]"
         notch={
-          <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
-            {hero.intro}
-          </p>
+          <>
+            <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
+              {hero.intro}
+            </p>
+            <Link
+              href={hero.action.href}
+              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 mt-6 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              {hero.action.label}
+            </Link>
+          </>
         }
+        // Cada línea del titular es una línea: el corte lo decide el copy
         overlay={
-          <h1 className="display absolute bottom-44 left-6 z-10 text-[clamp(2.5rem,9.5vw,7.5rem)] text-white uppercase md:bottom-9 md:left-9">
+          <h1 className="display hero-in absolute bottom-64 left-6 z-10 text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase md:bottom-9 md:left-9">
             {hero.titleLines.map((line) => (
-              <span key={line} className="block">
+              <span key={line} className="block whitespace-nowrap">
                 {line}
               </span>
             ))}
@@ -25,10 +36,18 @@ export default function Hero() {
         }
       >
         <Media media={hero.image} sizes="100vw" priority tone="dark" />
-        {/* Velo del 30% para que el texto blanco mantenga contraste sobre la foto */}
+        {/*
+          Doble velo: uno general y otro más denso en la esquina inferior
+          izquierda, que es donde apoya el titular. En mobile el texto ocupa
+          casi todo el ancho de la foto, así que ahí el velo es más fuerte.
+        */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-black/30"
+          className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/30 md:from-black/45 md:via-black/10"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[radial-gradient(120%_90%_at_0%_100%,rgba(0,0,0,0.55)_0%,transparent_60%)]"
         />
       </NotchFrame>
     </section>

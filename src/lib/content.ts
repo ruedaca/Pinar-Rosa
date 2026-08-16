@@ -15,10 +15,12 @@ export const nav = [
   { label: "Contacto", href: "/#contacto" },
 ];
 
+/** El titular sale de la memoria descriptiva de los propios proyectos. */
 export const hero = {
-  titleLines: ["Construimos", "el futuro"],
+  titleLines: ["Donde el límite", "es el bosque"],
   intro:
-    "Elevá tu forma de habitar la costa. Pinar Rosa Group desarrolla arquitectura contemporánea en Pinamar: casas que dialogan con el bosque, el médano y el mar.",
+    "Tres casas en los bosques de Pinamar, proyectadas y construidas por Pinar Rosa. Hormigón armado y vidrio: la casa se abre hasta que el cierre lo pone el pinar.",
+  action: { label: "Contactanos", href: "#contacto" },
   image: {
     kind: "photo",
     src: "/PORTADA.png",
@@ -90,12 +92,19 @@ export const services = [
   },
 ];
 
+/**
+ * Superficies, programa y materiales salen de las fichas oficiales
+ * (PDF de cada lote, julio 2026). No inventar datos: si falta uno, se pregunta.
+ */
 export const projects = [
   {
     name: "Lote 5",
     slug: "lote-5",
+    disponible: true,
+    superficies: { lote: "1.392 m²", cubierta: "279 m²", total: "335 m²" },
+    dormitorios: "Master suite + 2",
     summary:
-      "280 m² cubiertos sobre un lote de 900 m² en Pinamar Norte. El volumen se implanta entre los pinos existentes y se abre al parque por una galería continua.",
+      "279 m² cubiertos sobre un lote de 1.392 m². Master suite con vestidor e hidromasaje, dos dormitorios, estudio y una galería con parrilla que se abre a la pileta de 40 m².",
     image: {
       kind: "photo",
       src: "/LOTE5.png",
@@ -105,8 +114,11 @@ export const projects = [
   {
     name: "Lote 6",
     slug: "lote-6",
+    disponible: true,
+    superficies: { lote: "1.087 m²", cubierta: "323 m²", total: "345 m²" },
+    dormitorios: "Suite + huésped en suite + 2",
     summary:
-      "Planta baja íntegramente vidriada y un volumen superior en voladizo. La pileta acompaña el eje de la galería y estira la casa hacia el fondo del lote.",
+      "La más versátil de las tres: suma dormitorio de huéspedes en suite y un espacio flexible para estudio, biblioteca o sala de juegos. 323 m² cubiertos y pileta de 40 m².",
     image: {
       kind: "photo",
       src: "/LOTE6.JPG",
@@ -116,8 +128,11 @@ export const projects = [
   {
     name: "Lote 7",
     slug: "lote-7",
+    disponible: true,
+    superficies: { lote: "1.524 m²", cubierta: "337 m²", total: "399 m²" },
+    dormitorios: "Master suite + 2",
     summary:
-      "A 300 metros del mar. Carpinterías de madera, hormigón y un frente de piedra que ancla la casa al médano sin taparle la vista al pinar.",
+      "La mayor de las tres, sobre un lote de 1.524 m². Carpinterías Golden Oak, puertas enchapadas en roble y climatización central en planta baja, además del piso radiante.",
     image: {
       kind: "photo",
       src: "/LOTE7.jpg",
@@ -158,9 +173,7 @@ export const cta = {
 };
 
 export const footer = {
-  email: "pinar.rosa.group@gmail.com",
+  email: "estudio.pinarrosa@gmail.com",
   instagram: "https://instagram.com/pinarrosagroup",
-  // PENDIENTE: reemplazar por el número real, con código de país y sin signos
-  // (formato wa.me, ej. https://wa.me/5492254123456).
-  whatsapp: "https://wa.me/000000000000",
+  whatsapp: "https://wa.me/5491138074412",
 };

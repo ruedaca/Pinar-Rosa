@@ -207,6 +207,30 @@ h4 {
   letter-spacing: -0.025em;
 }
 
+/*
+ * Entrada del hero: sube unos pocos píxeles y aparece. Corta y sin rebote —
+ * la idea es que se sienta el asentamiento, no que se note la animación.
+ * El bloque de prefers-reduced-motion de más abajo la anula.
+ */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-in {
+  animation: hero-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-in--delayed {
+  animation-delay: 160ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
