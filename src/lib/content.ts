@@ -1,4 +1,5 @@
 import type { MediaSource } from "@/components/ui/Media";
+import { propiedades } from "@/lib/propiedades";
 
 /**
  * Contenido de la home. Todo el copy vive acá para que sea fácil de editar
@@ -98,83 +99,8 @@ export const mapaZona = {
   alt: "Vista satelital de Pinamar señalando el centro comercial, el bosque, La Frontera y la ubicación de los proyectos",
 };
 
-/**
- * Superficies, programa y materiales salen de las fichas oficiales
- * (PDF de cada lote, julio 2026). No inventar datos: si falta uno, se pregunta.
- * `mapa` y `planos` se extrajeron de esos mismos PDF.
- */
-export const projects = [
-  {
-    name: "Lote 5",
-    slug: "lote-5",
-    disponible: true,
-    mapa: {
-      src: "/lotes/lote-5/mapa-lote.jpg",
-      alt: "Vista satelital con el Lote 5 marcado sobre la manzana",
-    },
-    planos: [
-      { src: "/lotes/lote-5/plano-baja.png", titulo: "Planta baja" },
-      { src: "/lotes/lote-5/plano-alta.png", titulo: "Planta alta" },
-    ],
-    superficies: { lote: "1.392 m²", cubierta: "279 m²", total: "335 m²" },
-    dormitorios: "Master suite + 2",
-    summary:
-      "279 m² cubiertos sobre un lote de 1.392 m². Master suite con vestidor e hidromasaje, dos dormitorios, estudio y una galería con parrilla que se abre a la pileta de 40 m².",
-    image: {
-      kind: "photo",
-      src: "/lotes/lote-5/contrafrente.jpg",
-      alt: "Lote 5 al anochecer: volumen de dos plantas entre pinos altos, galería iluminada y pileta en primer plano",
-    } satisfies MediaSource,
-  },
-  {
-    name: "Lote 6",
-    slug: "lote-6",
-    disponible: true,
-    mapa: {
-      src: "/lotes/lote-6/mapa-lote.jpg",
-      alt: "Vista satelital con el Lote 6 marcado sobre la manzana",
-    },
-    planos: [
-      { src: "/lotes/lote-6/plano-baja.png", titulo: "Planta baja" },
-      { src: "/lotes/lote-6/plano-alta.png", titulo: "Planta alta" },
-    ],
-    superficies: { lote: "1.087 m²", cubierta: "323 m²", total: "345 m²" },
-    dormitorios: "Suite + huésped en suite + 2",
-    summary:
-      "La más versátil de las tres: suma dormitorio de huéspedes en suite y un espacio flexible para estudio, biblioteca o sala de juegos. 323 m² cubiertos y pileta de 40 m².",
-    image: {
-      kind: "photo",
-      src: "/lotes/lote-6/contrafrente.jpg",
-      alt: "Lote 6: planta baja vidriada con comedor y estar a la vista, volumen superior en voladizo y pileta en L rodeada de deck",
-    } satisfies MediaSource,
-  },
-  {
-    name: "Lote 7",
-    slug: "lote-7",
-    disponible: true,
-    mapa: {
-      src: "/lotes/lote-7/mapa-lote.jpg",
-      alt: "Vista satelital con el Lote 7 marcado sobre la manzana",
-    },
-    planos: [
-      { src: "/lotes/lote-7/plano-baja.png", titulo: "Planta baja" },
-      { src: "/lotes/lote-7/plano-alta.png", titulo: "Planta alta" },
-    ],
-    superficies: { lote: "1.524 m²", cubierta: "337 m²", total: "399 m²" },
-    dormitorios: "Master suite + 2",
-    summary:
-      "La mayor de las tres, sobre un lote de 1.524 m². Carpinterías Golden Oak, puertas enchapadas en roble y climatización central en planta baja, además del piso radiante.",
-    image: {
-      kind: "photo",
-      src: "/lotes/lote-7/contrafrente.jpg",
-      alt: "Lote 7: frente longitudinal en hormigón con carpinterías de madera, terraza verde y pileta larga sobre la arena",
-      // El marco recorta apenas a lo alto, así que para sacar cielo hay que
-      // acercar: anclado abajo, lo que sale por arriba son las nubes.
-      objectPosition: "center bottom",
-      zoom: 1.12,
-    } satisfies MediaSource,
-  },
-];
+/** Las casas viven en propiedades.ts: son la entidad principal del sitio. */
+export const projects = propiedades;
 
 export const posts = [
   {

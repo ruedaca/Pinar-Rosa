@@ -33,7 +33,7 @@ export default function ProjectsSection() {
             notch={
               <article>
                 <p className="text-pr-gray-700 text-[12px] leading-[1.65]">
-                  {project.summary}
+                  {project.resumen}
                 </p>
                 <ArrowLink
                   href={`/propiedades/${project.slug}`}
@@ -49,7 +49,7 @@ export default function ProjectsSection() {
               </h3>
             }
           >
-            <Media media={project.image} sizes="100vw" tone="dark" />
+            <Media media={project.portada} sizes="100vw" tone="dark" />
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"
