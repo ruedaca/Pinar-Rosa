@@ -23,7 +23,7 @@ export const hero = {
   action: { label: "Contactanos", href: "#contacto" },
   image: {
     kind: "photo",
-    src: "/PORTADA.png",
+    src: "/lotes/lote-6/portada.jpg",
     alt: "Casa de dos plantas en hormigón visto al atardecer, con grandes paños vidriados iluminados, galería, pileta y pinos alrededor",
   } satisfies MediaSource,
 };
@@ -58,7 +58,7 @@ export const services = [
       "Decks, galerías y parquización nativa: el afuera como una habitación más de la casa durante todo el año.",
     image: {
       kind: "photo",
-      src: "/exterior.png",
+      src: "/lotes/lote-5/galeria.jpg",
       alt: "Galería exterior al anochecer con parrilla, comedor y estar bajo losa de hormigón, y al fondo la pileta con reposeras y fogonero sobre el parque",
       // Marco vertical: recorta a lo ancho. El encuadre va contra el borde
       // derecho para quedarse con la galería entera y ceder el parque.
@@ -71,7 +71,7 @@ export const services = [
       "Espacios que reflejan a quien los habita. Paletas naturales, luz cenital y piezas seleccionadas una por una.",
     image: {
       kind: "photo",
-      src: "/interior1.jpg",
+      src: "/lotes/lote-5/cocina-comedor.jpg",
       alt: "Comedor diario integrado a la cocina: mesa y sillas de madera clara, respaldo de listones, isla de mármol y celosía negra que separa los ambientes",
     } satisfies MediaSource,
   },
@@ -81,7 +81,7 @@ export const services = [
       "De la idea a la obra: proyectos residenciales que integran volumetría limpia, materiales nobles y una relación honesta con el paisaje boscoso.",
     image: {
       kind: "photo",
-      src: "/arquitectura1.JPG",
+      src: "/lotes/lote-7/frente.jpg",
       alt: "Frente de una casa de dos plantas en hormigón visto al atardecer, con puerta de acceso en madera, garaje y terraza verde, rodeada de pinos",
       // El marco horizontal casi no recorta (4%), así que para sacar cielo hay
       // que acercar: se ancla abajo y algo a la izquierda para no comerse el
@@ -107,7 +107,7 @@ export const projects = [
       "279 m² cubiertos sobre un lote de 1.392 m². Master suite con vestidor e hidromasaje, dos dormitorios, estudio y una galería con parrilla que se abre a la pileta de 40 m².",
     image: {
       kind: "photo",
-      src: "/LOTE5.png",
+      src: "/lotes/lote-5/contrafrente.jpg",
       alt: "Lote 5 al anochecer: volumen de dos plantas entre pinos altos, galería iluminada y pileta en primer plano",
     } satisfies MediaSource,
   },
@@ -121,7 +121,7 @@ export const projects = [
       "La más versátil de las tres: suma dormitorio de huéspedes en suite y un espacio flexible para estudio, biblioteca o sala de juegos. 323 m² cubiertos y pileta de 40 m².",
     image: {
       kind: "photo",
-      src: "/LOTE6.JPG",
+      src: "/lotes/lote-6/contrafrente.jpg",
       alt: "Lote 6: planta baja vidriada con comedor y estar a la vista, volumen superior en voladizo y pileta en L rodeada de deck",
     } satisfies MediaSource,
   },
@@ -135,7 +135,7 @@ export const projects = [
       "La mayor de las tres, sobre un lote de 1.524 m². Carpinterías Golden Oak, puertas enchapadas en roble y climatización central en planta baja, además del piso radiante.",
     image: {
       kind: "photo",
-      src: "/LOTE7.jpg",
+      src: "/lotes/lote-7/contrafrente.jpg",
       alt: "Lote 7: frente longitudinal en hormigón con carpinterías de madera, terraza verde y pileta larga sobre la arena",
       // El marco recorta apenas a lo alto, así que para sacar cielo hay que
       // acercar: anclado abajo, lo que sale por arriba son las nubes.
