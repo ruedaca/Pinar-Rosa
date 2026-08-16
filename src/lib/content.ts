@@ -92,15 +92,30 @@ export const services = [
   },
 ];
 
+/** Los tres lotes comparten ubicación, así que el mapa de zona es uno solo. */
+export const mapaZona = {
+  src: "/lotes/mapa-zona.jpg",
+  alt: "Vista satelital de Pinamar señalando el centro comercial, el bosque, La Frontera y la ubicación de los proyectos",
+};
+
 /**
  * Superficies, programa y materiales salen de las fichas oficiales
  * (PDF de cada lote, julio 2026). No inventar datos: si falta uno, se pregunta.
+ * `mapa` y `planos` se extrajeron de esos mismos PDF.
  */
 export const projects = [
   {
     name: "Lote 5",
     slug: "lote-5",
     disponible: true,
+    mapa: {
+      src: "/lotes/lote-5/mapa-lote.jpg",
+      alt: "Vista satelital con el Lote 5 marcado sobre la manzana",
+    },
+    planos: [
+      { src: "/lotes/lote-5/plano-baja.png", titulo: "Planta baja" },
+      { src: "/lotes/lote-5/plano-alta.png", titulo: "Planta alta" },
+    ],
     superficies: { lote: "1.392 m²", cubierta: "279 m²", total: "335 m²" },
     dormitorios: "Master suite + 2",
     summary:
@@ -115,6 +130,14 @@ export const projects = [
     name: "Lote 6",
     slug: "lote-6",
     disponible: true,
+    mapa: {
+      src: "/lotes/lote-6/mapa-lote.jpg",
+      alt: "Vista satelital con el Lote 6 marcado sobre la manzana",
+    },
+    planos: [
+      { src: "/lotes/lote-6/plano-baja.png", titulo: "Planta baja" },
+      { src: "/lotes/lote-6/plano-alta.png", titulo: "Planta alta" },
+    ],
     superficies: { lote: "1.087 m²", cubierta: "323 m²", total: "345 m²" },
     dormitorios: "Suite + huésped en suite + 2",
     summary:
@@ -129,6 +152,14 @@ export const projects = [
     name: "Lote 7",
     slug: "lote-7",
     disponible: true,
+    mapa: {
+      src: "/lotes/lote-7/mapa-lote.jpg",
+      alt: "Vista satelital con el Lote 7 marcado sobre la manzana",
+    },
+    planos: [
+      { src: "/lotes/lote-7/plano-baja.png", titulo: "Planta baja" },
+      { src: "/lotes/lote-7/plano-alta.png", titulo: "Planta alta" },
+    ],
     superficies: { lote: "1.524 m²", cubierta: "337 m²", total: "399 m²" },
     dormitorios: "Master suite + 2",
     summary:
