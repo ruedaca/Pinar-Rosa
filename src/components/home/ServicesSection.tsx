@@ -51,7 +51,7 @@ export default function ServicesSection() {
   return (
     <section
       aria-label="Servicios del estudio"
-      className="px-[var(--page-gutter)] pb-24 md:pb-36"
+      className="px-[var(--page-gutter)] pt-4 pb-24 md:pt-12 md:pb-36"
     >
       {/*
         Las dos columnas son items de grid: se estiran a la misma altura.

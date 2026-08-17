@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="estudio"
-      className="mx-auto max-w-7xl scroll-mt-6 px-4 pb-16 md:px-8 md:pb-20 lg:px-12"
+      className="mx-auto max-w-7xl scroll-mt-6 px-4 pt-20 pb-24 md:px-8 md:pt-32 md:pb-36 lg:px-12"
     >
       <Eyebrow className="mb-8">{about.eyebrow}</Eyebrow>
 

@@ -2,7 +2,6 @@ import AboutSection from "@/components/home/AboutSection";
 import BlogSection from "@/components/home/BlogSection";
 import ContactSection from "@/components/home/ContactSection";
 import Hero from "@/components/home/Hero";
-import PartnersStrip from "@/components/home/PartnersStrip";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import SiteFooter from "@/components/layout/SiteFooter";
@@ -19,7 +18,6 @@ export default function Home() {
       */}
       <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
         <Hero />
-        <PartnersStrip />
         <AboutSection />
         <ServicesSection />
         <ProjectsSection />

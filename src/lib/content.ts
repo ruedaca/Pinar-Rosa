@@ -29,15 +29,6 @@ export const hero = {
   } satisfies MediaSource,
 };
 
-export const partners = [
-  "Estudio Galindo",
-  "Reyes Arquitectura",
-  "Vidal & Asoc.",
-  "Cámara Inmobiliaria",
-  "Pinamar Diseño",
-  "Costa Atlántica",
-];
-
 export const about = {
   eyebrow: "El estudio",
   title: ["Del proyecto", "a la llave"],
@@ -130,7 +121,7 @@ export const posts = [
  * que la bifurcación la hace el primer campo, no el título.
  */
 export const contacto = {
-  titleLines: ["Vení a ver", "el bosque"],
+  titleLines: ["Contacto"],
   intro:
     "Coordinamos un recorrido por Pinamar y recorremos las tres casas. Si lo tuyo es un proyecto propio, también empezamos por acá.",
   /** `PROYECTO_PROPIO` es el valor que preselecciona el botón de Estudio. */
