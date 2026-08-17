@@ -51,7 +51,7 @@ export default async function NotaPage({ params }: Params) {
           <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
             <NotchFrame
               corner="bottom-right"
-              className="aspect-[4/3] sm:aspect-[16/9]"
+              className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
               notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
               notch={
                 <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
@@ -154,30 +154,29 @@ export default async function NotaPage({ params }: Params) {
                   : "grid gap-[var(--frame-gap)] md:grid-cols-2"
               }
             >
+              {/*
+                Acá la foto va entera y el texto debajo: es una tarjeta de
+                cierre, no necesita el recorte que usan las de la home.
+              */}
               {otras.map((otra) => (
-                <NotchFrame
-                  key={otra.slug}
-                  className="aspect-[4/3] md:aspect-[16/9]"
-                  notchClassName="w-[76%] md:w-[46%]"
-                  notch={
-                    <article>
-                      <h3 className="text-pr-black max-w-[38ch] text-[13px] leading-[1.5] font-semibold">
-                        {otra.titulo}
-                      </h3>
-                      <ArrowLink href={`/blog/${otra.slug}`} className="mt-4">
-                        Leer artículo
-                      </ArrowLink>
-                    </article>
-                  }
-                >
-                  <Image
-                    src={otra.portada.src}
-                    alt={otra.portada.alt}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </NotchFrame>
+                <article key={otra.slug}>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]">
+                    <Image
+                      src={otra.portada.src}
+                      alt={otra.portada.alt}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                      style={{ objectPosition: otra.portada.objectPosition }}
+                    />
+                  </div>
+                  <h3 className="text-pr-black mt-5 max-w-[42ch] text-[15px] leading-[1.5] font-semibold">
+                    {otra.titulo}
+                  </h3>
+                  <ArrowLink href={`/blog/${otra.slug}`} className="mt-4">
+                    Leer artículo
+                  </ArrowLink>
+                </article>
               ))}
             </div>
 
