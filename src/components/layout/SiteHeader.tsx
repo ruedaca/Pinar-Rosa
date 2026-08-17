@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 
 type SiteHeaderProps = {
   /**
-   * "overlay": flota sobre la foto del hero y se va con el scroll.
-   * "light": sobre fondo blanco y pegajosa, acompaña el scroll de la página.
+   * "overlay": flota sobre la foto del hero.
+   * "light": va en el flujo, sobre el blanco de las páginas interiores.
    * En los dos casos la píldora es oscura: es la misma pieza.
    */
   variant?: "overlay" | "light";
@@ -34,8 +34,8 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
       className={cn(
         "z-50 flex justify-center px-[var(--page-gutter)]",
         light
-          ? // Pegajosa: acompaña el scroll en las páginas interiores
-            "sticky top-0 pt-[calc(var(--page-top)+8px)] pb-4 md:pt-[calc(var(--page-top)+12px)]"
+          ? // Queda arriba de todo y se va con el scroll, como en la home
+            "pt-[calc(var(--page-top)+8px)] pb-4 md:pt-[calc(var(--page-top)+12px)]"
           : // La píldora flota dentro del hero, a poco más de un margen de su borde
             "absolute inset-x-0 top-[calc(var(--page-top)+18px)] md:top-[calc(var(--page-top)+44px)]",
       )}
