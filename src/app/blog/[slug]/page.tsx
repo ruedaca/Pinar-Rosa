@@ -52,22 +52,11 @@ export default async function NotaPage({ params }: Params) {
             <NotchFrame
               corner="bottom-right"
               className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[48/25]"
-              notchClassName="notch--roomy w-[82%] md:w-[30%] md:max-w-[340px]"
+              notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
               notch={
-                <dl className="grid grid-cols-2 gap-y-4 text-[12px] md:grid-cols-1">
-                  <div>
-                    <dt className="eyebrow text-pr-gray-700">Categoría</dt>
-                    <dd className="text-pr-black mt-1">{nota.categoria}</dd>
-                  </div>
-                  <div>
-                    <dt className="eyebrow text-pr-gray-700">Publicada</dt>
-                    <dd className="text-pr-black mt-1">{nota.fechaTexto}</dd>
-                  </div>
-                  <div>
-                    <dt className="eyebrow text-pr-gray-700">Lectura</dt>
-                    <dd className="text-pr-black mt-1">{nota.lectura}</dd>
-                  </div>
-                </dl>
+                <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
+                  {nota.bajada}
+                </p>
               }
               overlay={
                 <h1 className="display absolute bottom-64 left-6 z-10 max-w-[16ch] text-[clamp(1.6rem,4.5vw,3.5rem)] text-white sm:bottom-10 md:bottom-9 md:left-9">
@@ -94,12 +83,11 @@ export default async function NotaPage({ params }: Params) {
           <div className="mx-auto max-w-7xl px-4 pb-14 md:px-8 md:pb-20 lg:px-12">
             <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
               <div>
-                <p className="text-pr-black max-w-[52ch] text-[16px] leading-[1.6]">
-                  {nota.bajada}
-                </p>
-
                 {nota.bloques.map((bloque, indice) => (
-                  <section key={bloque.titulo} className="mt-12">
+                  <section
+                    key={bloque.titulo}
+                    className={indice === 0 ? "" : "mt-12"}
+                  >
                     <h2 className="text-pr-black text-[19px] font-semibold">
                       {bloque.titulo}
                     </h2>
