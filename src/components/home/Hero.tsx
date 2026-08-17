@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import Media from "@/components/ui/Media";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { hero } from "@/lib/content";
@@ -16,12 +14,13 @@ export default function Hero() {
             <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
               {hero.intro}
             </p>
-            <Link
+            {/* Ancla dentro de la misma página: con next/link no baja */}
+            <a
               href={hero.action.href}
               className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 mt-6 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               {hero.action.label}
-            </Link>
+            </a>
           </>
         }
         // Cada línea del titular es una línea: el corte lo decide el copy

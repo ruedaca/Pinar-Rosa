@@ -15,11 +15,12 @@ export default function ProyectoPropioButton() {
     );
   }
 
+  // Mismo botón que el del hero: es el mismo gesto, ir al formulario
   return (
     <a
       href="#contacto"
       onClick={handleClick}
-      className="border-pr-gray-200 hover:border-pr-green-1 hover:text-pr-green-1 focus-visible:outline-pr-green-1 mt-8 inline-block rounded-full border px-6 py-3.5 text-[10px] font-medium tracking-[0.18em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+      className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 mt-8 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
     >
       Quiero un proyecto propio
     </a>
