@@ -9,8 +9,9 @@ import { cn } from "@/lib/utils";
 
 type SiteHeaderProps = {
   /**
-   * "overlay": flota sobre la foto del hero, píldora oscura translúcida.
-   * "light": va en el flujo sobre fondo blanco, píldora clara.
+   * "overlay": flota sobre la foto del hero y se va con el scroll.
+   * "light": sobre fondo blanco y pegajosa, acompaña el scroll de la página.
+   * En los dos casos la píldora es oscura: es la misma pieza.
    */
   variant?: "overlay" | "light";
 };
@@ -33,7 +34,8 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
       className={cn(
         "z-50 flex justify-center px-[var(--page-gutter)]",
         light
-          ? "pt-[calc(var(--page-top)+18px)] md:pt-[calc(var(--page-top)+26px)]"
+          ? // Pegajosa: acompaña el scroll en las páginas interiores
+            "sticky top-0 pt-[calc(var(--page-top)+8px)] pb-4 md:pt-[calc(var(--page-top)+12px)]"
           : // La píldora flota dentro del hero, a poco más de un margen de su borde
             "absolute inset-x-0 top-[calc(var(--page-top)+18px)] md:top-[calc(var(--page-top)+44px)]",
       )}
@@ -41,8 +43,10 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
       <div className="w-full max-w-[560px] md:w-auto">
         <div
           className={cn(
-            "flex items-center gap-2 rounded-full p-1.5 pr-4 md:gap-6 md:py-2.5 md:pl-5",
-            light ? "bg-pr-gray-100" : "bg-black/35 backdrop-blur-md",
+            "flex items-center gap-2 rounded-full p-1.5 pr-4 backdrop-blur-md md:gap-6 md:py-2.5 md:pl-5",
+            // Sobre la foto alcanza con el negro al 35%; sobre blanco hay que
+            // subirlo para que se lea del mismo tono.
+            light ? "bg-pr-black/90" : "bg-black/35",
           )}
         >
           <button
@@ -51,12 +55,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
             aria-expanded={open}
             aria-controls="menu-principal"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className={cn(
-              "flex size-8 shrink-0 items-center justify-center rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden",
-              light
-                ? "bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 text-white"
-                : "hover:bg-pr-green-1 focus-visible:outline-pr-green-3 bg-white/15 text-white",
-            )}
+            className="hover:bg-pr-green-1 focus-visible:outline-pr-green-3 flex size-8 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
           >
             <span aria-hidden className="flex w-3.5 flex-col gap-[3px]">
               <span
@@ -80,7 +79,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
             </span>
           </button>
 
-          <Logo className="mr-auto md:mr-0" invert={light} />
+          <Logo className="mr-auto md:mr-0" />
 
           <nav
             aria-label="Principal"
@@ -90,12 +89,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  "text-[10px] font-medium tracking-[0.16em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4",
-                  light
-                    ? "text-pr-gray-700 hover:text-pr-green-1 focus-visible:outline-pr-green-1"
-                    : "hover:text-pr-green-3 focus-visible:outline-pr-green-3 text-white/75",
-                )}
+                className="hover:text-pr-green-3 focus-visible:outline-pr-green-3 text-[10px] font-medium tracking-[0.16em] text-white/75 uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 {item.label}
               </Link>
@@ -107,8 +101,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
           id="menu-principal"
           aria-label="Menú desplegable"
           className={cn(
-            "mt-2 overflow-hidden rounded-[var(--radius-card)] transition-[max-height,opacity] duration-300 md:hidden",
-            light ? "bg-pr-gray-100" : "bg-black/80 backdrop-blur-md",
+            "mt-2 overflow-hidden rounded-[var(--radius-card)] bg-black/85 backdrop-blur-md transition-[max-height,opacity] duration-300 md:hidden",
             open ? "max-h-64 opacity-100" : "max-h-0 opacity-0",
           )}
         >
@@ -118,12 +111,7 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={cn(
-                    "block rounded-full px-4 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors",
-                    light
-                      ? "text-pr-gray-700 hover:bg-pr-gray-200 hover:text-pr-green-1"
-                      : "hover:text-pr-green-3 text-white/80 hover:bg-white/10",
-                  )}
+                  className="hover:text-pr-green-3 block rounded-full px-4 py-3 text-[11px] font-medium tracking-[0.16em] text-white/80 uppercase transition-colors hover:bg-white/10"
                 >
                   {item.label}
                 </Link>

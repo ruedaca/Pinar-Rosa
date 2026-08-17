@@ -15,13 +15,15 @@ export type Propiedad = {
   disponible: boolean;
   resumen: string;
   descripcion: string[];
+  /** Todo lo que va en la ficha técnica, en el orden en que se muestra. */
   superficies: {
     lote: string;
     cubierta: string;
     semicubierta: string;
     total: string;
+    dormitorios: string;
+    pileta: string;
   };
-  destacados: { dato: string; detalle: string }[];
   programa: string[];
   materiales: { titulo: string; detalle: string }[];
   /** Siempre foto real: se usa además como imagen de Open Graph. */
@@ -76,12 +78,9 @@ export const propiedades: Propiedad[] = [
       cubierta: "279,25 m²",
       semicubierta: "15,32 m²",
       total: "334,57 m²",
+      dormitorios: "3",
+      pileta: "40 m²",
     },
-    destacados: [
-      { dato: "3", detalle: "dormitorios, uno en master suite" },
-      { dato: "40 m²", detalle: "de pileta" },
-      { dato: "2", detalle: "autos en garage" },
-    ],
     programa: [
       "Garage para 2 autos",
       "Living comedor",
@@ -201,12 +200,9 @@ export const propiedades: Propiedad[] = [
       cubierta: "322,67 m²",
       semicubierta: "22,19 m²",
       total: "344,86 m²",
+      dormitorios: "4",
+      pileta: "40 m²",
     },
-    destacados: [
-      { dato: "4", detalle: "dormitorios, dos de ellos en suite" },
-      { dato: "40 m²", detalle: "de pileta" },
-      { dato: "1", detalle: "espacio flexible: estudio, biblioteca o juegos" },
-    ],
     programa: [
       "Garage para 2 autos",
       "Living, comedor y cocina integrada con barra desayunadora",
@@ -267,21 +263,16 @@ export const propiedades: Propiedad[] = [
     obra: [
       { src: "/lotes/lote-6/obra/01.jpg", alt: "Avance de obra del Lote 6" },
       { src: "/lotes/lote-6/obra/02.jpg", alt: "Estructura de hormigón visto" },
-      { src: "/lotes/lote-6/obra/03.jpg", alt: "Interior en construcción" },
-      { src: "/lotes/lote-6/obra/04.jpg", alt: "Frente en construcción" },
+      { src: "/lotes/lote-6/obra/03.jpg", alt: "Frente en construcción" },
       {
-        src: "/lotes/lote-6/obra/05.jpg",
+        src: "/lotes/lote-6/obra/04.jpg",
         alt: "Detalle del hormigón encofrado",
       },
       {
-        src: "/lotes/lote-6/obra/06.jpg",
+        src: "/lotes/lote-6/obra/05.jpg",
         alt: "Vista del lote durante la obra",
       },
-      {
-        src: "/lotes/lote-6/obra/07.jpg",
-        alt: "La casa vista desde el deck, con la pileta ya revestida",
-      },
-      { src: "/lotes/lote-6/obra/08.jpg", alt: "Terreno y entorno de la obra" },
+      { src: "/lotes/lote-6/obra/06.jpg", alt: "Terreno y entorno de la obra" },
     ],
     planos: [
       { src: "/lotes/lote-6/plano-baja.png", titulo: "Planta baja" },
@@ -305,12 +296,9 @@ export const propiedades: Propiedad[] = [
       cubierta: "336,51 m²",
       semicubierta: "24,01 m²",
       total: "399,22 m²",
+      dormitorios: "3",
+      pileta: "38,70 m²",
     },
-    destacados: [
-      { dato: "3", detalle: "dormitorios, uno en master suite" },
-      { dato: "38,7 m²", detalle: "de pileta" },
-      { dato: "1.524 m²", detalle: "de terreno, el más grande de los tres" },
-    ],
     programa: [
       "Garage para 2 autos",
       "Living comedor",

@@ -70,6 +70,8 @@ export default async function PropiedadPage({ params }: Params) {
     { titulo: "Cubierta", valor: superficies.cubierta },
     { titulo: "Semicubierta", valor: superficies.semicubierta },
     { titulo: "Superficie total", valor: superficies.total },
+    { titulo: "Dormitorios", valor: superficies.dormitorios },
+    { titulo: "Pileta", valor: superficies.pileta },
   ];
 
   return (
@@ -149,34 +151,17 @@ export default async function PropiedadPage({ params }: Params) {
               </div>
             </div>
 
-            <div>
-              <dl className="bg-pr-gray-200 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)]">
-                {fichaTecnica.map((fila) => (
-                  <div key={fila.titulo} className="bg-white p-5 md:p-6">
-                    <dt className="eyebrow text-pr-gray-400">{fila.titulo}</dt>
-                    <dd className="text-pr-black mt-2 text-[20px]">
-                      {fila.valor}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              <ul className="mt-8 space-y-3">
-                {propiedad.destacados.map((destacado) => (
-                  <li
-                    key={destacado.detalle}
-                    className="flex gap-3 text-[13px]"
-                  >
-                    <span className="text-pr-black min-w-[4.5rem] font-semibold">
-                      {destacado.dato}
-                    </span>
-                    <span className="text-pr-gray-700">
-                      {destacado.detalle}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Un solo bloque: antes los destacados colgaban sueltos abajo */}
+            <dl className="bg-pr-gray-200 grid grid-cols-2 gap-px self-start overflow-hidden rounded-[var(--radius-card)]">
+              {fichaTecnica.map((fila) => (
+                <div key={fila.titulo} className="bg-white p-5 md:p-6">
+                  <dt className="eyebrow text-pr-gray-400">{fila.titulo}</dt>
+                  <dd className="text-pr-black mt-2 text-[20px]">
+                    {fila.valor}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 
