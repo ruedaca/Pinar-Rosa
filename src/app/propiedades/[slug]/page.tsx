@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import ContactSection from "@/components/home/ContactSection";
@@ -47,7 +46,7 @@ function Seccion({
   children: React.ReactNode;
 }) {
   return (
-    <section className="px-[var(--page-gutter)] pb-20 md:pb-28">
+    <section className="px-[var(--page-gutter)] pb-14 md:pb-20">
       <header className="mx-auto max-w-7xl px-4 pb-8 md:px-8 md:pb-12 lg:px-12">
         <Eyebrow className="mb-6 md:mb-10">{eyebrow}</Eyebrow>
         <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4vw,2.5rem)]">
@@ -76,32 +75,11 @@ export default async function PropiedadPage({ params }: Params) {
 
   return (
     <>
-      <SiteHeader variant="light" />
+      {/* Igual que en la home: la píldora flota sobre la foto de portada */}
+      <SiteHeader />
 
       <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
-        <nav
-          aria-label="Migas de pan"
-          className="text-pr-gray-400 mx-auto max-w-7xl px-[calc(var(--page-gutter)+1rem)] pt-6 pb-4 text-[10px] tracking-[0.16em] uppercase"
-        >
-          <Link href="/" className="hover:text-pr-green-1 transition-colors">
-            Inicio
-          </Link>
-          <span aria-hidden className="mx-2">
-            /
-          </span>
-          <Link
-            href="/#propiedades"
-            className="hover:text-pr-green-1 transition-colors"
-          >
-            Propiedades
-          </Link>
-          <span aria-hidden className="mx-2">
-            /
-          </span>
-          <span className="text-pr-gray-700">{propiedad.name}</span>
-        </nav>
-
-        <section className="px-[var(--page-gutter)] pb-16 md:pb-24">
+        <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
           <NotchFrame
             corner="bottom-right"
             className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[48/25]"
@@ -135,7 +113,7 @@ export default async function PropiedadPage({ params }: Params) {
           </NotchFrame>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 pb-20 md:px-8 md:pb-28 lg:px-12">
+        <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8 md:pb-20 lg:px-12">
           <div className="grid gap-10 md:grid-cols-2 md:gap-16">
             <div>
               <Eyebrow className="mb-6">El proyecto</Eyebrow>
