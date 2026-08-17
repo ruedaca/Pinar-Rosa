@@ -6,7 +6,12 @@ import type { MediaSource } from "@/components/ui/Media";
  * carpetas de renders y de obra. No inventar datos: si falta uno, se pregunta.
  */
 
-export type Foto = { src: string; alt: string };
+export type Foto = {
+  src: string;
+  alt: string;
+  /** Reencuadre cuando el marco recorta la foto (CSS object-position). */
+  objectPosition?: string;
+};
 
 export type Propiedad = {
   name: string;

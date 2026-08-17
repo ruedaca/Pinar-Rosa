@@ -138,7 +138,7 @@ export default async function PropiedadPage({ params }: Params) {
             <dl className="bg-pr-gray-200 grid grid-cols-2 gap-px self-start overflow-hidden rounded-[var(--radius-card)]">
               {fichaTecnica.map((fila) => (
                 <div key={fila.titulo} className="bg-white p-5 md:p-6">
-                  <dt className="eyebrow text-pr-gray-400">{fila.titulo}</dt>
+                  <dt className="eyebrow text-pr-gray-700">{fila.titulo}</dt>
                   <dd className="text-pr-black mt-2 text-[20px]">
                     {fila.valor}
                   </dd>

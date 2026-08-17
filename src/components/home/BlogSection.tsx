@@ -30,7 +30,7 @@ export default function BlogSection() {
             notchClassName="w-[76%] md:w-[46%]"
             notch={
               <article>
-                <p className="eyebrow text-pr-gray-400 mb-2">
+                <p className="eyebrow text-pr-gray-700 mb-2">
                   {nota.categoria}
                 </p>
                 <h3 className="text-pr-black max-w-[38ch] text-[13px] leading-[1.5] font-semibold">

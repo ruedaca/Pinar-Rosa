@@ -56,15 +56,15 @@ export default async function NotaPage({ params }: Params) {
               notch={
                 <dl className="grid grid-cols-2 gap-y-4 text-[12px] md:grid-cols-1">
                   <div>
-                    <dt className="eyebrow text-pr-gray-400">Categoría</dt>
+                    <dt className="eyebrow text-pr-gray-700">Categoría</dt>
                     <dd className="text-pr-black mt-1">{nota.categoria}</dd>
                   </div>
                   <div>
-                    <dt className="eyebrow text-pr-gray-400">Publicada</dt>
+                    <dt className="eyebrow text-pr-gray-700">Publicada</dt>
                     <dd className="text-pr-black mt-1">{nota.fechaTexto}</dd>
                   </div>
                   <div>
-                    <dt className="eyebrow text-pr-gray-400">Lectura</dt>
+                    <dt className="eyebrow text-pr-gray-700">Lectura</dt>
                     <dd className="text-pr-black mt-1">{nota.lectura}</dd>
                   </div>
                 </dl>
@@ -82,6 +82,7 @@ export default async function NotaPage({ params }: Params) {
                 sizes="100vw"
                 priority
                 className="object-cover"
+                style={{ objectPosition: nota.portada.objectPosition }}
               />
               <div
                 aria-hidden
@@ -112,21 +113,17 @@ export default async function NotaPage({ params }: Params) {
                     ))}
 
                     {/* La foto entra a mitad de la nota, no al final */}
+                    {/* Sin epígrafe: repetía el alt y no sumaba nada */}
                     {indice === 1 ? (
-                      <figure className="mt-12">
-                        <div className="relative aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]">
-                          <Image
-                            src={nota.imagenInterior.src}
-                            alt={nota.imagenInterior.alt}
-                            fill
-                            sizes="(min-width: 768px) 60vw, 100vw"
-                            className="object-cover"
-                          />
-                        </div>
-                        <figcaption className="text-pr-gray-400 mt-3 text-[12px]">
-                          {nota.imagenInterior.alt}
-                        </figcaption>
-                      </figure>
+                      <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]">
+                        <Image
+                          src={nota.imagenInterior.src}
+                          alt={nota.imagenInterior.alt}
+                          fill
+                          sizes="(min-width: 768px) 60vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
                     ) : null}
                   </section>
                 ))}
@@ -134,7 +131,7 @@ export default async function NotaPage({ params }: Params) {
 
               <aside className="md:pt-2">
                 <div className="border-pr-gray-200 rounded-[var(--radius-card)] border p-6">
-                  <p className="eyebrow text-pr-gray-400">La casa de la nota</p>
+                  <p className="eyebrow text-pr-gray-700">La casa de la nota</p>
                   <p className="text-pr-black mt-3 text-[17px] font-semibold">
                     {nota.relacionada.nombre}
                   </p>
@@ -155,13 +152,20 @@ export default async function NotaPage({ params }: Params) {
 
         {otras.length > 0 ? (
           <section className="px-[var(--page-gutter)] pb-14 md:pb-20">
-            <header className="mx-auto max-w-7xl px-4 pb-8 md:px-8 md:pb-12 lg:px-12">
+            <header className="mx-auto max-w-2xl px-4 pb-8 text-center md:pb-12">
               <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4vw,2.5rem)]">
                 Seguir leyendo
               </h2>
             </header>
 
-            <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
+            {/* Con una sola nota la grilla de dos columnas la dejaba corrida */}
+            <div
+              className={
+                otras.length === 1
+                  ? "mx-auto max-w-3xl"
+                  : "grid gap-[var(--frame-gap)] md:grid-cols-2"
+              }
+            >
               {otras.map((otra) => (
                 <NotchFrame
                   key={otra.slug}
@@ -187,16 +191,12 @@ export default async function NotaPage({ params }: Params) {
                   />
                 </NotchFrame>
               ))}
-
-              {otras.length === 1 ? (
-                <div className="hidden md:block" aria-hidden />
-              ) : null}
             </div>
 
-            <div className="mx-auto mt-10 max-w-7xl px-4 md:px-8 lg:px-12">
+            <div className="mt-10 text-center">
               <Link
                 href="/#blog"
-                className="border-pr-gray-200 hover:border-pr-green-1 hover:text-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full border px-6 py-3.5 text-[10px] font-medium tracking-[0.18em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 Volver al blog
               </Link>

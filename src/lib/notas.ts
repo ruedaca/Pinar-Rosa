@@ -36,6 +36,9 @@ export const notas: Nota[] = [
     portada: {
       src: "/lotes/lote-7/obra/01.jpg",
       alt: "Frente en construcción con el hormigón visto y la textura del encofrado a la vista",
+      // Foto vertical en un marco apaisado: sube el encuadre para que se lea
+      // el volumen en voladizo y no una franja de pared.
+      objectPosition: "center 32%",
     },
     bloques: [
       {
@@ -61,8 +64,8 @@ export const notas: Nota[] = [
       },
     ],
     imagenInterior: {
-      src: "/lotes/lote-6/contrafrente.jpg",
-      alt: "Planta baja íntegramente vidriada, con el estar y el comedor abiertos al parque",
+      src: "/lotes/lote-7/pileta.jpg",
+      alt: "Planta baja abierta al parque: los paños de vidrio corridos dejan el estar y la cocina a la vista",
     },
     relacionada: {
       nombre: "Lote 7",
