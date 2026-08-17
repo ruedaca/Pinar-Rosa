@@ -6,10 +6,10 @@ export default function AboutSection() {
   return (
     <section
       id="estudio"
-      className="mx-auto max-w-7xl scroll-mt-6 px-4 pt-12 pb-16 md:px-8 md:pt-20 md:pb-24 lg:px-12"
+      className="mx-auto max-w-7xl scroll-mt-6 px-4 pt-10 pb-14 md:px-8 md:pt-16 md:pb-20 lg:px-12"
     >
       {/* La etiqueta va arriba de todo y el título entra bien más abajo */}
-      <Eyebrow className="mb-14 md:mb-20">{about.eyebrow}</Eyebrow>
+      <Eyebrow className="mb-6 md:mb-10">{about.eyebrow}</Eyebrow>
 
       <div className="grid gap-8 md:grid-cols-2 md:gap-16">
         {/* Cada entrada de `title` es una línea: no debe reflowear */}
