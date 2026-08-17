@@ -78,7 +78,7 @@ export default async function NotaPage({ params }: Params) {
             </NotchFrame>
           </section>
 
-          <div className="mx-auto max-w-7xl px-4 pb-14 md:px-8 md:pb-20 lg:px-12">
+          <div className="px-[var(--page-gutter)] pb-14 md:pb-20">
             <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
               <div>
                 {nota.bloques.map((bloque, indice) => (

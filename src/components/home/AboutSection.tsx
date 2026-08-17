@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="estudio"
-      className="mx-auto max-w-7xl scroll-mt-6 px-4 pt-10 pb-14 md:px-8 md:pt-16 md:pb-20 lg:px-12"
+      className="scroll-mt-6 px-[var(--page-gutter)] pt-10 pb-14 md:pt-16 md:pb-20"
     >
       {/* La etiqueta va arriba de todo y el título entra bien más abajo */}
       <Eyebrow className="mb-6 md:mb-10">{about.eyebrow}</Eyebrow>

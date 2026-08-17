@@ -47,7 +47,8 @@ function Seccion({
 }) {
   return (
     <section className="px-[var(--page-gutter)] pb-14 md:pb-20">
-      <header className="mx-auto max-w-7xl px-4 pb-8 md:px-8 md:pb-12 lg:px-12">
+      {/* Sin padding propio: el eje lo pone la sección, alineado a las fotos */}
+      <header className="pb-8 md:pb-12">
         <Eyebrow className="mb-6 md:mb-10">{eyebrow}</Eyebrow>
         <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4vw,2.5rem)]">
           {titulo}
@@ -118,7 +119,7 @@ export default async function PropiedadPage({ params }: Params) {
           dentro de una celda con su propio padding, así que 56px se perciben
           como los 80px que separan a las demás secciones.
         */}
-        <section className="mx-auto max-w-7xl px-4 pb-10 md:px-8 md:pb-14 lg:px-12">
+        <section className="px-[var(--page-gutter)] pb-10 md:pb-14">
           <div className="grid gap-10 md:grid-cols-2 md:gap-16">
             <div>
               <Eyebrow className="mb-6">El proyecto</Eyebrow>
@@ -149,7 +150,7 @@ export default async function PropiedadPage({ params }: Params) {
         </section>
 
         <Seccion eyebrow="Los ambientes" titulo="Cómo se recorre">
-          <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
+          <div>
             <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
               {propiedad.programa.map((ambiente) => (
                 <li
@@ -214,7 +215,7 @@ export default async function PropiedadPage({ params }: Params) {
         </Seccion>
 
         <Seccion eyebrow="Las terminaciones" titulo="Con qué se entrega">
-          <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
+          <div>
             <dl className="grid gap-x-10 gap-y-6 md:grid-cols-2">
               {propiedad.materiales.map((material) => (
                 <div
