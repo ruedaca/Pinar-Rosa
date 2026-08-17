@@ -44,9 +44,10 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
         <div
           className={cn(
             "flex items-center gap-2 rounded-full p-1.5 pr-4 backdrop-blur-md md:gap-6 md:py-2.5 md:pl-5",
-            // Sobre la foto alcanza con el negro al 35%; sobre blanco hay que
-            // subirlo para que se lea del mismo tono.
-            light ? "bg-pr-black/90" : "bg-black/35",
+            // Sobre la foto del hero alcanza con el negro al 35%. Sobre el
+            // blanco de las interiores hay que subirlo hasta el 75% para que
+            // se perciba del mismo gris oscuro y el texto blanco se lea.
+            light ? "bg-black/75" : "bg-black/35",
           )}
         >
           <button
