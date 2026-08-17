@@ -113,7 +113,12 @@ export default async function PropiedadPage({ params }: Params) {
           </NotchFrame>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8 md:pb-20 lg:px-12">
+        {/*
+          Lleva menos padding que el resto a propósito: acá lo último es texto
+          dentro de una celda con su propio padding, así que 56px se perciben
+          como los 80px que separan a las demás secciones.
+        */}
+        <section className="mx-auto max-w-7xl px-4 pb-10 md:px-8 md:pb-14 lg:px-12">
           <div className="grid gap-10 md:grid-cols-2 md:gap-16">
             <div>
               <Eyebrow className="mb-6">El proyecto</Eyebrow>
@@ -164,23 +169,23 @@ export default async function PropiedadPage({ params }: Params) {
 
         <Seccion eyebrow="Los planos" titulo="Cómo está organizada">
           <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
+            {/* Sin epígrafe: cada plano ya trae rotulada la planta y la
+                referencia de ambientes dentro del dibujo. */}
             {propiedad.planos.map((plano) => (
-              <figure key={plano.src}>
-                {/* Fondo blanco: con object-contain el sobrante del marco se ve,
-                    y sobre gris quedaba un borde alrededor del plano. */}
-                <div className="relative aspect-[3/2] overflow-hidden rounded-[var(--radius-frame)] bg-white">
-                  <Image
-                    src={plano.src}
-                    alt={`${plano.titulo} del ${propiedad.name}`}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-contain"
-                  />
-                </div>
-                <figcaption className="text-pr-black mt-3 text-[12px] font-medium">
-                  {plano.titulo}
-                </figcaption>
-              </figure>
+              /* Fondo blanco: con object-contain el sobrante del marco se ve,
+                 y sobre gris quedaba un borde alrededor del plano. */
+              <div
+                key={plano.src}
+                className="relative aspect-[3/2] overflow-hidden rounded-[var(--radius-frame)] bg-white"
+              >
+                <Image
+                  src={plano.src}
+                  alt={`${plano.titulo} del ${propiedad.name}`}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
             ))}
           </div>
         </Seccion>
