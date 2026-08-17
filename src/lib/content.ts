@@ -79,7 +79,7 @@ export const services = [
       // que acercar: se ancla abajo y algo a la izquierda para no comerse el
       // borde de la casa, y lo que sale por arriba es cielo.
       objectPosition: "35% bottom",
-      zoom: 1.22,
+      zoom: 1.32,
     } satisfies MediaSource,
   },
 ];
