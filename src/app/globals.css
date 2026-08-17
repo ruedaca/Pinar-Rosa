@@ -50,9 +50,9 @@
 @media (min-width: 768px) {
   :root {
     --page-gutter: 40px;
-    /* Se sube junto con el lateral: en el modelo el aire de arriba es ~1.5
-       veces el de los costados, y si queda por debajo se lee como un error. */
-    --page-top: 56px;
+    /* Mismo valor que los costados: el marco queda con un aire parejo a los
+       cuatro lados y el hero arranca más arriba. */
+    --page-top: 40px;
     --frame-gap: 26px;
     --frame: 30px;
     --card: 16px;
