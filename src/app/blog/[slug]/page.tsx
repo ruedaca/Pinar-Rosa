@@ -51,7 +51,7 @@ export default async function NotaPage({ params }: Params) {
           <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
             <NotchFrame
               corner="bottom-right"
-              className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[48/25]"
+              className="aspect-[4/3] sm:aspect-[16/9]"
               notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
               notch={
                 <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
