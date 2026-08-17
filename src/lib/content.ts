@@ -93,27 +93,7 @@ export const mapaZona = {
 /** Las casas viven en propiedades.ts: son la entidad principal del sitio. */
 export const projects = propiedades;
 
-export const posts = [
-  {
-    title: "Casas inteligentes: cómo integrar tecnología sin romper el diseño",
-    slug: "casas-inteligentes-diseno",
-    image: {
-      kind: "placeholder",
-      slot: "blog/domotica-dormitorio",
-      ratio: "4:3",
-    } satisfies MediaSource,
-  },
-  {
-    title:
-      "Materiales sustentables: el camino hacia una arquitectura más honesta",
-    slug: "materiales-sustentables",
-    image: {
-      kind: "placeholder",
-      slot: "blog/materiales-fachada",
-      ratio: "4:3",
-    } satisfies MediaSource,
-  },
-];
+/** Las notas del blog viven en notas.ts. */
 
 /**
  * Bloque de cierre de la home. El formulario atiende a los dos públicos —el

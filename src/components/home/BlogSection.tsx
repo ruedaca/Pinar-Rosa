@@ -1,8 +1,9 @@
+import Image from "next/image";
+
 import ArrowLink from "@/components/ui/ArrowLink";
 import Eyebrow from "@/components/ui/Eyebrow";
-import Media from "@/components/ui/Media";
 import NotchFrame from "@/components/ui/NotchFrame";
-import { posts } from "@/lib/content";
+import { notas } from "@/lib/notas";
 
 export default function BlogSection() {
   return (
@@ -16,32 +17,37 @@ export default function BlogSection() {
           Últimas novedades
         </h2>
         <p className="text-pr-gray-700 mx-auto mt-5 max-w-[50ch] text-[13px] leading-[1.7]">
-          Notas sobre arquitectura costera, tendencias de diseño sustentable y
-          el mercado inmobiliario de Pinamar.
+          Cómo se piensan y cómo se construyen las casas, contado por quienes
+          las proyectan.
         </p>
       </header>
 
       <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
-        {posts.map((post) => (
+        {notas.map((nota) => (
           <NotchFrame
-            key={post.slug}
+            key={nota.slug}
             className="aspect-[4/3] md:aspect-[16/9]"
             notchClassName="w-[76%] md:w-[46%]"
             notch={
               <article>
+                <p className="eyebrow text-pr-gray-400 mb-2">
+                  {nota.categoria}
+                </p>
                 <h3 className="text-pr-black max-w-[38ch] text-[13px] leading-[1.5] font-semibold">
-                  {post.title}
+                  {nota.titulo}
                 </h3>
-                <ArrowLink href={`/blog/${post.slug}`} className="mt-4">
+                <ArrowLink href={`/blog/${nota.slug}`} className="mt-4">
                   Leer artículo
                 </ArrowLink>
               </article>
             }
           >
-            <Media
-              media={post.image}
+            <Image
+              src={nota.portada.src}
+              alt={nota.portada.alt}
+              fill
               sizes="(min-width: 768px) 50vw, 100vw"
-              tone="dark"
+              className="object-cover"
             />
           </NotchFrame>
         ))}
