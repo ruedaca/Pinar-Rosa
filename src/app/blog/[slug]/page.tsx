@@ -40,8 +40,6 @@ export default async function NotaPage({ params }: Params) {
   const nota = buscarNota(slug);
   if (!nota) notFound();
 
-  const otras = notas.filter((otra) => otra.slug !== nota.slug);
-
   return (
     <>
       <SiteHeader />
@@ -138,58 +136,16 @@ export default async function NotaPage({ params }: Params) {
           </div>
         </article>
 
-        {otras.length > 0 ? (
-          <section className="px-[var(--page-gutter)] pb-14 md:pb-20">
-            <header className="mx-auto max-w-2xl px-4 pb-8 text-center md:pb-12">
-              <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4vw,2.5rem)]">
-                Seguir leyendo
-              </h2>
-            </header>
-
-            {/* Con una sola nota la grilla de dos columnas la dejaba corrida */}
-            <div
-              className={
-                otras.length === 1
-                  ? "mx-auto max-w-3xl"
-                  : "grid gap-[var(--frame-gap)] md:grid-cols-2"
-              }
-            >
-              {/*
-                Acá la foto va entera y el texto debajo: es una tarjeta de
-                cierre, no necesita el recorte que usan las de la home.
-              */}
-              {otras.map((otra) => (
-                <article key={otra.slug}>
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]">
-                    <Image
-                      src={otra.portada.src}
-                      alt={otra.portada.alt}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover"
-                      style={{ objectPosition: otra.portada.objectPosition }}
-                    />
-                  </div>
-                  <h3 className="text-pr-black mt-5 max-w-[42ch] text-[15px] leading-[1.5] font-semibold">
-                    {otra.titulo}
-                  </h3>
-                  <ArrowLink href={`/blog/${otra.slug}`} className="mt-4">
-                    Leer artículo
-                  </ArrowLink>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-10 text-center">
-              <Link
-                href="/#blog"
-                className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
-              >
-                Volver al blog
-              </Link>
-            </div>
-          </section>
-        ) : null}
+        {/* El cierre de la nota es solo la vuelta: el resto de las notas ya
+            están en la home, a un clic de acá */}
+        <section className="px-[var(--page-gutter)] pb-14 text-center md:pb-20">
+          <Link
+            href="/#blog"
+            className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            Volver al blog
+          </Link>
+        </section>
       </main>
 
       <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">
