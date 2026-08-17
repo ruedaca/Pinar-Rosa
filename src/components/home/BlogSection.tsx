@@ -8,10 +8,10 @@ export default function BlogSection() {
   return (
     <section
       id="blog"
-      className="scroll-mt-6 px-[var(--page-gutter)] pt-4 pb-24 md:pt-12 md:pb-36"
+      className="scroll-mt-6 px-[var(--page-gutter)] pb-16 md:pb-24"
     >
       <header className="mx-auto max-w-2xl px-4 pb-10 text-center md:pb-14">
-        <Eyebrow className="mb-6 text-center">Blog</Eyebrow>
+        <Eyebrow className="mb-14 text-center md:mb-20">Blog</Eyebrow>
         <h2 className="display display--section text-pr-black text-[clamp(1.9rem,5vw,3rem)]">
           Últimas novedades
         </h2>

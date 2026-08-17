@@ -49,7 +49,7 @@ function Seccion({
   return (
     <section className="px-[var(--page-gutter)] pb-20 md:pb-28">
       <header className="mx-auto max-w-7xl px-4 pb-8 md:px-8 md:pb-12 lg:px-12">
-        <Eyebrow className="mb-5">{eyebrow}</Eyebrow>
+        <Eyebrow className="mb-12 md:mb-16">{eyebrow}</Eyebrow>
         <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4vw,2.5rem)]">
           {titulo}
         </h2>
