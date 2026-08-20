@@ -36,6 +36,12 @@ export default function RootLayout({
   // Las variables de fuente van en <html> para que existan ya en :root
   return (
     <html lang="es-AR" className={`${montserrat.variable} ${jakarta.variable}`}>
+      <head>
+        {/* Sin JS el observador nunca corre: el contenido queda visible igual */}
+        <noscript>
+          <style>{`.reveal { opacity: 1; transform: none; }`}</style>
+        </noscript>
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

@@ -6,6 +6,7 @@ import ContactSection from "@/components/home/ContactSection";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import GaleriaFotos from "@/components/propiedad/GaleriaFotos";
+import SeccionDesplegable from "@/components/propiedad/SeccionDesplegable";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Media from "@/components/ui/Media";
 import NotchFrame from "@/components/ui/NotchFrame";
@@ -34,29 +35,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       type: "website",
     },
   };
-}
-
-function Seccion({
-  eyebrow,
-  titulo,
-  children,
-}: {
-  eyebrow: string;
-  titulo: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="px-[var(--page-gutter)] pb-14 md:pb-20">
-      {/* Sin padding propio: el eje lo pone la sección, alineado a las fotos */}
-      <header className="pb-8 md:pb-12">
-        <Eyebrow className="mb-6 md:mb-10">{eyebrow}</Eyebrow>
-        <h2 className="display display--section text-pr-black text-[clamp(1.6rem,4vw,2.5rem)]">
-          {titulo}
-        </h2>
-      </header>
-      {children}
-    </section>
-  );
 }
 
 export default async function PropiedadPage({ params }: Params) {
@@ -149,7 +127,11 @@ export default async function PropiedadPage({ params }: Params) {
           </div>
         </section>
 
-        <Seccion eyebrow="Los ambientes" titulo="Cómo se recorre">
+        <SeccionDesplegable
+          eyebrow="Los ambientes"
+          titulo="Cómo se recorre"
+          abiertaPorDefecto
+        >
           <div>
             <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
               {propiedad.programa.map((ambiente) => (
@@ -162,13 +144,13 @@ export default async function PropiedadPage({ params }: Params) {
               ))}
             </ul>
           </div>
-        </Seccion>
+        </SeccionDesplegable>
 
-        <Seccion eyebrow="La casa" titulo="Cómo se ve">
+        <SeccionDesplegable eyebrow="La casa" titulo="Cómo se ve">
           <GaleriaFotos fotos={propiedad.galeria} />
-        </Seccion>
+        </SeccionDesplegable>
 
-        <Seccion eyebrow="Los planos" titulo="Cómo está organizada">
+        <SeccionDesplegable eyebrow="Los planos" titulo="Cómo está organizada">
           <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
             {/* Sin epígrafe: cada plano ya trae rotulada la planta y la
                 referencia de ambientes dentro del dibujo. */}
@@ -189,13 +171,13 @@ export default async function PropiedadPage({ params }: Params) {
               </div>
             ))}
           </div>
-        </Seccion>
+        </SeccionDesplegable>
 
-        <Seccion eyebrow="La obra" titulo="Cómo va">
+        <SeccionDesplegable eyebrow="La obra" titulo="Cómo va">
           <GaleriaFotos fotos={propiedad.obra} destacarPrimera={false} />
-        </Seccion>
+        </SeccionDesplegable>
 
-        <Seccion eyebrow="La ubicación" titulo={propiedad.direccion}>
+        <SeccionDesplegable eyebrow="La ubicación" titulo={propiedad.direccion}>
           <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
             {[propiedad.mapa, mapaZona].map((mapa) => (
               <div
@@ -212,9 +194,12 @@ export default async function PropiedadPage({ params }: Params) {
               </div>
             ))}
           </div>
-        </Seccion>
+        </SeccionDesplegable>
 
-        <Seccion eyebrow="Las terminaciones" titulo="Con qué se entrega">
+        <SeccionDesplegable
+          eyebrow="Las terminaciones"
+          titulo="Con qué se entrega"
+        >
           <div>
             <dl className="grid gap-x-10 gap-y-6 md:grid-cols-2">
               {propiedad.materiales.map((material) => (
@@ -232,7 +217,7 @@ export default async function PropiedadPage({ params }: Params) {
               ))}
             </dl>
           </div>
-        </Seccion>
+        </SeccionDesplegable>
       </main>
 
       <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">

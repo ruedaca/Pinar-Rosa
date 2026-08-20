@@ -2,6 +2,7 @@ import AboutSection from "@/components/home/AboutSection";
 import BlogSection from "@/components/home/BlogSection";
 import ContactSection from "@/components/home/ContactSection";
 import Hero from "@/components/home/Hero";
+import Reveal from "@/components/ui/Reveal";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import SiteFooter from "@/components/layout/SiteFooter";
@@ -18,10 +19,19 @@ export default function Home() {
       */}
       <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
         <Hero />
-        <AboutSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <BlogSection />
+        {/* El hero ya tiene su propia entrada; el resto aparece al scrollear */}
+        <Reveal>
+          <AboutSection />
+        </Reveal>
+        <Reveal>
+          <ServicesSection />
+        </Reveal>
+        <Reveal>
+          <ProjectsSection />
+        </Reveal>
+        <Reveal>
+          <BlogSection />
+        </Reveal>
       </main>
       <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">
         <ContactSection />
