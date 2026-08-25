@@ -9,7 +9,7 @@ type LogoProps = {
 };
 
 /**
- * Isotipo: la R dentro del cuadrado redondeado, siempre en verde. El
+ * Isotipo: la R acostada, en verde y sin recuadro. El
  * logotipo va apilado, PINAR liviano arriba y ROSA con peso abajo.
  * Cuando llegue el SVG original del cliente reemplaza a este dibujo.
  */
@@ -23,18 +23,11 @@ export default function Logo({ className, tono = "claro" }: LogoProps) {
         className,
       )}
     >
-      <svg viewBox="0 0 32 32" className="size-8 shrink-0" aria-hidden>
-        <rect
-          x="1.4"
-          y="1.4"
-          width="29.2"
-          height="29.2"
-          rx="9"
-          stroke="var(--color-pr-green-3)"
-          strokeWidth="2.4"
-          fill="none"
-        />
-        {/* La R va acostada, girada un cuarto de vuelta como en la marca */}
+      {/*
+        Solo la R, sin el cuadrado: el viewBox está recortado a su contorno
+        para que ocupe todo el alto que le den y quede a la par del logotipo.
+      */}
+      <svg viewBox="8 7 17 16" className="h-[26px] w-auto shrink-0" aria-hidden>
         <g transform="rotate(-90 16 16)">
           <path
             d="M11 23V10h6a4 4 0 0 1 0 8h-6"
