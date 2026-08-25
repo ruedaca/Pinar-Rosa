@@ -4,61 +4,49 @@ import { cn } from "@/lib/utils";
 
 type LogoProps = {
   className?: string;
-  /** Sobre fondo claro las letras van en negro; sobre la píldora, en blanco. */
-  tono?: "claro" | "oscuro";
+  /** El isotipo real (SVG del cliente) va en /public/images/brand/isotipo.svg */
+  invert?: boolean;
 };
 
-/**
- * Isotipo: la R acostada, en verde y sin recuadro. El
- * logotipo va apilado, PINAR liviano arriba y ROSA con peso abajo.
- * Cuando llegue el SVG original del cliente reemplaza a este dibujo.
- */
-export default function Logo({ className, tono = "claro" }: LogoProps) {
+export default function Logo({ className, invert = false }: LogoProps) {
   return (
     <Link
       href="/"
-      aria-label="Pinar Rosa — Inicio"
+      aria-label="Pinar Rosa Group — Inicio"
       className={cn(
         "focus-visible:outline-pr-green-1 inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
       )}
     >
-      {/*
-        Solo la R, sin el cuadrado: el viewBox está recortado a su contorno
-        para que ocupe todo el alto que le den y quede a la par del logotipo.
-      */}
-      <svg viewBox="8 7 17 16" className="h-[26px] w-auto shrink-0" aria-hidden>
-        <g transform="rotate(-90 16 16)">
-          <path
-            d="M11 23V10h6a4 4 0 0 1 0 8h-6"
-            stroke="var(--color-pr-green-3)"
-            strokeWidth="2.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <path
-            d="m15.6 18 4.2 5"
-            stroke="var(--color-pr-green-3)"
-            strokeWidth="2.6"
-            strokeLinecap="round"
-            fill="none"
-          />
-        </g>
+      <svg viewBox="0 0 28 28" className="size-6 shrink-0" aria-hidden>
+        <rect
+          x="1"
+          y="1"
+          width="26"
+          height="26"
+          rx="8"
+          stroke="var(--color-pr-green-3)"
+          strokeWidth="2"
+          fill="none"
+        />
+        <path
+          d="M9 20V9h5.5a3.5 3.5 0 0 1 0 7H12"
+          stroke="var(--color-pr-green-3)"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <circle cx="19.5" cy="18.5" r="1.6" fill="var(--color-pr-green-3)" />
       </svg>
-
       <span
         className={cn(
-          "block leading-[1.05]",
-          tono === "oscuro" ? "text-pr-black" : "text-white",
+          "text-[13px] leading-none tracking-[0.02em]",
+          invert ? "text-pr-black" : "text-white",
         )}
       >
-        <span className="block text-[10px] font-light tracking-[0.2em]">
-          PINAR
-        </span>
-        <span className="block text-[14px] font-semibold tracking-[0.06em]">
-          ROSA
-        </span>
+        <span className="font-light">PINAR </span>
+        <span className="font-semibold">ROSA</span>
       </span>
     </Link>
   );
