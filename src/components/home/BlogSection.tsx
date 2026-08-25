@@ -48,6 +48,7 @@ export default function BlogSection() {
               alt={nota.portada.alt}
               fill
               sizes="(min-width: 768px) 50vw, 130vw"
+              quality={85}
               className="object-cover"
               style={{ objectPosition: nota.portada.objectPosition }}
             />

@@ -38,7 +38,7 @@ export const notas: Nota[] = [
       alt: "Frente en construcción con el hormigón visto y la textura del encofrado a la vista",
       // Foto vertical en un marco apaisado: sube el encuadre hasta que entre
       // la punta del voladizo, que es lo que da la lectura del volumen.
-      objectPosition: "center 18%",
+      objectPosition: "center 23%",
     },
     bloques: [
       {

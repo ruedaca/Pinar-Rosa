@@ -20,7 +20,7 @@ function ServiceCard({
   return (
     <NotchFrame
       corner={corner}
-      className={cn("min-h-[360px]", className)}
+      className={cn("min-h-[300px]", className)}
       notchClassName="w-fit md:w-[57%]"
       notch={
         <article>
@@ -34,7 +34,7 @@ function ServiceCard({
         </article>
       }
     >
-      <Media media={service.image} sizes={sizes} />
+      <Media media={service.image} sizes={sizes} quality={85} />
     </NotchFrame>
   );
 }

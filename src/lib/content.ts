@@ -81,11 +81,10 @@ export const services = [
       kind: "photo",
       src: "/lotes/lote-7/frente.jpg",
       alt: "Frente de una casa de dos plantas en hormigón visto al atardecer, con puerta de acceso en madera, garaje y terraza verde, rodeada de pinos",
-      // Se acerca apenas, lo justo para sacar cielo, y se ancla contra el
-      // borde izquierdo: ahí está el ventanal de la planta alta, que es lo que
-      // da la escala de la casa.
-      objectPosition: "18% bottom",
-      zoom: 1.12,
+      // El encuadre entra desde el ventanal de la planta alta hasta donde
+      // termina el garaje, y el acercamiento saca la franja de cielo.
+      objectPosition: "30% bottom",
+      zoom: 1.08,
     } satisfies MediaSource,
   },
 ];
