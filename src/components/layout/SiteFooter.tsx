@@ -5,7 +5,7 @@ export default function SiteFooter() {
     <footer>
       {/* Cierre de la página: recorte blanco encastrado en la esquina */}
       <div className="notch notch--br notch--bar ml-auto flex w-fit flex-col items-center gap-4 sm:flex-row sm:gap-8">
-        <p className="text-pr-gray-400 text-[10px] tracking-[0.14em] uppercase">
+        <p className="text-pr-gray-700 text-[10px] tracking-[0.14em] uppercase">
           © {new Date().getFullYear()} Pinar Rosa Group · Pinamar, Argentina
         </p>
         <div className="flex items-center gap-2">

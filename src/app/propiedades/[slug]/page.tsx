@@ -61,7 +61,7 @@ export default async function PropiedadPage({ params }: Params) {
         <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
           <NotchFrame
             corner="bottom-right"
-            className="aspect-square sm:aspect-[16/9] lg:aspect-[48/25]"
+            className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[48/25]"
             notchClassName="notch--roomy w-fit md:w-[34%] md:max-w-[400px]"
             notch={
               <>

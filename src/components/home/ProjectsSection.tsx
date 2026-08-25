@@ -30,7 +30,7 @@ export default function ProjectsSection() {
           <NotchFrame
             key={project.slug}
             corner="bottom-right"
-            className="aspect-square sm:aspect-[16/9] lg:aspect-[48/25]"
+            className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[48/25]"
             notchClassName="w-fit md:w-[30%] md:max-w-[400px]"
             notch={
               <article>
