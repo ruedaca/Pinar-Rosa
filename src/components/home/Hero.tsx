@@ -18,7 +18,7 @@ export default function Hero() {
             {/* Ancla dentro de la misma página: con next/link no baja */}
             <a
               href={hero.action.href}
-              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-5 py-2.5 text-[9px] font-medium tracking-[0.16em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-6 md:px-7 md:py-3.5 md:text-[10px] md:tracking-[0.18em]"
+              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-4 py-2 text-[9px] font-medium tracking-[0.14em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-6 md:px-7 md:py-3.5 md:text-[10px] md:tracking-[0.18em]"
             >
               {hero.action.label}
             </a>
@@ -26,7 +26,7 @@ export default function Hero() {
         }
         // Cada línea del titular es una línea: el corte lo decide el copy
         overlay={
-          <h1 className="display hero-in absolute bottom-20 left-6 z-10 text-[clamp(1.55rem,6vw,5.25rem)] text-white uppercase md:bottom-9 md:left-9">
+          <h1 className="display hero-in absolute bottom-6 left-6 z-10 text-[clamp(0.95rem,4.7vw,1.35rem)] text-white uppercase md:bottom-9 md:left-9 md:text-[clamp(1.9rem,6vw,5.25rem)]">
             {hero.titleLines.map((line) => (
               <span key={line} className="block whitespace-nowrap">
                 {line}
