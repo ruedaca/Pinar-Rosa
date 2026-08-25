@@ -34,12 +34,13 @@ export default function ProjectsSection() {
             notchClassName="w-[80%] md:w-[30%] md:max-w-[400px]"
             notch={
               <article>
-                <p className="text-pr-gray-700 text-[12px] leading-[1.65]">
+                {/* El resumen completo vive en la ficha; acá en mobile solo el enlace */}
+                <p className="text-pr-gray-700 hidden text-[12px] leading-[1.65] md:block">
                   {project.resumen}
                 </p>
                 <ArrowLink
                   href={`/propiedades/${project.slug}`}
-                  className="mt-5"
+                  className="md:mt-5"
                 >
                   Ver proyecto
                 </ArrowLink>

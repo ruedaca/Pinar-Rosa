@@ -32,7 +32,7 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
   }, []);
 
   const inputClasses = cn(
-    "w-full rounded-lg border px-4 py-3 text-[13px] transition-colors focus:outline-none",
+    "w-full rounded-lg border px-4 py-2.5 text-[13px] md:py-3 transition-colors focus:outline-none",
     dark
       ? "border-white/15 bg-white/5 text-white placeholder:text-white/35 focus:border-pr-green-3"
       : "border-pr-gray-200 bg-white text-pr-black placeholder:text-pr-gray-400 focus:border-pr-green-1",
@@ -68,8 +68,8 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-12 text-left md:mt-14">
-      <div className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="mt-8 text-left md:mt-14">
+      <div className="grid gap-4 sm:grid-cols-2 md:gap-5">
         <div>
           <label htmlFor="nombre" className={labelClasses}>
             Nombre *
@@ -101,7 +101,7 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-4 md:mt-5">
         <label htmlFor="consulta" className={labelClasses}>
           ¿Por qué nos escribís?
         </label>
@@ -148,7 +148,7 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-4 md:mt-5">
         <label htmlFor="mensaje" className={labelClasses}>
           Mensaje *
         </label>
@@ -156,7 +156,7 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
           id="mensaje"
           name="mensaje"
           required
-          rows={5}
+          rows={4}
           placeholder="Contanos qué estás buscando."
           className={cn(inputClasses, "resize-y")}
         />
@@ -165,7 +165,7 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
       <button
         type="submit"
         className={cn(
-          "mt-8 w-full rounded-full px-8 py-4 text-[10px] font-medium tracking-[0.18em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4",
+          "mt-6 w-full rounded-full px-8 py-3.5 text-[10px] font-medium tracking-[0.18em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-8 md:py-4",
           dark
             ? "text-pr-black hover:bg-pr-green-3 focus-visible:outline-pr-green-3 bg-white"
             : "bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 text-white",

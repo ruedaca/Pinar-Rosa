@@ -21,7 +21,7 @@ function ServiceCard({
     <NotchFrame
       corner={corner}
       className={cn("min-h-[360px]", className)}
-      notchClassName="w-[76%] md:w-[57%]"
+      notchClassName="min-h-[132px] w-[76%] md:min-h-0 md:w-[57%]"
       notch={
         <article>
           <h3 className="text-pr-black text-[17px] font-semibold">

@@ -65,10 +65,11 @@ export default async function PropiedadPage({ params }: Params) {
             notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
             notch={
               <>
-                <p className="eyebrow text-pr-green-1 mb-3">
+                <p className="eyebrow text-pr-green-1 md:mb-3">
                   {propiedad.disponible ? "En venta" : "Vendida"}
                 </p>
-                <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
+                {/* En mobile solo el estado: el resumen deformaba la tarjeta */}
+                <p className="text-pr-gray-700 hidden text-[13px] leading-[1.6] md:block">
                   {propiedad.resumen}
                 </p>
               </>

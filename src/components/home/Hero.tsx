@@ -11,13 +11,14 @@ export default function Hero() {
         notchClassName="notch--roomy hero-in hero-in--delayed w-[82%] md:w-[40%] md:max-w-[440px]"
         notch={
           <>
-            <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
+            {/* En mobile la tarjeta queda solo con el botón: el texto ocupaba media pantalla */}
+            <p className="text-pr-gray-700 hidden text-[13px] leading-[1.6] md:block">
               {hero.intro}
             </p>
             {/* Ancla dentro de la misma página: con next/link no baja */}
             <a
               href={hero.action.href}
-              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 mt-6 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-6"
             >
               {hero.action.label}
             </a>

@@ -26,7 +26,7 @@ export default function SeccionDesplegable({
   const id = useId();
 
   return (
-    <section className="px-[var(--page-gutter)] pb-14 md:pb-20">
+    <section className="px-[var(--page-gutter)] pb-8 md:pb-12">
       <button
         type="button"
         onClick={() => setAbierta((valor) => !valor)}
@@ -48,6 +48,15 @@ export default function SeccionDesplegable({
           {eyebrow}
         </span>
       </button>
+
+      {/* Separador entre secciones cerradas: se desvanece al abrir */}
+      <span
+        aria-hidden
+        className={cn(
+          "bg-pr-gray-200 mt-6 block h-px w-full transition-opacity duration-300 md:mt-8",
+          abierta && "opacity-0",
+        )}
+      />
 
       <div
         id={id}

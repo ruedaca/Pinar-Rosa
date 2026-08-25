@@ -30,13 +30,14 @@ export default function BlogSection() {
             notchClassName="w-[76%] md:w-[46%]"
             notch={
               <article>
-                <p className="eyebrow text-pr-gray-700 mb-2">
+                <p className="eyebrow text-pr-gray-700 md:mb-2">
                   {nota.categoria}
                 </p>
-                <h3 className="text-pr-black max-w-[38ch] text-[13px] leading-[1.5] font-semibold">
+                {/* En mobile alcanza con la categoría y el enlace */}
+                <h3 className="text-pr-black hidden max-w-[38ch] text-[13px] leading-[1.5] font-semibold md:block">
                   {nota.titulo}
                 </h3>
-                <ArrowLink href={`/blog/${nota.slug}`} className="mt-4">
+                <ArrowLink href={`/blog/${nota.slug}`} className="mt-3 md:mt-4">
                   Leer artículo
                 </ArrowLink>
               </article>
