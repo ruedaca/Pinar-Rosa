@@ -30,8 +30,8 @@ export default function ProjectsSection() {
           <NotchFrame
             key={project.slug}
             corner="bottom-right"
-            className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[48/25]"
-            notchClassName="w-[80%] md:w-[30%] md:max-w-[400px]"
+            className="aspect-square sm:aspect-[16/9] lg:aspect-[48/25]"
+            notchClassName="w-fit md:w-[30%] md:max-w-[400px]"
             notch={
               <article>
                 {/* El resumen completo vive en la ficha; acá en mobile solo el enlace */}
@@ -47,12 +47,17 @@ export default function ProjectsSection() {
               </article>
             }
             overlay={
-              <h3 className="display absolute bottom-20 left-6 z-10 text-[clamp(1.85rem,6vw,4.25rem)] text-white uppercase sm:bottom-8 md:bottom-9 md:left-9">
+              <h3 className="display absolute bottom-6 left-6 z-10 text-[clamp(1.85rem,6vw,4.25rem)] text-white uppercase sm:bottom-8 md:bottom-9 md:left-9">
                 {project.name}
               </h3>
             }
           >
-            <Media media={project.portada} sizes="100vw" tone="dark" />
+            <Media
+              media={project.portada}
+              sizes="(min-width: 768px) 100vw, 175vw"
+              quality={85}
+              tone="dark"
+            />
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"

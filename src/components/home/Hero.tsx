@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="px-[var(--page-gutter)] pt-[var(--page-top)]">
       <NotchFrame
         corner="bottom-right"
-        className="min-h-[560px] md:min-h-[720px] lg:h-[calc(100vh-var(--page-top)-var(--page-gutter))] lg:min-h-[760px]"
+        className="min-h-[440px] md:min-h-[720px] lg:h-[calc(100vh-var(--page-top)-var(--page-gutter))] lg:min-h-[760px]"
         notchClassName="notch--roomy hero-in hero-in--delayed w-fit md:w-[40%] md:max-w-[440px]"
         notch={
           <>
@@ -18,7 +18,7 @@ export default function Hero() {
             {/* Ancla dentro de la misma página: con next/link no baja */}
             <a
               href={hero.action.href}
-              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-6"
+              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-5 py-2.5 text-[9px] font-medium tracking-[0.16em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-6 md:px-7 md:py-3.5 md:text-[10px] md:tracking-[0.18em]"
             >
               {hero.action.label}
             </a>
@@ -26,7 +26,7 @@ export default function Hero() {
         }
         // Cada línea del titular es una línea: el corte lo decide el copy
         overlay={
-          <h1 className="display hero-in absolute bottom-24 left-6 z-10 text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase md:bottom-9 md:left-9">
+          <h1 className="display hero-in absolute bottom-20 left-6 z-10 text-[clamp(1.55rem,6vw,5.25rem)] text-white uppercase md:bottom-9 md:left-9">
             {hero.titleLines.map((line) => (
               <span key={line} className="block whitespace-nowrap">
                 {line}
@@ -35,7 +35,18 @@ export default function Hero() {
           </h1>
         }
       >
-        <Media media={hero.image} sizes="100vw" priority tone="dark" />
+        {/*
+          El marco es vertical y la foto apaisada: con `object-cover` la
+          imagen escala por el alto, así que en mobile hace falta pedir
+          bastante más ancho que el del viewport o se ve pixelada.
+        */}
+        <Media
+          media={hero.image}
+          sizes="(min-width: 768px) 100vw, 175vw"
+          priority
+          quality={85}
+          tone="dark"
+        />
         {/*
           Doble velo: uno general y otro más denso en la esquina inferior
           izquierda, que es donde apoya el titular. En mobile el texto ocupa

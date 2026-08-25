@@ -27,7 +27,7 @@ export default function BlogSection() {
           <NotchFrame
             key={nota.slug}
             className="aspect-[4/3] md:aspect-[16/9]"
-            notchClassName="w-[76%] md:w-[46%]"
+            notchClassName="w-fit md:w-[46%]"
             notch={
               <article>
                 <p className="eyebrow text-pr-gray-700 md:mb-2">
@@ -47,7 +47,7 @@ export default function BlogSection() {
               src={nota.portada.src}
               alt={nota.portada.alt}
               fill
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 768px) 50vw, 130vw"
               className="object-cover"
             />
           </NotchFrame>

@@ -61,7 +61,7 @@ export default async function PropiedadPage({ params }: Params) {
         <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
           <NotchFrame
             corner="bottom-right"
-            className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[48/25]"
+            className="aspect-square sm:aspect-[16/9] lg:aspect-[48/25]"
             notchClassName="notch--roomy w-fit md:w-[34%] md:max-w-[400px]"
             notch={
               <>
@@ -70,12 +70,14 @@ export default async function PropiedadPage({ params }: Params) {
                   título visible y en desktop queda solo para lectores de
                   pantalla, porque ahí el nombre se lee sobre la portada.
                 */}
-                <h1 className="text-pr-black text-[17px] font-semibold md:sr-only">
-                  {propiedad.name}
-                </h1>
-                <p className="eyebrow text-pr-green-1 mt-1.5 md:mt-0 md:mb-3">
-                  {propiedad.disponible ? "En venta" : "Vendida"}
-                </p>
+                <span className="flex items-baseline gap-3 md:block">
+                  <h1 className="text-pr-black text-[17px] font-semibold md:sr-only">
+                    {propiedad.name}
+                  </h1>
+                  <span className="eyebrow text-pr-green-1 block md:mb-3">
+                    {propiedad.disponible ? "En venta" : "Vendida"}
+                  </span>
+                </span>
                 <p className="text-pr-gray-700 hidden text-[13px] leading-[1.6] md:block">
                   {propiedad.resumen}
                 </p>
@@ -92,8 +94,9 @@ export default async function PropiedadPage({ params }: Params) {
           >
             <Media
               media={propiedad.portada}
-              sizes="100vw"
+              sizes="(min-width: 768px) 100vw, 175vw"
               priority
+              quality={85}
               tone="dark"
             />
             <div

@@ -20,7 +20,7 @@ export default function Logo({ className, invert = false }: LogoProps) {
     >
       <svg
         viewBox="0 0 28 28"
-        className="size-5 shrink-0 md:size-6"
+        className="size-4 shrink-0 md:size-6"
         aria-hidden
       >
         <rect
@@ -48,7 +48,7 @@ export default function Logo({ className, invert = false }: LogoProps) {
       </svg>
       <span
         className={cn(
-          "text-[12px] leading-none tracking-[0.02em] md:text-[13px]",
+          "text-[11px] leading-none tracking-[0.02em] md:text-[13px]",
           invert ? "text-pr-black" : "text-white",
         )}
       >

@@ -58,9 +58,9 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
             aria-expanded={open}
             aria-controls="menu-principal"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="hover:bg-pr-green-1 focus-visible:outline-pr-green-3 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
+            className="hover:bg-pr-green-1 focus-visible:outline-pr-green-3 flex size-5 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
           >
-            <span aria-hidden className="flex w-3.5 flex-col gap-[3px]">
+            <span aria-hidden className="flex w-3 flex-col gap-[3px]">
               <span
                 className={cn(
                   "h-px w-full bg-current transition-transform",

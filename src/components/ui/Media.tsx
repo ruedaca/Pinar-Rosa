@@ -28,10 +28,18 @@ type MediaProps = {
   sizes: string;
   /** Sólo para la portada: es el LCP de la home. */
   priority?: boolean;
+  /** Por defecto next/image usa 75. Las portadas van más arriba. */
+  quality?: number;
   tone?: "light" | "dark";
 };
 
-export default function Media({ media, sizes, priority, tone }: MediaProps) {
+export default function Media({
+  media,
+  sizes,
+  priority,
+  quality,
+  tone,
+}: MediaProps) {
   if (media.kind === "photo") {
     return (
       <Image
@@ -40,6 +48,7 @@ export default function Media({ media, sizes, priority, tone }: MediaProps) {
         fill
         sizes={sizes}
         priority={priority}
+        quality={quality}
         className="object-cover"
         style={{
           objectPosition: media.objectPosition,
