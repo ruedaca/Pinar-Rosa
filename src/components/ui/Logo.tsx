@@ -29,15 +29,18 @@ export default function Logo({ className, invert = false }: LogoProps) {
           strokeWidth="2"
           fill="none"
         />
-        <path
-          d="M9 20V9h5.5a3.5 3.5 0 0 1 0 7H12"
-          stroke="var(--color-pr-green-3)"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <circle cx="19.5" cy="18.5" r="1.6" fill="var(--color-pr-green-3)" />
+        {/* Gira solo la R: el cuadrado se queda derecho */}
+        <g transform="rotate(-90 14 14)">
+          <path
+            d="M9 20V9h5.5a3.5 3.5 0 0 1 0 7H12"
+            stroke="var(--color-pr-green-3)"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+          <circle cx="19.5" cy="18.5" r="1.6" fill="var(--color-pr-green-3)" />
+        </g>
       </svg>
       <span
         className={cn(
