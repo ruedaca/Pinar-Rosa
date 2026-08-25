@@ -8,8 +8,6 @@ type SeccionDesplegableProps = {
   eyebrow: string;
   titulo: string;
   children: ReactNode;
-  /** La primera arranca abierta, para que la ficha no se vea vacía. */
-  abiertaPorDefecto?: boolean;
 };
 
 /**
@@ -20,9 +18,8 @@ export default function SeccionDesplegable({
   eyebrow,
   titulo,
   children,
-  abiertaPorDefecto = false,
 }: SeccionDesplegableProps) {
-  const [abierta, setAbierta] = useState(abiertaPorDefecto);
+  const [abierta, setAbierta] = useState(false);
   const id = useId();
 
   return (

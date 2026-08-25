@@ -43,20 +43,22 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
       <div className="w-full max-w-[560px] md:w-auto">
         <div
           className={cn(
-            "flex items-center gap-2 rounded-full p-1 px-2 backdrop-blur-md md:gap-6 md:p-1.5 md:py-2.5 md:pr-4 md:pl-5",
+            "flex items-center gap-2 rounded-full p-0.5 px-2 backdrop-blur-md md:gap-6 md:p-1.5 md:py-2.5 md:pr-4 md:pl-5",
             // Sobre la foto del hero alcanza con el negro al 35%. Sobre el
             // blanco de las interiores hay que subirlo hasta el 75% para que
             // se perciba del mismo gris oscuro y el texto blanco se lea.
             light ? "bg-black/75" : "bg-black/35",
           )}
         >
+          {/* En mobile: logo a la izquierda y hamburguesa contra el borde derecho */}
+          <Logo className="mr-auto md:mr-0" />
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls="menu-principal"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="hover:bg-pr-green-1 focus-visible:outline-pr-green-3 flex size-7 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
+            className="hover:bg-pr-green-1 focus-visible:outline-pr-green-3 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
           >
             <span aria-hidden className="flex w-3.5 flex-col gap-[3px]">
               <span
@@ -79,9 +81,6 @@ export default function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
               />
             </span>
           </button>
-
-          {/* En mobile: hamburguesa a la izquierda, logo contra el borde derecho */}
-          <Logo className="ml-auto md:mr-0 md:ml-0" />
 
           <nav
             aria-label="Principal"

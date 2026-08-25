@@ -47,7 +47,7 @@ export default function ProjectsSection() {
               </article>
             }
             overlay={
-              <h3 className="display absolute bottom-48 left-6 z-10 text-[clamp(1.85rem,6vw,4.25rem)] text-white uppercase sm:bottom-8 md:bottom-9 md:left-9">
+              <h3 className="display absolute bottom-20 left-6 z-10 text-[clamp(1.85rem,6vw,4.25rem)] text-white uppercase sm:bottom-8 md:bottom-9 md:left-9">
                 {project.name}
               </h3>
             }

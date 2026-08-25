@@ -21,13 +21,14 @@ function ServiceCard({
     <NotchFrame
       corner={corner}
       className={cn("min-h-[360px]", className)}
-      notchClassName="min-h-[132px] w-[76%] md:min-h-0 md:w-[57%]"
+      notchClassName="w-fit md:w-[57%]"
       notch={
         <article>
           <h3 className="text-pr-black text-[17px] font-semibold">
             {service.title}
           </h3>
-          <p className="text-pr-gray-700 mt-1.5 text-[12px] leading-[1.55]">
+          {/* En mobile la tarjeta queda solo con el título */}
+          <p className="text-pr-gray-700 mt-1.5 hidden text-[12px] leading-[1.55] md:block">
             {service.description}
           </p>
         </article>

@@ -62,22 +62,32 @@ export default async function PropiedadPage({ params }: Params) {
           <NotchFrame
             corner="bottom-right"
             className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[48/25]"
-            notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
+            notchClassName="notch--roomy w-fit md:w-[34%] md:max-w-[400px]"
             notch={
               <>
-                <p className="eyebrow text-pr-green-1 md:mb-3">
+                {/*
+                  El h1 es siempre este, no el de la foto: en mobile es el
+                  título visible y en desktop queda solo para lectores de
+                  pantalla, porque ahí el nombre se lee sobre la portada.
+                */}
+                <h1 className="text-pr-black text-[17px] font-semibold md:sr-only">
+                  {propiedad.name}
+                </h1>
+                <p className="eyebrow text-pr-green-1 mt-1.5 md:mt-0 md:mb-3">
                   {propiedad.disponible ? "En venta" : "Vendida"}
                 </p>
-                {/* En mobile solo el estado: el resumen deformaba la tarjeta */}
                 <p className="text-pr-gray-700 hidden text-[13px] leading-[1.6] md:block">
                   {propiedad.resumen}
                 </p>
               </>
             }
             overlay={
-              <h1 className="display absolute bottom-64 left-6 z-10 text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase sm:bottom-10 md:bottom-9 md:left-9">
+              <p
+                aria-hidden
+                className="display absolute bottom-9 left-9 z-10 hidden text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase md:block"
+              >
                 {propiedad.name}
-              </h1>
+              </p>
             }
           >
             <Media
@@ -128,11 +138,7 @@ export default async function PropiedadPage({ params }: Params) {
           </div>
         </section>
 
-        <SeccionDesplegable
-          eyebrow="Los ambientes"
-          titulo="Cómo se recorre"
-          abiertaPorDefecto
-        >
+        <SeccionDesplegable eyebrow="Los ambientes" titulo="Cómo se recorre">
           <div>
             <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
               {propiedad.programa.map((ambiente) => (

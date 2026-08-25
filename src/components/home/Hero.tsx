@@ -8,7 +8,7 @@ export default function Hero() {
       <NotchFrame
         corner="bottom-right"
         className="min-h-[560px] md:min-h-[720px] lg:h-[calc(100vh-var(--page-top)-var(--page-gutter))] lg:min-h-[760px]"
-        notchClassName="notch--roomy hero-in hero-in--delayed w-[82%] md:w-[40%] md:max-w-[440px]"
+        notchClassName="notch--roomy hero-in hero-in--delayed w-fit md:w-[40%] md:max-w-[440px]"
         notch={
           <>
             {/* En mobile la tarjeta queda solo con el botón: el texto ocupaba media pantalla */}
@@ -26,7 +26,7 @@ export default function Hero() {
         }
         // Cada línea del titular es una línea: el corte lo decide el copy
         overlay={
-          <h1 className="display hero-in absolute bottom-64 left-6 z-10 text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase md:bottom-9 md:left-9">
+          <h1 className="display hero-in absolute bottom-24 left-6 z-10 text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase md:bottom-9 md:left-9">
             {hero.titleLines.map((line) => (
               <span key={line} className="block whitespace-nowrap">
                 {line}
