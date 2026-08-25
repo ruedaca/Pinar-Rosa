@@ -26,6 +26,9 @@ export const hero = {
     kind: "photo",
     src: "/lotes/lote-6/portada.jpg",
     alt: "Casa de dos plantas en hormigón visto al atardecer, con grandes paños vidriados iluminados, galería, pileta y pinos alrededor",
+    // El marco recorta a lo ancho: se corre a la derecha para quedarse con la
+    // esquina vidriada, que es donde se lee la terminación de la casa.
+    objectPosition: "58% center",
   } satisfies MediaSource,
 };
 
@@ -65,6 +68,9 @@ export const services = [
       kind: "photo",
       src: "/lotes/lote-5/cocina-comedor.jpg",
       alt: "Comedor diario integrado a la cocina: mesa y sillas de madera clara, respaldo de listones, isla de mármol y celosía negra que separa los ambientes",
+      // En mobile el marco recorta casi la mitad del ancho: se corre a la
+      // izquierda lo justo para que la mesa entre entera.
+      objectPosition: "25% center",
     } satisfies MediaSource,
   },
   {
@@ -75,11 +81,11 @@ export const services = [
       kind: "photo",
       src: "/lotes/lote-7/frente.jpg",
       alt: "Frente de una casa de dos plantas en hormigón visto al atardecer, con puerta de acceso en madera, garaje y terraza verde, rodeada de pinos",
-      // El marco horizontal casi no recorta (4%), así que para sacar cielo hay
-      // que acercar: se ancla abajo y algo a la izquierda para no comerse el
-      // borde de la casa, y lo que sale por arriba es cielo.
-      objectPosition: "35% bottom",
-      zoom: 1.32,
+      // Se acerca apenas, lo justo para sacar cielo, y se ancla contra el
+      // borde izquierdo: ahí está el ventanal de la planta alta, que es lo que
+      // da la escala de la casa.
+      objectPosition: "18% bottom",
+      zoom: 1.12,
     } satisfies MediaSource,
   },
 ];

@@ -49,6 +49,7 @@ export default function BlogSection() {
               fill
               sizes="(min-width: 768px) 50vw, 130vw"
               className="object-cover"
+              style={{ objectPosition: nota.portada.objectPosition }}
             />
           </NotchFrame>
         ))}

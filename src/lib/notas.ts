@@ -36,9 +36,9 @@ export const notas: Nota[] = [
     portada: {
       src: "/lotes/lote-7/obra/01.jpg",
       alt: "Frente en construcción con el hormigón visto y la textura del encofrado a la vista",
-      // Foto vertical en un marco apaisado: sube el encuadre para que se lea
-      // el volumen en voladizo y no una franja de pared.
-      objectPosition: "center 32%",
+      // Foto vertical en un marco apaisado: sube el encuadre hasta que entre
+      // la punta del voladizo, que es lo que da la lectura del volumen.
+      objectPosition: "center 18%",
     },
     bloques: [
       {

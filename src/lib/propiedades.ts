@@ -120,10 +120,9 @@ export const propiedades: Propiedad[] = [
       kind: "photo",
       src: "/lotes/lote-5/contrafrente.jpg",
       alt: "Lote 5 al anochecer: volumen de dos plantas entre pinos altos, galería iluminada y pileta en primer plano",
-      // El marco recorta poco a lo alto: se acerca anclando abajo para que lo
-      // que salga por arriba sea cielo y no la casa.
-      objectPosition: "center bottom",
-      zoom: 1.18,
+      // El marco recorta a lo ancho: se corre a la derecha, que es donde
+      // sigue la casa, y no se acerca para que se aprecie entera.
+      objectPosition: "62% bottom",
     },
     galeria: [
       {
@@ -243,7 +242,6 @@ export const propiedades: Propiedad[] = [
       src: "/lotes/lote-6/contrafrente.jpg",
       alt: "Lote 6: planta baja vidriada con comedor y estar a la vista, volumen superior en voladizo y pileta en L rodeada de deck",
       objectPosition: "center bottom",
-      zoom: 1.18,
     },
     galeria: [
       { src: "/lotes/lote-6/frente.jpg", alt: "Frente sobre la calle" },
@@ -339,8 +337,8 @@ export const propiedades: Propiedad[] = [
       kind: "photo",
       src: "/lotes/lote-7/contrafrente.jpg",
       alt: "Lote 7: frente longitudinal en hormigón con carpinterías de madera, terraza verde y pileta larga",
-      objectPosition: "center bottom",
-      zoom: 1.18,
+      // La casa ocupa la mitad izquierda de la foto.
+      objectPosition: "25% bottom",
     },
     galeria: [
       {
