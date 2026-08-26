@@ -123,7 +123,7 @@ export const contacto = {
 export const PROYECTO_PROPIO = "Proyecto propio";
 
 export const footer = {
-  email: "estudio.pinarrosa@gmail.com",
+  email: "info.pinarrosagroup@gmail.com",
   instagram: "https://instagram.com/pinarrosagroup",
   whatsapp: "https://wa.me/5491138074412",
 };
