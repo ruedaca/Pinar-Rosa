@@ -1,0 +1,61 @@
+import type { Metadata } from "next";
+import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
+
+import "./globals.css";
+
+/** Títulos y subtítulos. */
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+/** Cuerpo de texto, navegación, botones y epígrafes. */
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
+/**
+ * Base con la que se resuelven las imágenes de Open Graph: sin esto, al
+ * compartir un enlace por WhatsApp la miniatura apunta a localhost. En Vercel
+ * la variable la pone la plataforma; cuando exista el dominio propio se define
+ * NEXT_PUBLIC_SITE_URL y manda esa.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: "Pinar Rosa Group | Arquitectura y desarrollo en Pinamar",
+  description:
+    "Estudio de arquitectura y desarrollo inmobiliario en Pinamar. Tres casas de autor entre el bosque y el mar.",
+  openGraph: {
+    title: "Pinar Rosa Group",
+    description:
+      "Arquitectura contemporánea en Pinamar. Casas que dialogan con el bosque, el médano y el mar.",
+    locale: "es_AR",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  // Las variables de fuente van en <html> para que existan ya en :root
+  return (
+    <html lang="es-AR" className={`${montserrat.variable} ${jakarta.variable}`}>
+      <head>
+        {/* Sin JS el observador nunca corre: el contenido queda visible igual */}
+        <noscript>
+          <style>{`.reveal { opacity: 1; transform: none; }`}</style>
+        </noscript>
+      </head>
+      <body className="antialiased">{children}</body>
+    </html>
+  );
+}
