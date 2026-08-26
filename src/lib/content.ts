@@ -28,7 +28,7 @@ export const hero = {
     alt: "Casa de dos plantas en hormigón visto al atardecer, con grandes paños vidriados iluminados, galería, pileta y pinos alrededor",
     // El marco recorta a lo ancho: se corre a la derecha para quedarse con la
     // esquina vidriada, que es donde se lee la terminación de la casa.
-    objectPosition: "58% center",
+    objectPosition: "72% center",
   } satisfies MediaSource,
 };
 
@@ -83,8 +83,8 @@ export const services = [
       alt: "Frente de una casa de dos plantas en hormigón visto al atardecer, con puerta de acceso en madera, garaje y terraza verde, rodeada de pinos",
       // El encuadre entra desde el ventanal de la planta alta hasta donde
       // termina el garaje, y el acercamiento saca la franja de cielo.
-      objectPosition: "35% bottom",
-      zoom: 1.15,
+      objectPosition: "8% bottom",
+      zoom: 1.1,
     } satisfies MediaSource,
   },
 ];

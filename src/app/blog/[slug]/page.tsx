@@ -50,14 +50,14 @@ export default async function NotaPage({ params }: Params) {
             <NotchFrame
               corner="bottom-right"
               className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
-              notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
+              notchClassName="notch--roomy hidden w-[82%] md:block md:w-[34%] md:max-w-[400px]"
               notch={
                 <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
                   {nota.bajada}
                 </p>
               }
               overlay={
-                <h1 className="display absolute bottom-64 left-6 z-10 max-w-[16ch] text-[clamp(1.6rem,4.5vw,3.5rem)] text-white sm:bottom-10 md:bottom-9 md:left-9">
+                <h1 className="display absolute bottom-6 left-6 z-10 max-w-[16ch] text-[clamp(1.6rem,4.5vw,3.5rem)] text-white sm:bottom-10 md:bottom-9 md:left-9">
                   {nota.titulo}
                 </h1>
               }
