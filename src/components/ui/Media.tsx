@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import Foto from "@/components/ui/Foto";
 import Placeholder from "@/components/ui/Placeholder";
 
 /**
@@ -42,19 +41,14 @@ export default function Media({
 }: MediaProps) {
   if (media.kind === "photo") {
     return (
-      <Image
+      <Foto
         src={media.src}
         alt={media.alt}
-        fill
         sizes={sizes}
+        objectPosition={media.objectPosition}
+        zoom={media.zoom}
         priority={priority}
         quality={quality}
-        className="object-cover"
-        style={{
-          objectPosition: media.objectPosition,
-          transform: media.zoom ? `scale(${media.zoom})` : undefined,
-          transformOrigin: media.zoom ? media.objectPosition : undefined,
-        }}
       />
     );
   }

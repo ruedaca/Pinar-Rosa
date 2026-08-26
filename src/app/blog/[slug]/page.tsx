@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -7,6 +6,7 @@ import ContactSection from "@/components/home/ContactSection";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import ArrowLink from "@/components/ui/ArrowLink";
+import Foto from "@/components/ui/Foto";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { buscarNota, notas } from "@/lib/notas";
 
@@ -62,14 +62,12 @@ export default async function NotaPage({ params }: Params) {
                 </h1>
               }
             >
-              <Image
+              <Foto
                 src={nota.portada.src}
                 alt={nota.portada.alt}
-                fill
                 sizes="100vw"
                 priority
-                className="object-cover"
-                style={{ objectPosition: nota.portada.objectPosition }}
+                objectPosition={nota.portada.objectPosition}
               />
               <div
                 aria-hidden
@@ -102,12 +100,11 @@ export default async function NotaPage({ params }: Params) {
                     {/* Sin epígrafe: repetía el alt y no sumaba nada */}
                     {indice === 1 ? (
                       <div className="marco-foto relative mt-12 aspect-[16/9]">
-                        <Image
+                        <Foto
                           src={nota.imagenInterior.src}
                           alt={nota.imagenInterior.alt}
-                          fill
                           sizes="(min-width: 768px) 60vw, 100vw"
-                          className="object-cover"
+                          objectPosition={nota.imagenInterior.objectPosition}
                         />
                       </div>
                     ) : null}

@@ -61,24 +61,15 @@
 }
 
 /*
- * Marco de la foto.
+ * Marco de la foto: recorte simple, sin máscaras ni capas propias.
  *
- * Safari recorta con radio en una capa aparte, y cuando el hijo lleva transform
- * —el zoom de los encuadres— el borde del recorte queda aliaseado: sobre la
- * foto aparece una línea fina en el filo. La máscara fuerza a que el recorte se
- * resuelva en la misma capa que la imagen, y el translateZ la promueve una sola
- * vez en vez de recomponerla en cada scroll.
+ * El encuadre y el pequeño desborde que evita la línea en el filo los resuelve
+ * `estiloFoto` en cada imagen, con ancho y posición en vez de transform: iOS no
+ * recorta con radio a un hijo transformado, y ese era el origen de la línea.
  */
 .marco-foto {
   overflow: hidden;
   border-radius: var(--radius-frame);
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: radial-gradient(white, black);
-  isolation: isolate;
-  /* Las fotos siempre apoyan sobre el blanco de la página: esta línea se pinta
-     por encima del filo y tapa la fila mezclada. */
-  outline: 1px solid var(--color-pr-white);
-  outline-offset: -1px;
 }
 
 /*
@@ -86,13 +77,6 @@
  * entre foto y foto en vez de entre foto y fondo, que es lo que dibujaba la
  * línea en algunos niveles de zoom.
  */
-.marco-foto > img {
-  /* `!important` porque next/image escribe inset, width y height como estilos
-     en línea al usar `fill`, y una clase sola no les gana. */
-  inset: -1px !important;
-  width: calc(100% + 2px) !important;
-  height: calc(100% + 2px) !important;
-}
 
 /*
  * Recorte del marco de imagen.

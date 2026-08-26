@@ -1,10 +1,10 @@
-import Image from "next/image";
-
-import type { Foto } from "@/lib/propiedades";
+import Foto from "@/components/ui/Foto";
+// La galería recibe los datos de la foto; `Foto` acá es el componente.
+import type { Foto as DatosDeFoto } from "@/lib/propiedades";
 import { cn } from "@/lib/utils";
 
 type GaleriaFotosProps = {
-  fotos: Foto[];
+  fotos: DatosDeFoto[];
   /** La primera ocupa el ancho completo: es la que abre la secuencia. */
   destacarPrimera?: boolean;
 };
@@ -25,12 +25,11 @@ export default function GaleriaFotos({
               ancha ? "aspect-[16/9] md:col-span-2" : "aspect-[4/3]",
             )}
           >
-            <Image
+            <Foto
               src={foto.src}
               alt={foto.alt}
-              fill
               sizes={ancha ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
-              className="object-cover"
+              objectPosition={foto.objectPosition}
             />
           </div>
         );

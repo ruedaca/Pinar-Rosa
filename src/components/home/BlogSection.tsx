@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import ArrowLink from "@/components/ui/ArrowLink";
+import Foto from "@/components/ui/Foto";
 import Eyebrow from "@/components/ui/Eyebrow";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { notas } from "@/lib/notas";
@@ -43,14 +42,12 @@ export default function BlogSection() {
               </article>
             }
           >
-            <Image
+            <Foto
               src={nota.portada.src}
               alt={nota.portada.alt}
-              fill
               sizes="(min-width: 768px) 50vw, 130vw"
               quality={85}
-              className="object-cover"
-              style={{ objectPosition: nota.portada.objectPosition }}
+              objectPosition={nota.portada.objectPosition}
             />
           </NotchFrame>
         ))}

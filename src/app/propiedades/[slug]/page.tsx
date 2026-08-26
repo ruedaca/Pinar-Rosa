@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import ContactSection from "@/components/home/ContactSection";
@@ -8,6 +7,7 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import GaleriaFotos from "@/components/propiedad/GaleriaFotos";
 import SeccionDesplegable from "@/components/propiedad/SeccionDesplegable";
 import Eyebrow from "@/components/ui/Eyebrow";
+import Foto from "@/components/ui/Foto";
 import Media from "@/components/ui/Media";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { mapaZona } from "@/lib/content";
@@ -171,12 +171,11 @@ export default async function PropiedadPage({ params }: Params) {
                 key={plano.src}
                 className="marco-foto relative aspect-[3/2] bg-white"
               >
-                <Image
+                <Foto
                   src={plano.src}
                   alt={`${plano.titulo} del ${propiedad.name}`}
-                  fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-contain"
+                  ajuste="contain"
                 />
               </div>
             ))}
@@ -194,12 +193,10 @@ export default async function PropiedadPage({ params }: Params) {
                 key={mapa.src}
                 className="bg-pr-gray-200 marco-foto relative aspect-[16/9]"
               >
-                <Image
+                <Foto
                   src={mapa.src}
                   alt={mapa.alt}
-                  fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
                 />
               </div>
             ))}
