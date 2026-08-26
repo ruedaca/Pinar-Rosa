@@ -41,10 +41,11 @@
   --page-top: 22px;
   /* Aire entre marcos de imagen, tanto horizontal como vertical */
   --frame-gap: 14px;
-  --frame: 20px;
-  --card: 12px;
+  /* En mobile el radio va más contenido: menos curva, menos filo suavizado. */
+  --frame: 14px;
+  --card: 10px;
   /* Radio de las esquinas cóncavas del recorte */
-  --notch: 16px;
+  --notch: 14px;
 }
 
 @media (min-width: 768px) {
@@ -59,6 +60,40 @@
     --notch: 24px;
   }
 }
+
+/*
+ * Marco de la foto: recorte simple, sin máscaras ni capas propias.
+ *
+ * El encuadre y el pequeño desborde que evita la línea en el filo los resuelve
+ * `estiloFoto` en cada imagen, con ancho y posición en vez de transform: iOS no
+ * recorta con radio a un hijo transformado, y ese era el origen de la línea.
+ */
+.marco-foto {
+  overflow: hidden;
+  border-radius: var(--radius-frame);
+  /*
+   * Fondo opaco detrás de la foto. Al redondear, el navegador mezcla la fila del
+   * filo con lo que haya debajo; si eso es transparente, la mezcla tira a negro
+   * —el color con el que se guarda un pixel sin opacidad— y aparece una línea
+   * oscura. Contra blanco, la misma mezcla es invisible sobre la página.
+   */
+  background-color: var(--color-pr-white);
+  /*
+   * Anillo blanco pegado al contorno, por fuera. Si alguna fila del filo se
+   * escapa del redondeo, queda tapada; y como se pinta afuera, no se le come
+   * un pixel a la foto, que era el problema de pintarla por dentro.
+   *
+   * Va sin `clip-path`: ese recorte se aplica también a lo que pinta el propio
+   * elemento, así que se comería el anillo.
+   */
+  box-shadow: 0 0 0 1px var(--color-pr-white);
+}
+
+/*
+ * La imagen desborda un pixel el marco. Al redondear, la fila del filo se mezcla
+ * entre foto y foto en vez de entre foto y fondo, que es lo que dibujaba la
+ * línea en algunos niveles de zoom.
+ */
 
 /*
  * Recorte del marco de imagen.
@@ -100,7 +135,35 @@
  */
 .notch--bar {
   position: relative;
-  padding: 18px 26px 18px 32px;
+  padding: 14px 20px 14px 24px;
+}
+
+/*
+ * En mobile la barra no llega al borde inferior: queda apoyada sobre el negro,
+ * con su propio radio. Ahí el mordisco no tiene contra qué morder, así que los
+ * dos redondeos se apagan.
+ */
+@media (max-width: 767px) {
+  /* Doble clase: si no, el radio de esquina de `.notch--br` gana por orden. */
+  .notch--bar.notch--br {
+    width: 100%;
+    margin: 0;
+    padding: 8px var(--page-gutter) 4px;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .notch--bar::before,
+  .notch--bar::after {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .notch--bar {
+    padding: 18px 26px 18px 32px;
+  }
 }
 
 .notch::before,
@@ -109,6 +172,20 @@
   position: absolute;
   width: var(--notch);
   height: var(--notch);
+}
+
+/*
+ * Los dos redondeos se solapan un pixel contra la card. Sin ese solape, en
+ * pantallas de densidad alta la junta cae en una fracción de pixel y se ve una
+ * línea de foto entre el blanco de la card y el del redondeo: la card deja de
+ * leerse como un mordisco y parece pegada encima.
+ */
+.notch::before {
+  height: calc(var(--notch) + 1px);
+}
+
+.notch::after {
+  width: calc(var(--notch) + 1px);
 }
 
 /* Recorte apoyado en la esquina inferior izquierda */

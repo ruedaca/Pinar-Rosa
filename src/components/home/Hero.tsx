@@ -54,11 +54,11 @@ export default function Hero() {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/30 md:from-black/45 md:via-black/10"
+          className="absolute -inset-px bg-gradient-to-t from-black/55 via-black/15 to-black/30 md:from-black/45 md:via-black/10"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(120%_90%_at_0%_100%,rgba(0,0,0,0.55)_0%,transparent_60%)]"
+          className="absolute -inset-px bg-[radial-gradient(120%_90%_at_0%_100%,rgba(0,0,0,0.55)_0%,transparent_60%)]"
         />
       </NotchFrame>
     </section>

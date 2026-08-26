@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -7,6 +6,7 @@ import ContactSection from "@/components/home/ContactSection";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import ArrowLink from "@/components/ui/ArrowLink";
+import Foto from "@/components/ui/Foto";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { buscarNota, notas } from "@/lib/notas";
 
@@ -50,26 +50,24 @@ export default async function NotaPage({ params }: Params) {
             <NotchFrame
               corner="bottom-right"
               className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
-              notchClassName="notch--roomy w-[82%] md:w-[34%] md:max-w-[400px]"
+              notchClassName="notch--roomy hidden w-[82%] md:block md:w-[34%] md:max-w-[400px]"
               notch={
                 <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
                   {nota.bajada}
                 </p>
               }
               overlay={
-                <h1 className="display absolute bottom-64 left-6 z-10 max-w-[16ch] text-[clamp(1.6rem,4.5vw,3.5rem)] text-white sm:bottom-10 md:bottom-9 md:left-9">
+                <h1 className="display absolute bottom-6 left-6 z-10 max-w-[16ch] text-[clamp(1.6rem,4.5vw,3.5rem)] text-white sm:bottom-10 md:bottom-9 md:left-9">
                   {nota.titulo}
                 </h1>
               }
             >
-              <Image
+              <Foto
                 src={nota.portada.src}
                 alt={nota.portada.alt}
-                fill
                 sizes="100vw"
                 priority
-                className="object-cover"
-                style={{ objectPosition: nota.portada.objectPosition }}
+                objectPosition={nota.portada.objectPosition}
               />
               <div
                 aria-hidden
@@ -101,13 +99,12 @@ export default async function NotaPage({ params }: Params) {
                     {/* La foto entra a mitad de la nota, no al final */}
                     {/* Sin epígrafe: repetía el alt y no sumaba nada */}
                     {indice === 1 ? (
-                      <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]">
-                        <Image
+                      <div className="marco-foto relative mt-12 aspect-[16/9]">
+                        <Foto
                           src={nota.imagenInterior.src}
                           alt={nota.imagenInterior.alt}
-                          fill
                           sizes="(min-width: 768px) 60vw, 100vw"
-                          className="object-cover"
+                          objectPosition={nota.imagenInterior.objectPosition}
                         />
                       </div>
                     ) : null}

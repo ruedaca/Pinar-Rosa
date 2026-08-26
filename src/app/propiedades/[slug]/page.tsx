@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import ContactSection from "@/components/home/ContactSection";
@@ -8,6 +7,7 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import GaleriaFotos from "@/components/propiedad/GaleriaFotos";
 import SeccionDesplegable from "@/components/propiedad/SeccionDesplegable";
 import Eyebrow from "@/components/ui/Eyebrow";
+import Foto from "@/components/ui/Foto";
 import Media from "@/components/ui/Media";
 import NotchFrame from "@/components/ui/NotchFrame";
 import { mapaZona } from "@/lib/content";
@@ -101,7 +101,7 @@ export default async function PropiedadPage({ params }: Params) {
             />
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+              className="absolute -inset-px bg-gradient-to-t from-black/50 to-transparent"
             />
           </NotchFrame>
         </section>
@@ -169,14 +169,13 @@ export default async function PropiedadPage({ params }: Params) {
                  y sobre gris quedaba un borde alrededor del plano. */
               <div
                 key={plano.src}
-                className="relative aspect-[3/2] overflow-hidden rounded-[var(--radius-frame)] bg-white"
+                className="marco-foto relative aspect-[3/2] bg-white"
               >
-                <Image
+                <Foto
                   src={plano.src}
                   alt={`${plano.titulo} del ${propiedad.name}`}
-                  fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-contain"
+                  ajuste="contain"
                 />
               </div>
             ))}
@@ -192,14 +191,12 @@ export default async function PropiedadPage({ params }: Params) {
             {[propiedad.mapa, mapaZona].map((mapa) => (
               <div
                 key={mapa.src}
-                className="bg-pr-gray-200 relative aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]"
+                className="bg-pr-gray-200 marco-foto relative aspect-[16/9]"
               >
-                <Image
+                <Foto
                   src={mapa.src}
                   alt={mapa.alt}
-                  fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
                 />
               </div>
             ))}

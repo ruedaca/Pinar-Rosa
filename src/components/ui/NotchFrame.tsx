@@ -26,9 +26,7 @@ export default function NotchFrame({
 }: NotchFrameProps) {
   return (
     <div className={cn("relative", className)}>
-      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-frame)]">
-        {children}
-      </div>
+      <div className="marco-foto absolute inset-0">{children}</div>
 
       {overlay}
 
