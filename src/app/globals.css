@@ -76,6 +76,10 @@
   mask-image: radial-gradient(white, black);
   transform: translateZ(0);
   isolation: isolate;
+  /* Las fotos siempre apoyan sobre el blanco de la página: esta línea se pinta
+     por encima del filo y tapa la fila mezclada. */
+  outline: 1px solid var(--color-pr-white);
+  outline-offset: -1px;
 }
 
 /*
@@ -133,8 +137,7 @@
 @media (max-width: 767px) {
   /* Doble clase: si no, el radio de esquina de `.notch--br` gana por orden. */
   .notch--bar.notch--br {
-    margin-right: var(--page-gutter);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-card) 0 0 var(--radius-card);
   }
 
   .notch--bar::before,
