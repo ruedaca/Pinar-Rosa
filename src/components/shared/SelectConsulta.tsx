@@ -170,8 +170,14 @@ export default function SelectConsulta({
                 onClick={() => elegir(indice)}
                 onPointerEnter={() => setMarcada(indice)}
                 className={cn(
-                  "cursor-pointer rounded-full px-4 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors",
-                  seleccionada ? "text-pr-green-3" : "text-white/80",
+                  // El hover es el mismo del menú de la barra: verde y
+                  // sombreado juntos. Va por CSS y no por estado para que el
+                  // mouse no dependa de que React procese el evento.
+                  "hover:text-pr-green-3 cursor-pointer rounded-full px-4 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors hover:bg-white/10",
+                  // El recorrido con el teclado deja la misma marca.
+                  seleccionada || marcada === indice
+                    ? "text-pr-green-3"
+                    : "text-white/80",
                   marcada === indice && "bg-white/10",
                 )}
               >
