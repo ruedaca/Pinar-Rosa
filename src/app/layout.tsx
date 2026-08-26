@@ -17,7 +17,20 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+/**
+ * Base con la que se resuelven las imágenes de Open Graph: sin esto, al
+ * compartir un enlace por WhatsApp la miniatura apunta a localhost. En Vercel
+ * la variable la pone la plataforma; cuando exista el dominio propio se define
+ * NEXT_PUBLIC_SITE_URL y manda esa.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Pinar Rosa Group | Arquitectura y desarrollo en Pinamar",
   description:
     "Estudio de arquitectura y desarrollo inmobiliario en Pinamar. Tres casas de autor entre el bosque y el mar.",
