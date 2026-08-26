@@ -70,6 +70,9 @@
 .marco-foto {
   overflow: hidden;
   border-radius: var(--radius-frame);
+  /* El `clip-path` recorta por otro camino que el `overflow`, y a diferencia de
+     éste no depende de cómo el navegador componga la capa. */
+  clip-path: inset(0 round var(--radius-frame));
 }
 
 /*
@@ -90,10 +93,6 @@
 .notch {
   position: absolute;
   background: var(--color-pr-white);
-  /* Un anillo blanco de 1px alrededor de la card. Cubre la junta con los dos
-     redondeos desde el otro lado: aunque el redondeo caiga medio pixel corrido,
-     ahi no puede asomar la foto. */
-  box-shadow: 0 0 0 1px var(--color-pr-white);
   /* Un único ritmo de padding para todas las cards: el texto queda inset
      respecto de los bordes de la foto en vez de pegado a ellos. */
   padding: 14px 20px 12px;

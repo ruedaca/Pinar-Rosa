@@ -101,7 +101,7 @@ export default async function PropiedadPage({ params }: Params) {
             />
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+              className="absolute -inset-px bg-gradient-to-t from-black/50 to-transparent"
             />
           </NotchFrame>
         </section>

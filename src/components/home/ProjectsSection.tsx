@@ -60,7 +60,7 @@ export default function ProjectsSection() {
             />
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"
+              className="absolute -inset-px bg-gradient-to-t from-black/45 to-transparent"
             />
           </NotchFrame>
         ))}
