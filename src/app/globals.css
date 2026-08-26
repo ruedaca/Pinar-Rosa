@@ -78,9 +78,15 @@
    * oscura. Contra blanco, la misma mezcla es invisible sobre la página.
    */
   background-color: var(--color-pr-white);
-  /* El `clip-path` recorta por otro camino que el `overflow`, y a diferencia de
-     éste no depende de cómo el navegador componga la capa. */
-  clip-path: inset(0 round var(--radius-frame));
+  /*
+   * Anillo blanco pegado al contorno, por fuera. Si alguna fila del filo se
+   * escapa del redondeo, queda tapada; y como se pinta afuera, no se le come
+   * un pixel a la foto, que era el problema de pintarla por dentro.
+   *
+   * Va sin `clip-path`: ese recorte se aplica también a lo que pinta el propio
+   * elemento, así que se comería el anillo.
+   */
+  box-shadow: 0 0 0 1px var(--color-pr-white);
 }
 
 /*
