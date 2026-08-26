@@ -70,6 +70,13 @@
 .marco-foto {
   overflow: hidden;
   border-radius: var(--radius-frame);
+  /*
+   * Fondo opaco detrás de la foto. Al redondear, el navegador mezcla la fila del
+   * filo con lo que haya debajo; si eso es transparente, la mezcla tira a negro
+   * —el color con el que se guarda un pixel sin opacidad— y aparece una línea
+   * oscura. Contra blanco, la misma mezcla es invisible sobre la página.
+   */
+  background-color: var(--color-pr-white);
   /* El `clip-path` recorta por otro camino que el `overflow`, y a diferencia de
      éste no depende de cómo el navegador componga la capa. */
   clip-path: inset(0 round var(--radius-frame));

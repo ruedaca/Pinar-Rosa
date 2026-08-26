@@ -38,7 +38,10 @@ export default function Foto({
   ajuste = "cover",
 }: FotoProps) {
   return (
-    <div className="absolute" style={estiloFoto(objectPosition, zoom)}>
+    <div
+      className="bg-pr-white absolute"
+      style={estiloFoto(objectPosition, zoom)}
+    >
       <Image
         src={src}
         alt={alt}
