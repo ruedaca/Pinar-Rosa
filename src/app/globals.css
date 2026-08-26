@@ -41,10 +41,11 @@
   --page-top: 22px;
   /* Aire entre marcos de imagen, tanto horizontal como vertical */
   --frame-gap: 14px;
-  --frame: 20px;
-  --card: 12px;
+  /* En mobile el radio va más contenido: menos curva, menos filo suavizado. */
+  --frame: 14px;
+  --card: 10px;
   /* Radio de las esquinas cóncavas del recorte */
-  --notch: 16px;
+  --notch: 14px;
 }
 
 @media (min-width: 768px) {
