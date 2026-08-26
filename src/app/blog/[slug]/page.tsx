@@ -101,7 +101,7 @@ export default async function NotaPage({ params }: Params) {
                     {/* La foto entra a mitad de la nota, no al final */}
                     {/* Sin epígrafe: repetía el alt y no sumaba nada */}
                     {indice === 1 ? (
-                      <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]">
+                      <div className="marco-foto relative mt-12 aspect-[16/9]">
                         <Image
                           src={nota.imagenInterior.src}
                           alt={nota.imagenInterior.alt}

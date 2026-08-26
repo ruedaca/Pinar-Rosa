@@ -21,7 +21,7 @@ export default function GaleriaFotos({
           <div
             key={foto.src}
             className={cn(
-              "bg-pr-gray-200 relative overflow-hidden rounded-[var(--radius-frame)]",
+              "bg-pr-gray-200 marco-foto relative",
               ancha ? "aspect-[16/9] md:col-span-2" : "aspect-[4/3]",
             )}
           >

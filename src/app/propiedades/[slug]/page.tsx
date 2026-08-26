@@ -169,7 +169,7 @@ export default async function PropiedadPage({ params }: Params) {
                  y sobre gris quedaba un borde alrededor del plano. */
               <div
                 key={plano.src}
-                className="relative aspect-[3/2] overflow-hidden rounded-[var(--radius-frame)] bg-white"
+                className="marco-foto relative aspect-[3/2] bg-white"
               >
                 <Image
                   src={plano.src}
@@ -192,7 +192,7 @@ export default async function PropiedadPage({ params }: Params) {
             {[propiedad.mapa, mapaZona].map((mapa) => (
               <div
                 key={mapa.src}
-                className="bg-pr-gray-200 relative aspect-[16/9] overflow-hidden rounded-[var(--radius-frame)]"
+                className="bg-pr-gray-200 marco-foto relative aspect-[16/9]"
               >
                 <Image
                   src={mapa.src}
