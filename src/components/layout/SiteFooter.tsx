@@ -2,7 +2,7 @@ import { footer } from "@/lib/content";
 
 export default function SiteFooter() {
   return (
-    <footer>
+    <footer className="pb-[var(--page-gutter)] md:pb-0">
       {/* Cierre de la página: recorte blanco encastrado en la esquina */}
       <div className="notch notch--br notch--bar ml-auto flex w-fit flex-col items-center gap-3 sm:flex-row sm:gap-8">
         <p className="text-pr-gray-700 text-[10px] tracking-[0.14em] uppercase">

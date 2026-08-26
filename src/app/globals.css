@@ -61,6 +61,24 @@
 }
 
 /*
+ * Marco de la foto.
+ *
+ * Safari recorta con radio en una capa aparte, y cuando el hijo lleva transform
+ * —el zoom de los encuadres— el borde del recorte queda aliaseado: sobre la
+ * foto aparece una línea fina en el filo. La máscara fuerza a que el recorte se
+ * resuelva en la misma capa que la imagen, y el translateZ la promueve una sola
+ * vez en vez de recomponerla en cada scroll.
+ */
+.marco-foto {
+  overflow: hidden;
+  border-radius: var(--radius-frame);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+/*
  * Recorte del marco de imagen.
  *
  * El texto no va sobre una tarjeta apoyada encima: se le muerde una esquina a la
@@ -105,6 +123,24 @@
 .notch--bar {
   position: relative;
   padding: 14px 20px 14px 24px;
+}
+
+/*
+ * En mobile la barra no llega al borde inferior: queda apoyada sobre el negro,
+ * con su propio radio. Ahí el mordisco no tiene contra qué morder, así que los
+ * dos redondeos se apagan.
+ */
+@media (max-width: 767px) {
+  /* Doble clase: si no, el radio de esquina de `.notch--br` gana por orden. */
+  .notch--bar.notch--br {
+    margin-right: var(--page-gutter);
+    border-radius: var(--radius-card);
+  }
+
+  .notch--bar::before,
+  .notch--bar::after {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
