@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import ContactSection from "@/components/home/ContactSection";
+import Boton from "@/components/ui/Boton";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
-import ArrowLink from "@/components/ui/ArrowLink";
 import Foto from "@/components/ui/Foto";
-import NotchFrame from "@/components/ui/NotchFrame";
 import { buscarNota, notas } from "@/lib/notas";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -44,40 +41,29 @@ export default async function NotaPage({ params }: Params) {
     <>
       <SiteHeader />
 
-      <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
+      <main>
         <article>
-          <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
-            <NotchFrame
-              corner="bottom-right"
-              className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
-              notchClassName="notch--roomy hidden w-[82%] md:block md:w-[34%] md:max-w-[400px]"
-              notch={
-                <p className="text-pr-gray-700 text-[13px] leading-[1.6]">
-                  {nota.bajada}
-                </p>
-              }
-              overlay={
-                <h1 className="display absolute bottom-6 left-6 z-10 max-w-[16ch] text-[clamp(1.6rem,4.5vw,3.5rem)] text-white sm:bottom-10 md:bottom-9 md:left-9">
-                  {nota.titulo}
-                </h1>
-              }
-            >
-              <Foto
-                src={nota.portada.src}
-                alt={nota.portada.alt}
-                sizes="100vw"
-                priority
-                objectPosition={nota.portada.objectPosition}
-              />
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"
-              />
-            </NotchFrame>
+          <section className="px-[var(--page-gutter)] pt-14 pb-8 text-center md:pt-20">
+            <p className="eyebrow text-pr-green-1 mb-3">
+              {nota.categoria} · {nota.fechaTexto} · {nota.lectura} de lectura
+            </p>
+            <h1 className="display text-pr-black mx-auto max-w-[22ch] text-[clamp(1.8rem,5vw,3rem)]">
+              {nota.titulo}
+            </h1>
           </section>
 
-          <div className="px-[var(--page-gutter)] pb-14 md:pb-20">
-            <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
+          <section className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
+            <Foto
+              src={nota.portada.src}
+              alt={nota.portada.alt}
+              sizes="100vw"
+              priority
+              objectPosition={nota.portada.objectPosition}
+            />
+          </section>
+
+          <div className="px-[var(--page-gutter)] py-14 md:py-20">
+            <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
               <div>
                 {nota.bloques.map((bloque, indice) => (
                   <section
@@ -96,8 +82,6 @@ export default async function NotaPage({ params }: Params) {
                       </p>
                     ))}
 
-                    {/* La foto entra a mitad de la nota, no al final */}
-                    {/* Sin epígrafe: repetía el alt y no sumaba nada */}
                     {indice === 1 ? (
                       <div className="marco-foto relative mt-12 aspect-[16/9]">
                         <Foto
@@ -121,34 +105,27 @@ export default async function NotaPage({ params }: Params) {
                   <p className="text-pr-gray-700 mt-2 text-[12px] leading-[1.6]">
                     {nota.relacionada.texto}
                   </p>
-                  <ArrowLink
-                    href={`/propiedades/${nota.relacionada.slug}`}
+                  <Boton
+                    href={`/desarrollos/${nota.relacionada.slug}`}
+                    variant="contorno"
                     className="mt-5"
                   >
                     Ver la ficha
-                  </ArrowLink>
+                  </Boton>
                 </div>
               </aside>
             </div>
           </div>
         </article>
 
-        {/* El cierre de la nota es solo la vuelta: el resto de las notas ya
-            están en la home, a un clic de acá */}
         <section className="px-[var(--page-gutter)] pb-14 text-center md:pb-20">
-          <Link
-            href="/#blog"
-            className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-7 py-3.5 text-[10px] font-medium tracking-[0.18em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
-          >
+          <Boton href="/blog" variant="contorno">
             Volver al blog
-          </Link>
+          </Boton>
         </section>
       </main>
 
-      <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">
-        <ContactSection />
-        <SiteFooter />
-      </div>
+      <SiteFooter />
     </>
   );
 }

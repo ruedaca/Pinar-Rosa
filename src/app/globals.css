@@ -3,24 +3,29 @@
 @theme inline {
   --color-pr-black: #000000;
   --color-pr-white: #ffffff;
-  --color-pr-green-1: #14b496;
-  --color-pr-green-2: #1fc4a0;
-  --color-pr-green-3: #59f0c3;
+  /* Paleta oficial del manual de marca: negro + gradiente menta. */
+  --color-pr-green-1: #00a88d;
+  --color-pr-green-2: #2fd1ac;
+  --color-pr-green-3: #59f7c8;
   --color-pr-gray-100: #f5f5f5;
   --color-pr-gray-200: #e5e5e5;
   --color-pr-gray-400: #a0a0a0;
   --color-pr-gray-700: #3a3a3a;
+  /* Gris carbón del header/footer del sitio actual del cliente. */
+  --color-pr-charcoal: #333333;
 
-  /* Cuerpo de texto */
+  /* Una sola familia para todo el sitio, como en pinarrosagroup.com.ar:
+     Poppins reemplaza a Gotham (títulos y logotipo) y Sofia Pro (texto),
+     que son de pago y no están disponibles como webfont libre. */
   --font-sans:
-    var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  /* Títulos y subtítulos */
   --font-display:
-    var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 
-  /* Radio de las piezas grandes (imágenes full-bleed) y de las tarjetas blancas */
+  /* Radio de tarjetas e imágenes: mínimo, casi a escuadra como en el sitio
+     de referencia (nada de marcos con esquinas mordidas). */
   --radius-frame: var(--frame);
   --radius-card: var(--card);
 }
@@ -29,217 +34,58 @@
   /* `@theme inline` no emite estas variables, así que se declaran también acá
      para poder usarlas desde CSS propio. */
   --font-sans:
-    var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   --font-display:
-    var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 
-  /* Margen lateral de página y aire sobre el hero: en el modelo el de arriba
-     es ~1.5 veces el lateral, no iguales. */
-  --page-gutter: 16px;
-  --page-top: 22px;
-  /* Aire entre marcos de imagen, tanto horizontal como vertical */
+  /* Margen lateral de página */
+  --page-gutter: 20px;
+  /* Alto de la barra de navegación fija */
+  --header-height: 64px;
   --frame-gap: 14px;
-  /* En mobile el radio va más contenido: menos curva, menos filo suavizado. */
-  --frame: 14px;
-  --card: 10px;
-  /* Radio de las esquinas cóncavas del recorte */
-  --notch: 14px;
+  --frame: 2px;
+  --card: 4px;
 }
 
 @media (min-width: 768px) {
   :root {
     --page-gutter: 40px;
-    /* Mismo valor que los costados: el marco queda con un aire parejo a los
-       cuatro lados y el hero arranca más arriba. */
-    --page-top: 40px;
-    --frame-gap: 26px;
-    --frame: 30px;
-    --card: 16px;
-    --notch: 24px;
+    --header-height: 84px;
+    --frame-gap: 22px;
   }
 }
 
 /*
- * Marco de la foto: recorte simple, sin máscaras ni capas propias.
- *
- * El encuadre y el pequeño desborde que evita la línea en el filo los resuelve
- * `estiloFoto` en cada imagen, con ancho y posición en vez de transform: iOS no
- * recorta con radio a un hijo transformado, y ese era el origen de la línea.
+ * Marco de foto: a escuadra (radio casi nulo) y sin decoración propia, como
+ * las imágenes del sitio de referencia. Se mantiene un fondo blanco detrás
+ * para que `next/image` con `fill` nunca deje ver una franja transparente
+ * mientras carga.
  */
 .marco-foto {
   overflow: hidden;
   border-radius: var(--radius-frame);
-  /*
-   * Fondo opaco detrás de la foto. Al redondear, el navegador mezcla la fila del
-   * filo con lo que haya debajo; si eso es transparente, la mezcla tira a negro
-   * —el color con el que se guarda un pixel sin opacidad— y aparece una línea
-   * oscura. Contra blanco, la misma mezcla es invisible sobre la página.
-   */
-  background-color: var(--color-pr-white);
-  /*
-   * Anillo blanco pegado al contorno, por fuera. Si alguna fila del filo se
-   * escapa del redondeo, queda tapada; y como se pinta afuera, no se le come
-   * un pixel a la foto, que era el problema de pintarla por dentro.
-   *
-   * Va sin `clip-path`: ese recorte se aplica también a lo que pinta el propio
-   * elemento, así que se comería el anillo.
-   */
-  box-shadow: 0 0 0 1px var(--color-pr-white);
+  background-color: var(--color-pr-gray-100);
 }
 
-/*
- * La imagen desborda un pixel el marco. Al redondear, la fila del filo se mezcla
- * entre foto y foto en vez de entre foto y fondo, que es lo que dibujaba la
- * línea en algunos niveles de zoom.
- */
-
-/*
- * Recorte del marco de imagen.
- *
- * El texto no va sobre una tarjeta apoyada encima: se le muerde una esquina a la
- * foto. La esquina interior del recorte lleva el radio del marco, y en las dos
- * uniones contra los bordes de la foto los pseudo-elementos redondean la esquina
- * que le queda a la imagen: pintan blanco por fuera de un círculo cuyo centro
- * cae siempre del lado de la foto, para que ahí no quede un pico.
- */
-.notch {
-  position: absolute;
-  background: var(--color-pr-white);
-  /* Un único ritmo de padding para todas las cards: el texto queda inset
-     respecto de los bordes de la foto en vez de pegado a ellos. */
-  padding: 14px 20px 12px;
-}
-
-@media (min-width: 768px) {
-  .notch {
-    padding: 16px 24px 14px;
-  }
-}
-
-/* Recorte del hero: en mobile va justo, en desktop con aire */
-.notch--roomy {
-  padding: 14px 18px 14px 20px;
-}
-
-@media (min-width: 768px) {
-  .notch--roomy {
-    padding: 34px 44px 32px 44px;
-  }
-}
-
-/*
- * Barra de créditos: mismo recorte, blanco sobre el negro del pie. Va en el
- * flujo normal (no absoluta) para que sea ella la que le da alto al footer.
- */
-.notch--bar {
-  position: relative;
-  padding: 14px 20px 14px 24px;
-}
-
-/*
- * En mobile la barra no llega al borde inferior: queda apoyada sobre el negro,
- * con su propio radio. Ahí el mordisco no tiene contra qué morder, así que los
- * dos redondeos se apagan.
- */
-@media (max-width: 767px) {
-  /* Doble clase: si no, el radio de esquina de `.notch--br` gana por orden. */
-  .notch--bar.notch--br {
-    width: 100%;
-    margin: 0;
-    padding: 8px var(--page-gutter) 4px;
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .notch--bar::before,
-  .notch--bar::after {
-    display: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .notch--bar {
-    padding: 18px 26px 18px 32px;
-  }
-}
-
-.notch::before,
-.notch::after {
+/* Línea corta debajo de los títulos de sección: el acento de marca. */
+.titulo-seccion::after {
   content: "";
-  position: absolute;
-  width: var(--notch);
-  height: var(--notch);
-}
-
-/*
- * Los dos redondeos se solapan un pixel contra la card. Sin ese solape, en
- * pantallas de densidad alta la junta cae en una fracción de pixel y se ve una
- * línea de foto entre el blanco de la card y el del redondeo: la card deja de
- * leerse como un mordisco y parece pegada encima.
- */
-.notch::before {
-  height: calc(var(--notch) + 1px);
-}
-
-.notch::after {
-  width: calc(var(--notch) + 1px);
-}
-
-/* Recorte apoyado en la esquina inferior izquierda */
-.notch--bl {
-  bottom: 0;
-  left: 0;
-  border-top-right-radius: var(--frame);
-}
-
-.notch--bl::before {
-  top: calc(-1 * var(--notch));
-  left: 0;
-  background: radial-gradient(
-    circle at 100% 0%,
-    transparent var(--notch),
-    var(--color-pr-white) calc(var(--notch) + 0.5px)
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-top: 18px;
+  background: linear-gradient(
+    90deg,
+    var(--color-pr-green-1),
+    var(--color-pr-green-3)
   );
 }
 
-.notch--bl::after {
-  right: calc(-1 * var(--notch));
-  bottom: 0;
-  background: radial-gradient(
-    circle at 100% 0%,
-    transparent var(--notch),
-    var(--color-pr-white) calc(var(--notch) + 0.5px)
-  );
-}
-
-/* Recorte apoyado en la esquina inferior derecha */
-.notch--br {
-  right: 0;
-  bottom: 0;
-  border-top-left-radius: var(--frame);
-}
-
-.notch--br::before {
-  top: calc(-1 * var(--notch));
-  right: 0;
-  background: radial-gradient(
-    circle at 0% 0%,
-    transparent var(--notch),
-    var(--color-pr-white) calc(var(--notch) + 0.5px)
-  );
-}
-
-.notch--br::after {
-  bottom: 0;
-  left: calc(-1 * var(--notch));
-  background: radial-gradient(
-    circle at 0% 0%,
-    transparent var(--notch),
-    var(--color-pr-white) calc(var(--notch) + 0.5px)
-  );
+.titulo-seccion--centrado::after {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 html {
@@ -253,7 +99,6 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Montserrat para toda la jerarquía de títulos; el resto queda en Jakarta */
 h1,
 h2,
 h3,
@@ -269,45 +114,17 @@ h4 {
   font-weight: 500;
 }
 
-/* Display de la home: interlineado cerrado y tracking negativo */
+/* Titulares livianos y con tracking amplio, como en el sitio de referencia */
 .display {
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.035em;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
-/*
- * Los títulos de sección son bastante más chicos que el hero, así que el 0.92
- * los deja apretados cuando ocupan dos líneas. Se declara acá y no con
- * `leading-*` porque esta hoja se carga después de Tailwind y le ganaría.
- */
 .display--section {
-  line-height: 1.16;
-  letter-spacing: -0.025em;
-}
-
-/*
- * Entrada del hero: sube unos pocos píxeles y aparece. Corta y sin rebote —
- * la idea es que se sienta el asentamiento, no que se note la animación.
- * El bloque de prefers-reduced-motion de más abajo la anula.
- */
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-in {
-  animation: hero-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.hero-in--delayed {
-  animation-delay: 160ms;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 /*

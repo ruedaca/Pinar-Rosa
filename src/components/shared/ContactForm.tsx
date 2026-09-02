@@ -1,66 +1,47 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 
 import SelectConsulta from "@/components/shared/SelectConsulta";
-import { contacto, footer, PROYECTO_PROPIO } from "@/lib/content";
+import Boton from "@/components/ui/Boton";
+import { contacto, footer } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-/** Evento con el que el botón de Estudio preselecciona el motivo de consulta. */
-export const EVENTO_CONSULTA = "pinar-rosa:consulta";
-
 type ContactFormProps = {
-  /** "dark" es la versión que vive en el bloque negro del pie. */
-  tone?: "light" | "dark";
+  /** Motivo preseleccionado, por ejemplo desde /contacto?motivo=... */
+  initialMotivo?: string;
 };
 
 /**
  * Sin backend todavía: al enviar se arma un mail al estudio con los datos
  * cargados. Cuando exista un endpoint real, se reemplaza `handleSubmit`.
  */
-export default function ContactForm({ tone = "light" }: ContactFormProps) {
+export default function ContactForm({ initialMotivo }: ContactFormProps) {
   const [enviado, setEnviado] = useState(false);
-  const [consulta, setConsulta] = useState(contacto.consultas[0].value);
-  const dark = tone === "dark";
-
-  useEffect(() => {
-    const onConsulta = (evento: Event) => {
-      const detalle = (evento as CustomEvent<string>).detail;
-      if (detalle) setConsulta(detalle);
-    };
-    window.addEventListener(EVENTO_CONSULTA, onConsulta);
-    return () => window.removeEventListener(EVENTO_CONSULTA, onConsulta);
-  }, []);
-
-  const inputClasses = cn(
-    "w-full rounded-lg border px-4 py-2.5 text-[13px] md:py-3 transition-colors focus:outline-none",
-    dark
-      ? "border-white/15 bg-white/5 text-white placeholder:text-white/35 focus:border-pr-green-3"
-      : "border-pr-gray-200 bg-white text-pr-black placeholder:text-pr-gray-400 focus:border-pr-green-1",
+  const [consulta, setConsulta] = useState(
+    contacto.consultas.find((opcion) => opcion.value === initialMotivo)
+      ?.value ?? contacto.consultas[0].value,
   );
-  const labelClasses = cn(
-    "eyebrow mb-2 block",
-    dark ? "text-white/50" : "text-pr-gray-700",
-  );
+
+  const inputClasses =
+    "border-pr-gray-200 bg-white text-pr-black placeholder:text-pr-gray-400 focus:border-pr-green-1 w-full rounded-sm border px-4 py-2.5 text-[13px] md:py-3 transition-colors focus:outline-none";
+  const labelClasses = "eyebrow text-pr-gray-700 mb-2 block";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const datos = new FormData(event.currentTarget);
     const nombre = String(datos.get("nombre") ?? "");
+    const apellido = String(datos.get("apellido") ?? "");
     const cuerpo = [
-      `Nombre: ${nombre}`,
+      `Nombre: ${nombre} ${apellido}`,
+      `Teléfono: ${datos.get("telefono") ?? ""}`,
       `Email: ${datos.get("email") ?? ""}`,
       `Motivo: ${consulta}`,
       "",
       String(datos.get("mensaje") ?? ""),
     ].join("\n");
 
-    // El asunto lleva el motivo adelante para que se pueda clasificar
-    // la consulta desde la bandeja de entrada, sin abrir el mail.
-    const asunto =
-      consulta === PROYECTO_PROPIO
-        ? `Proyecto propio — ${nombre}`
-        : `${consulta} — ${nombre}`;
+    const asunto = `${consulta} — ${nombre} ${apellido}`;
 
     window.location.href = `mailto:${footer.email}?subject=${encodeURIComponent(
       asunto,
@@ -69,7 +50,10 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 text-left md:mt-14">
+    <form
+      onSubmit={handleSubmit}
+      className="mx-auto mt-10 max-w-xl text-left md:mt-14"
+    >
       <div className="grid gap-4 sm:grid-cols-2 md:gap-5">
         <div>
           <label htmlFor="nombre" className={labelClasses}>
@@ -80,8 +64,39 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
             name="nombre"
             type="text"
             required
-            autoComplete="name"
+            autoComplete="given-name"
             placeholder="Tu nombre"
+            className={inputClasses}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="apellido" className={labelClasses}>
+            Apellido *
+          </label>
+          <input
+            id="apellido"
+            name="apellido"
+            type="text"
+            required
+            autoComplete="family-name"
+            placeholder="Tu apellido"
+            className={inputClasses}
+          />
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 md:mt-5 md:gap-5">
+        <div>
+          <label htmlFor="telefono" className={labelClasses}>
+            Teléfono
+          </label>
+          <input
+            id="telefono"
+            name="telefono"
+            type="tel"
+            autoComplete="tel"
+            placeholder="Tu teléfono"
             className={inputClasses}
           />
         </div>
@@ -112,42 +127,29 @@ export default function ContactForm({ tone = "light" }: ContactFormProps) {
           opciones={contacto.consultas}
           value={consulta}
           onChange={setConsulta}
-          dark={dark}
         />
       </div>
 
       <div className="mt-4 md:mt-5">
         <label htmlFor="mensaje" className={labelClasses}>
-          Mensaje *
+          Información adicional
         </label>
         <textarea
           id="mensaje"
           name="mensaje"
-          required
           rows={4}
-          placeholder="Contanos qué estás buscando."
+          placeholder="Contanos qué estás buscando (opcional)."
           className={cn(inputClasses, "resize-y")}
         />
       </div>
 
-      <button
-        type="submit"
-        className={cn(
-          "mt-6 w-full rounded-full px-8 py-3.5 text-[10px] font-medium tracking-[0.18em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-8 md:py-4",
-          dark
-            ? "text-pr-black hover:bg-pr-green-3 focus-visible:outline-pr-green-3 bg-white"
-            : "bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 text-white",
-        )}
-      >
-        Enviar mensaje
-      </button>
+      <Boton type="submit" className="mt-6 w-full md:mt-8">
+        Enviar consulta
+      </Boton>
 
       <p
         aria-live="polite"
-        className={cn(
-          "mt-4 text-center text-[12px] leading-[1.6]",
-          dark ? "text-white/50" : "text-pr-gray-700",
-        )}
+        className="text-pr-gray-700 mt-4 text-center text-[12px] leading-[1.6]"
       >
         {enviado
           ? "Abrimos tu cliente de correo con el mensaje listo para enviar."

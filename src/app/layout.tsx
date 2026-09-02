@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
+
+import WhatsAppFloat from "@/components/shared/WhatsAppFloat";
 
 import "./globals.css";
 
-/** Títulos y subtítulos. */
-const montserrat = Montserrat({
+/**
+ * Única familia del sitio, para todos los pesos: títulos, logotipo y texto.
+ * Gotham y Sofia Pro (las del manual de marca) son tipografías de pago; Poppins
+ * es la alternativa gratuita más cercana a su geometría redondeada.
+ */
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-/** Cuerpo de texto, navegación, botones y epígrafes. */
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -46,16 +46,19 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // Las variables de fuente van en <html> para que existan ya en :root
+  // La variable de fuente va en <html> para que exista ya en :root
   return (
-    <html lang="es-AR" className={`${montserrat.variable} ${jakarta.variable}`}>
+    <html lang="es-AR" className={poppins.variable}>
       <head>
         {/* Sin JS el observador nunca corre: el contenido queda visible igual */}
         <noscript>
           <style>{`.reveal { opacity: 1; transform: none; }`}</style>
         </noscript>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <WhatsAppFloat />
+      </body>
     </html>
   );
 }

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import ContactSection from "@/components/home/ContactSection";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import GaleriaFotos from "@/components/propiedad/GaleriaFotos";
+import Planos from "@/components/propiedad/Planos";
 import SeccionDesplegable from "@/components/propiedad/SeccionDesplegable";
-import Eyebrow from "@/components/ui/Eyebrow";
 import Foto from "@/components/ui/Foto";
 import Media from "@/components/ui/Media";
-import NotchFrame from "@/components/ui/NotchFrame";
 import { mapaZona } from "@/lib/content";
 import { buscarPropiedad, propiedades } from "@/lib/propiedades";
 
@@ -54,67 +52,36 @@ export default async function PropiedadPage({ params }: Params) {
 
   return (
     <>
-      {/* Igual que en la home: la píldora flota sobre la foto de portada */}
       <SiteHeader />
 
-      <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
-        <section className="px-[var(--page-gutter)] pt-[var(--page-top)] pb-14 md:pb-20">
-          <NotchFrame
-            corner="bottom-right"
-            className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[48/25]"
-            notchClassName="notch--roomy w-fit md:w-[34%] md:max-w-[400px]"
-            notch={
-              <>
-                {/*
-                  El h1 es siempre este, no el de la foto: en mobile es el
-                  título visible y en desktop queda solo para lectores de
-                  pantalla, porque ahí el nombre se lee sobre la portada.
-                */}
-                <span className="flex items-baseline gap-3 md:block">
-                  <h1 className="text-pr-black text-[17px] font-semibold md:sr-only">
-                    {propiedad.name}
-                  </h1>
-                  <span className="eyebrow text-pr-green-1 block md:mb-3">
-                    {propiedad.disponible ? "En venta" : "Vendida"}
-                  </span>
-                </span>
-                <p className="text-pr-gray-700 hidden text-[13px] leading-[1.6] md:block">
-                  {propiedad.resumen}
-                </p>
-              </>
-            }
-            overlay={
-              <p
-                aria-hidden
-                className="display absolute bottom-9 left-9 z-10 hidden text-[clamp(1.9rem,6vw,5.25rem)] text-white uppercase md:block"
-              >
-                {propiedad.name}
-              </p>
-            }
-          >
-            <Media
-              media={propiedad.portada}
-              sizes="(min-width: 768px) 100vw, 175vw"
-              priority
-              quality={85}
-              tone="dark"
-            />
-            <div
-              aria-hidden
-              className="absolute -inset-px bg-gradient-to-t from-black/50 to-transparent"
-            />
-          </NotchFrame>
+      <main>
+        <section className="px-[var(--page-gutter)] pt-14 pb-8 text-center md:pt-20">
+          <p className="eyebrow text-pr-green-1 mb-3">
+            {propiedad.disponible ? "En venta" : "Vendida"}
+          </p>
+          <h1 className="display text-pr-black text-[clamp(2rem,6vw,3.5rem)]">
+            {propiedad.name}
+          </h1>
+          <p className="text-pr-gray-700 mt-3 text-[13px] tracking-[0.06em] uppercase">
+            Pinamar Norte
+            <span className="text-pr-gray-400 mx-2">|</span>
+            {propiedad.direccion}
+          </p>
         </section>
 
-        {/*
-          Lleva menos padding que el resto a propósito: acá lo último es texto
-          dentro de una celda con su propio padding, así que 56px se perciben
-          como los 80px que separan a las demás secciones.
-        */}
-        <section className="px-[var(--page-gutter)] pb-10 md:pb-14">
-          <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+        <section className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
+          <Media
+            media={propiedad.portada}
+            sizes="100vw"
+            priority
+            quality={85}
+          />
+        </section>
+
+        <section className="px-[var(--page-gutter)] py-14 md:py-20">
+          <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:gap-16">
             <div>
-              <Eyebrow className="mb-6">El proyecto</Eyebrow>
+              <p className="eyebrow text-pr-green-1 mb-4">El proyecto</p>
               <div className="max-w-[46ch] space-y-4">
                 {propiedad.descripcion.map((parrafo) => (
                   <p
@@ -127,7 +94,6 @@ export default async function PropiedadPage({ params }: Params) {
               </div>
             </div>
 
-            {/* Un solo bloque: antes los destacados colgaban sueltos abajo */}
             <dl className="bg-pr-gray-200 grid grid-cols-2 gap-px self-start overflow-hidden rounded-[var(--radius-card)]">
               {fichaTecnica.map((fila) => (
                 <div key={fila.titulo} className="bg-white p-5 md:p-6">
@@ -143,7 +109,7 @@ export default async function PropiedadPage({ params }: Params) {
 
         <SeccionDesplegable eyebrow="Los ambientes" titulo="Cómo se recorre">
           <div>
-            <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
+            <ul className="mx-auto grid max-w-6xl gap-x-10 gap-y-3 sm:grid-cols-2">
               {propiedad.programa.map((ambiente) => (
                 <li
                   key={ambiente}
@@ -157,37 +123,28 @@ export default async function PropiedadPage({ params }: Params) {
         </SeccionDesplegable>
 
         <SeccionDesplegable eyebrow="La casa" titulo="Cómo se ve">
-          <GaleriaFotos fotos={propiedad.galeria} />
+          <div className="mx-auto max-w-6xl">
+            <GaleriaFotos fotos={propiedad.galeria} />
+          </div>
         </SeccionDesplegable>
 
         <SeccionDesplegable eyebrow="Los planos" titulo="Cómo está organizada">
-          <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
-            {/* Sin epígrafe: cada plano ya trae rotulada la planta y la
-                referencia de ambientes dentro del dibujo. */}
-            {propiedad.planos.map((plano) => (
-              /* Fondo blanco: con object-contain el sobrante del marco se ve,
-                 y sobre gris quedaba un borde alrededor del plano. */
-              <div
-                key={plano.src}
-                className="marco-foto relative aspect-[3/2] bg-white"
-              >
-                <Foto
-                  src={plano.src}
-                  alt={`${plano.titulo} del ${propiedad.name}`}
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  ajuste="contain"
-                />
-              </div>
-            ))}
+          <div className="mx-auto max-w-3xl">
+            <Planos
+              planos={propiedad.planos}
+              nombrePropiedad={propiedad.name}
+            />
           </div>
         </SeccionDesplegable>
 
         <SeccionDesplegable eyebrow="La obra" titulo="Cómo va">
-          <GaleriaFotos fotos={propiedad.obra} destacarPrimera={false} />
+          <div className="mx-auto max-w-6xl">
+            <GaleriaFotos fotos={propiedad.obra} destacarPrimera={false} />
+          </div>
         </SeccionDesplegable>
 
         <SeccionDesplegable eyebrow="La ubicación" titulo={propiedad.direccion}>
-          <div className="grid gap-[var(--frame-gap)] md:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl gap-[var(--frame-gap)] md:grid-cols-2">
             {[propiedad.mapa, mapaZona].map((mapa) => (
               <div
                 key={mapa.src}
@@ -207,7 +164,7 @@ export default async function PropiedadPage({ params }: Params) {
           eyebrow="Las terminaciones"
           titulo="Con qué se entrega"
         >
-          <div>
+          <div className="mx-auto max-w-6xl">
             <dl className="grid gap-x-10 gap-y-6 md:grid-cols-2">
               {propiedad.materiales.map((material) => (
                 <div
@@ -227,10 +184,7 @@ export default async function PropiedadPage({ params }: Params) {
         </SeccionDesplegable>
       </main>
 
-      <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">
-        <ContactSection />
-        <SiteFooter />
-      </div>
+      <SiteFooter />
     </>
   );
 }

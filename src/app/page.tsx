@@ -1,42 +1,63 @@
-import AboutSection from "@/components/home/AboutSection";
-import BlogSection from "@/components/home/BlogSection";
-import ContactSection from "@/components/home/ContactSection";
+import BandaCTA from "@/components/shared/BandaCTA";
 import Hero from "@/components/home/Hero";
+import Teaser from "@/components/home/Teaser";
 import Reveal from "@/components/ui/Reveal";
-import ProjectsSection from "@/components/home/ProjectsSection";
-import ServicesSection from "@/components/home/ServicesSection";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
+import { about, projects, services } from "@/lib/content";
+import { notas } from "@/lib/notas";
 
 export default function Home() {
+  const [primerLote, ...otrosLotes] = projects;
+  const [primeraNota] = notas;
+
   return (
     <>
       <SiteHeader />
-      {/*
-        La parte blanca cierra con las esquinas de abajo redondeadas: el bloque
-        negro se mete detrás con un margen negativo y sólo asoma en esas dos
-        esquinas, igual que el radio de los marcos de imagen.
-      */}
-      <main className="bg-pr-white relative z-10 rounded-b-[var(--radius-frame)]">
+      <main>
         <Hero />
-        {/* El hero ya tiene su propia entrada; el resto aparece al scrollear */}
+
         <Reveal>
-          <AboutSection />
+          <Teaser
+            eyebrow="El Estudio"
+            title={about.title.join(" ")}
+            paragraph={about.paragraphs[0]}
+            ctaLabel="Ver más"
+            ctaHref="/el-estudio"
+            image={services[2].image}
+            imageSide="left"
+          />
         </Reveal>
+
         <Reveal>
-          <ServicesSection />
+          <BandaCTA />
         </Reveal>
+
         <Reveal>
-          <ProjectsSection />
+          <Teaser
+            eyebrow="Desarrollos"
+            title="Nuestros desarrollos"
+            paragraph={`Creemos que la arquitectura va más allá de la construcción de estructuras: es la creación de experiencias. ${primerLote.resumen} ${otrosLotes.map((l) => l.name).join(" y ")} completan la propuesta.`}
+            ctaLabel="Ver más"
+            ctaHref="/desarrollos"
+            image={primerLote.portada}
+            imageSide="right"
+          />
         </Reveal>
+
         <Reveal>
-          <BlogSection />
+          <Teaser
+            eyebrow="Blog"
+            title="Últimas novedades"
+            paragraph={primeraNota.bajada}
+            ctaLabel="Ver más"
+            ctaHref="/blog"
+            image={{ kind: "photo", ...primeraNota.portada }}
+            imageSide="left"
+          />
         </Reveal>
       </main>
-      <div className="bg-pr-black -mt-[var(--radius-frame)] pt-[var(--radius-frame)]">
-        <ContactSection />
-        <SiteFooter />
-      </div>
+      <SiteFooter />
     </>
   );
 }

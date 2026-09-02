@@ -8,12 +8,13 @@ import { propiedades } from "@/lib/propiedades";
  * indica el nombre de archivo sugerido dentro de /public.
  */
 
-/** Todo el menú baja a secciones de la home: no hay páginas internas todavía. */
+/** Cada ítem del menú es una página propia, como en el sitio actual. */
 export const nav = [
-  { label: "Estudio", href: "/#estudio" },
-  { label: "Propiedades", href: "/#propiedades" },
-  { label: "Blog", href: "/#blog" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Home", href: "/" },
+  { label: "El Estudio", href: "/el-estudio" },
+  { label: "Desarrollos", href: "/desarrollos" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 /** El titular sale de la memoria descriptiva de los propios proyectos. */
@@ -21,7 +22,6 @@ export const hero = {
   titleLines: ["Donde el límite", "es el bosque"],
   intro:
     "Tres casas en los bosques de Pinamar, proyectadas y construidas por Pinar Rosa. Hormigón armado y vidrio: la casa se abre hasta que el cierre lo pone el pinar.",
-  action: { label: "Contactanos", href: "#contacto" },
   image: {
     kind: "photo",
     src: "/lotes/lote-6/portada.jpg",
@@ -122,7 +122,18 @@ export const contacto = {
 
 export const PROYECTO_PROPIO = "Proyecto propio";
 
+/**
+ * Banda de llamado a la acción que aparece entre secciones de la home y al
+ * pie del listado de desarrollos, igual que en el sitio actual del cliente.
+ */
+export const ctaInteres = {
+  texto:
+    "¿Estás interesado sobre nuestras inversiones y negocios inmobiliarios?",
+  accion: { label: "Contáctenos", href: "/contacto" },
+};
+
 export const footer = {
+  direccion: "C. 162 N°1400, B1876 / Bernal, Buenos Aires",
   email: "info.pinarrosagroup@gmail.com",
   instagram: "https://instagram.com/pinarrosagroup",
   whatsapp: "https://wa.me/5491138074412",

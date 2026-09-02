@@ -13,13 +13,12 @@ type SelectConsultaProps = {
   /** Id del <label> que lo nombra. */
   labelId: string;
   id: string;
-  dark?: boolean;
 };
 
 /**
  * El desplegable nativo lo dibuja el sistema operativo: siempre blanco, con la
  * tipografía del sistema y sin manera de darle el estilo del sitio. Este lo
- * reemplaza con el mismo panel oscuro del menú de la barra.
+ * reemplaza con un panel propio, a juego con el resto del formulario.
  */
 export default function SelectConsulta({
   opciones,
@@ -27,7 +26,6 @@ export default function SelectConsulta({
   onChange,
   labelId,
   id,
-  dark = false,
 }: SelectConsultaProps) {
   const [abierto, setAbierto] = useState(false);
   const [marcada, setMarcada] = useState(() =>
@@ -111,21 +109,15 @@ export default function SelectConsulta({
         aria-activedescendant={abierto ? `${id}-opcion-${marcada}` : undefined}
         onClick={() => setAbierto((estado) => !estado)}
         onKeyDown={alTeclado}
-        className={cn(
-          "flex w-full items-center justify-between rounded-lg border px-4 py-2.5 text-left text-[13px] transition-colors focus:outline-none md:py-3",
-          dark
-            ? "focus:border-pr-green-3 border-white/15 bg-white/5 text-white"
-            : "border-pr-gray-200 text-pr-black focus:border-pr-green-1 bg-white",
-        )}
+        className="border-pr-gray-200 text-pr-black focus:border-pr-green-1 flex w-full items-center justify-between rounded-sm border bg-white px-4 py-2.5 text-left text-[13px] transition-colors focus:outline-none md:py-3"
       >
         {elegida?.label}
         <svg
           aria-hidden
           viewBox="0 0 16 16"
           className={cn(
-            "size-3.5 shrink-0 transition-transform duration-300",
+            "text-pr-gray-400 size-3.5 shrink-0 transition-transform duration-300",
             abierto && "rotate-180",
-            dark ? "text-white/50" : "text-pr-gray-400",
           )}
           fill="none"
         >
@@ -139,17 +131,12 @@ export default function SelectConsulta({
         </svg>
       </button>
 
-      {/*
-        Mismo panel que el menú de la barra: negro al 85% con desenfoque. Va
-        absoluto para que al abrirse no empuje el resto del formulario.
-      */}
       <div
         className={cn(
-          "absolute z-20 mt-2 w-full overflow-hidden rounded-[var(--radius-card)] backdrop-blur-md transition-[max-height,opacity] duration-300",
+          "border-pr-gray-200 absolute z-20 mt-2 w-full overflow-hidden rounded-sm border bg-white shadow-lg transition-[max-height,opacity] duration-300",
           abierto
             ? "max-h-80 opacity-100"
             : "pointer-events-none max-h-0 opacity-0",
-          dark ? "bg-black/85" : "bg-pr-black/90",
         )}
       >
         <ul
@@ -157,7 +144,7 @@ export default function SelectConsulta({
           role="listbox"
           aria-labelledby={labelId}
           tabIndex={-1}
-          className="flex flex-col p-2"
+          className="flex flex-col p-1"
         >
           {opciones.map((opcion, indice) => {
             const seleccionada = opcion.value === value;
@@ -170,15 +157,10 @@ export default function SelectConsulta({
                 onClick={() => elegir(indice)}
                 onPointerEnter={() => setMarcada(indice)}
                 className={cn(
-                  // El hover es el mismo del menú de la barra: verde y
-                  // sombreado juntos. Va por CSS y no por estado para que el
-                  // mouse no dependa de que React procese el evento.
-                  "hover:text-pr-green-3 cursor-pointer rounded-full px-4 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors hover:bg-white/10",
-                  // El recorrido con el teclado deja la misma marca.
+                  "hover:bg-pr-gray-100 cursor-pointer rounded-sm px-4 py-2.5 text-[13px] transition-colors",
                   seleccionada || marcada === indice
-                    ? "text-pr-green-3"
-                    : "text-white/80",
-                  marcada === indice && "bg-white/10",
+                    ? "text-pr-green-1 bg-pr-gray-100"
+                    : "text-pr-black",
                 )}
               >
                 {opcion.label}

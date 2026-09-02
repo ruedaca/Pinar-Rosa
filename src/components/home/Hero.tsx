@@ -1,66 +1,32 @@
-import Media from "@/components/ui/Media";
-import NotchFrame from "@/components/ui/NotchFrame";
-import { hero } from "@/lib/content";
+import HeroCarousel from "@/components/home/HeroCarousel";
+import { hero, projects } from "@/lib/content";
 
+/**
+ * Foto a pantalla completa sin texto encima —como en pinarrosagroup.com.ar—,
+ * seguida de una banda oscura con el titular. Las fotos son las portadas
+ * reales de los tres desarrollos.
+ */
 export default function Hero() {
+  const slides = [hero.image, ...projects.slice(0, 2).map((p) => p.portada)];
+
   return (
-    <section className="px-[var(--page-gutter)] pt-[var(--page-top)]">
-      <NotchFrame
-        corner="bottom-right"
-        className="min-h-[440px] md:min-h-[720px] lg:h-[calc(100vh-var(--page-top)-var(--page-gutter))] lg:min-h-[760px]"
-        notchClassName="notch--roomy hero-in hero-in--delayed w-fit md:w-[40%] md:max-w-[440px]"
-        notch={
-          <>
-            {/* En mobile la tarjeta queda solo con el botón: el texto ocupaba media pantalla */}
-            <p className="text-pr-gray-700 hidden text-[13px] leading-[1.6] md:block">
-              {hero.intro}
-            </p>
-            {/* Ancla dentro de la misma página: con next/link no baja */}
-            <a
-              href={hero.action.href}
-              className="bg-pr-black hover:bg-pr-green-1 focus-visible:outline-pr-green-1 inline-block rounded-full px-4 py-2 text-[9px] font-medium tracking-[0.14em] text-white uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:mt-6 md:px-7 md:py-3.5 md:text-[10px] md:tracking-[0.18em]"
-            >
-              {hero.action.label}
-            </a>
-          </>
-        }
-        // Cada línea del titular es una línea: el corte lo decide el copy
-        overlay={
-          <h1 className="display hero-in absolute bottom-6 left-6 z-10 text-[clamp(0.95rem,4.7vw,1.35rem)] text-white uppercase md:bottom-9 md:left-9 md:text-[clamp(1.9rem,6vw,5.25rem)]">
-            {hero.titleLines.map((line) => (
-              <span key={line} className="block whitespace-nowrap">
-                {line}
-              </span>
-            ))}
-          </h1>
-        }
-      >
-        {/*
-          El marco es vertical y la foto apaisada: con `object-cover` la
-          imagen escala por el alto, así que en mobile hace falta pedir
-          bastante más ancho que el del viewport o se ve pixelada.
-        */}
-        <Media
-          media={hero.image}
-          sizes="(min-width: 768px) 100vw, 175vw"
-          priority
-          quality={85}
-          tone="dark"
-        />
-        {/*
-          Doble velo: uno general y otro más denso en la esquina inferior
-          izquierda, que es donde apoya el titular. En mobile el texto ocupa
-          casi todo el ancho de la foto, así que ahí el velo es más fuerte.
-        */}
+    <section>
+      <div className="relative h-[52vh] min-h-[340px] overflow-hidden md:h-[74vh] md:min-h-[520px]">
+        <HeroCarousel slides={slides} />
         <div
           aria-hidden
-          className="absolute -inset-px bg-gradient-to-t from-black/55 via-black/15 to-black/30 md:from-black/45 md:via-black/10"
+          className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent"
         />
-        <div
-          aria-hidden
-          className="absolute -inset-px bg-[radial-gradient(120%_90%_at_0%_100%,rgba(0,0,0,0.55)_0%,transparent_60%)]"
-        />
-      </NotchFrame>
+      </div>
+
+      <div className="bg-pr-charcoal px-[var(--page-gutter)] py-14 text-center md:py-20">
+        <h1 className="display mx-auto max-w-[18ch] text-[clamp(1.8rem,5vw,3.25rem)] text-white uppercase">
+          {hero.titleLines.join(" ")}
+        </h1>
+        <p className="mx-auto mt-5 max-w-[58ch] text-[14px] leading-[1.8] text-white/65">
+          {hero.intro}
+        </p>
+      </div>
     </section>
   );
 }

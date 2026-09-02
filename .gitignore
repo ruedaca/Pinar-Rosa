@@ -46,6 +46,9 @@ next-env.d.ts
 .idea/
 skills-lock.json
 
+# material de referencia, no forma parte del sitio
+/brand/
+
 # del editor se comparte solo la config del equipo
 .vscode/*
 !.vscode/settings.json

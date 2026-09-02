@@ -1,60 +1,37 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
 type LogoProps = {
   className?: string;
-  /** El isotipo real (SVG del cliente) va en /public/images/brand/isotipo.svg */
-  invert?: boolean;
+  /** "blanco" para fondos oscuros (header y footer), "negro" para fondos claros. */
+  variant?: "blanco" | "negro";
 };
 
-export default function Logo({ className, invert = false }: LogoProps) {
+const ARCHIVOS = {
+  blanco: "/logos/pinar-rosa-blanco.png",
+  negro: "/logos/pinar-rosa-negro.png",
+};
+
+export default function Logo({ className, variant = "blanco" }: LogoProps) {
   return (
     <Link
       href="/"
       aria-label="Pinar Rosa Group — Inicio"
       className={cn(
-        "focus-visible:outline-pr-green-1 inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4",
+        "focus-visible:outline-pr-green-1 inline-flex items-center focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
       )}
     >
-      <svg
-        viewBox="0 0 28 28"
-        className="size-5 shrink-0 md:size-6"
-        aria-hidden
-      >
-        <rect
-          x="1"
-          y="1"
-          width="26"
-          height="26"
-          rx="8"
-          stroke="var(--color-pr-green-3)"
-          strokeWidth="2"
-          fill="none"
-        />
-        {/* Gira solo la R: el cuadrado se queda derecho */}
-        <g transform="rotate(-90 14 14)">
-          <path
-            d="M9 20V9h5.5a3.5 3.5 0 0 1 0 7H12"
-            stroke="var(--color-pr-green-3)"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <circle cx="19.5" cy="18.5" r="1.6" fill="var(--color-pr-green-3)" />
-        </g>
-      </svg>
-      <span
-        className={cn(
-          "text-[12px] leading-none tracking-[0.02em] md:text-[13px]",
-          invert ? "text-pr-black" : "text-white",
-        )}
-      >
-        <span className="font-light">PINAR </span>
-        <span className="font-semibold">ROSA</span>
-      </span>
+      <Image
+        src={ARCHIVOS[variant]}
+        alt="Pinar Rosa"
+        width={1900}
+        height={819}
+        priority
+        className="h-8 w-auto md:h-10"
+      />
     </Link>
   );
 }
