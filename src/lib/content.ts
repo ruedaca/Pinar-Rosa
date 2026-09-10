@@ -132,11 +132,15 @@ export const ctaInteres = {
   accion: { label: "Contáctenos", href: "/contacto" },
 };
 
+/** Texto con el que arranca el chat al tocar cualquier botón de WhatsApp del sitio. */
+const MENSAJE_WHATSAPP =
+  "¡Hola! Los contacto desde la web de Pinar Rosa. Me gustaría recibir más información sobre sus desarrollos.";
+
 export const footer = {
   direccion: "C. 162 N°1400, B1876 / Bernal, Buenos Aires",
   email: "info.pinarrosagroup@gmail.com",
   instagram: "https://instagram.com/pinarrosagroup",
-  whatsapp: "https://wa.me/5491138074412",
+  whatsapp: `https://wa.me/5491138074412?text=${encodeURIComponent(MENSAJE_WHATSAPP)}`,
 };
 
 /** El formulario de contacto entrega acá; Formspree reenvía al mail del cliente. */
