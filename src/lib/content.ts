@@ -36,7 +36,7 @@ export const about = {
   eyebrow: "El estudio",
   title: ["Del proyecto", "a la llave"],
   paragraphs: [
-    "Somos estudio de arquitectura y desarrolladora. Proyectamos, dirigimos la obra y entregamos la casa terminada: la cocina a medida, los placares y la climatización ya puestos.",
+    "Somos estudio de arquitectura y desarrolladora. Asesoramos desde la compra del lote —para saber cuál es el correcto— proyectamos, dirigimos y construimos la obra, y entregamos la casa terminada: la cocina a medida, los placares y la climatización ya puestos.",
     "Cada proyecto parte de dos materiales. El hormigón armado sostiene y libera la planta, sin muros que obliguen a nada. El vidrio se abre o se cierra según la hora y la estación; cuando se abre del todo, el cerramiento lo termina haciendo el bosque.",
     "Con los encargos particulares trabajamos igual: del anteproyecto a la entrega, un solo equipo y un solo interlocutor.",
   ],
@@ -138,3 +138,6 @@ export const footer = {
   instagram: "https://instagram.com/pinarrosagroup",
   whatsapp: "https://wa.me/5491138074412",
 };
+
+/** El formulario de contacto entrega acá; Formspree reenvía al mail del cliente. */
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xrpgrkwk";

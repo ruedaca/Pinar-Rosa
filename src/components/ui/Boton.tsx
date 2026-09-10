@@ -8,7 +8,7 @@ type Variant = "solido" | "contorno";
 type Tono = "sobre-oscuro" | "sobre-claro";
 
 const base =
-  "inline-flex items-center justify-center rounded-sm px-7 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pr-green-1";
+  "inline-flex items-center justify-center rounded-sm px-7 py-3 text-[11px] font-medium tracking-[0.16em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pr-green-1 disabled:cursor-not-allowed disabled:opacity-60";
 
 const estilos: Record<Variant, Record<Tono, string>> = {
   solido: {
