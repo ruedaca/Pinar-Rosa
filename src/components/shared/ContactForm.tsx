@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import SelectConsulta from "@/components/shared/SelectConsulta";
+import Aviso from "@/components/ui/Aviso";
 import Boton from "@/components/ui/Boton";
 import { contacto, FORMSPREE_ENDPOINT, footer } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,15 @@ export default function ContactForm({ initialMotivo }: ContactFormProps) {
     contacto.consultas.find((opcion) => opcion.value === initialMotivo)
       ?.value ?? contacto.consultas[0].value,
   );
+  const zonaAviso = useRef<HTMLDivElement>(null);
+
+  // En mobile el botón queda al pie de la pantalla: el aviso se trae a la
+  // vista para que el resultado no pase desapercibido.
+  useEffect(() => {
+    if (estado === "enviado" || estado === "error") {
+      zonaAviso.current?.scrollIntoView({ block: "center" });
+    }
+  }, [estado]);
 
   const inputClasses =
     "border-pr-gray-200 bg-white text-pr-black placeholder:text-pr-gray-400 focus:border-pr-green-1 w-full rounded-sm border px-4 py-2.5 text-[13px] md:py-3 transition-colors focus:outline-none disabled:opacity-60";
@@ -42,12 +52,17 @@ export default function ContactForm({ initialMotivo }: ContactFormProps) {
         headers: { Accept: "application/json" },
       });
 
-      if (!respuesta.ok) throw new Error("Formspree respondió con error");
+      if (!respuesta.ok) {
+        throw new Error(
+          `Formspree respondió ${respuesta.status}: ${await respuesta.text()}`,
+        );
+      }
 
       form.reset();
       setConsulta(contacto.consultas[0].value);
       setEstado("enviado");
-    } catch {
+    } catch (error) {
+      console.error("[ContactForm] No se pudo enviar la consulta", error);
       setEstado("error");
     }
   }
@@ -167,20 +182,50 @@ export default function ContactForm({ initialMotivo }: ContactFormProps) {
         {enviando ? "Enviando…" : "Enviar consulta"}
       </Boton>
 
-      <p
-        aria-live="polite"
-        className={cn(
-          "mt-4 text-center text-[12px] leading-[1.6]",
-          estado === "error" ? "text-red-600" : "text-pr-gray-700",
+      {/* Siempre montada: los lectores de pantalla anuncian lo que aparece adentro */}
+      <div ref={zonaAviso} aria-live="polite">
+        {estado === "enviado" && (
+          <Aviso
+            tipo="exito"
+            titulo="¡Consulta enviada!"
+            onCerrar={() => setEstado("inicial")}
+            className="mt-5"
+          >
+            Gracias por escribirnos. Te vamos a responder a la brevedad.
+          </Aviso>
         )}
-      >
-        {estado === "enviado" &&
-          "¡Gracias! Recibimos tu consulta y te vamos a responder a la brevedad."}
-        {estado === "error" &&
-          `No pudimos enviar el formulario. Escribinos directo a ${footer.email}.`}
-        {(estado === "inicial" || estado === "enviando") &&
-          `También podés escribirnos directo a ${footer.email}.`}
-      </p>
+
+        {estado === "error" && (
+          <Aviso
+            tipo="error"
+            titulo="No pudimos enviar tu consulta"
+            onCerrar={() => setEstado("inicial")}
+            className="mt-5"
+          >
+            Revisá tu conexión y volvé a intentar. Si sigue fallando, escribinos
+            a{" "}
+            <a href={`mailto:${footer.email}`} className="underline">
+              {footer.email}
+            </a>{" "}
+            o por{" "}
+            <a
+              href={footer.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
+              WhatsApp
+            </a>
+            .
+          </Aviso>
+        )}
+      </div>
+
+      {(estado === "inicial" || enviando) && (
+        <p className="text-pr-gray-700 mt-4 text-center text-[12px] leading-[1.6]">
+          También podés escribirnos directo a {footer.email}.
+        </p>
+      )}
     </form>
   );
 }
